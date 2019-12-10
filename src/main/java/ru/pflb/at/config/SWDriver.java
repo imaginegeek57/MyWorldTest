@@ -1,13 +1,10 @@
-package ru.pflb.at.config;
+package ru.pflb.at.config; // TODO Package config не очень подходит для менеджера драйвера
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class SWDriver {
-
-    private static final Logger LOG = LogManager.getLogger(SWDriver.class);
 
     /**
      * Единственный экземпляр класса
@@ -27,20 +24,28 @@ public class SWDriver {
     }
 
     /**
-     * Вебдрайвер для хрома
+     * Вебдрайвер
      */
-    private ChromeDriver chromeDriver;
+    private WebDriver driver;
+
+    /**
+     * Получить драйвер
+     *
+     * @return драйвер
+     */
+    public WebDriver getDriver() {
+        return driver;
+    }
 
     /**
      * работа с ожиданиями
      */
-    public WebDriverWait wait;
+    public static WebDriverWait wait;
 
     private SWDriver() {
-        System.setProperty("webdriver.chrome.chromeDriver", "bin/chromedriver.exe");
-        chromeDriver = new ChromeDriver();
-        chromeDriver.manage().window().maximize();
-        wait = new WebDriverWait(chromeDriver, 10, 250);
+        System.setProperty("webdriver.chrome.driver", "bin/chromedriver.exe");
+        driver = new ChromeDriver();
+        driver.manage().window().maximize();
+        wait = new WebDriverWait(driver, 10, 250);
     }
-
 }
