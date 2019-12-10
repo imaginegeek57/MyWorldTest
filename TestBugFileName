@@ -1,0 +1,3 @@
+16:29:03.562 [main] INFO  page.BasePage В поле 'Логин' записать: performance.test
+16:29:04.063 [main] INFO  page.BasePage Пароль заполнен
+16:29:13.160 [main] DEBUG page.BasePage screenshot has done
