@@ -1,19 +1,14 @@
 package ru.pflb.at.page;
 
-import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
-import ru.pflb.at.config.SWDriver;
-
-import java.io.File;
-import java.io.IOException;
+import org.openqa.selenium.support.PageFactory;
+import ru.pflb.at.techno.SWDriver;
 
 public abstract class BasePage {
 
-    protected static final Logger LOG = LogManager.getLogger(BasePage.class);
+    public static final Logger LOG = LogManager.getLogger(BasePage.class);
 
     private SWDriver swDriver;
 
@@ -22,6 +17,7 @@ public abstract class BasePage {
      */
     protected BasePage(SWDriver swDriver) {
         this.swDriver = swDriver;
+        PageFactory.initElements(getWebDriver(), this);
     }
 
     protected SWDriver getSwDriver() {
@@ -32,35 +28,18 @@ public abstract class BasePage {
         return getSwDriver().getDriver();
     }
 
+    public void screenshot() {
+        getSwDriver().screenshot();
+    }
+
     /**
      * Переход на веб-страницу
      *
      * @param url адрес
      */
-    protected void get(String url) {
+    protected void openPage(String url) {
         swDriver.getDriver().get(url);
+        LOG.info("Страница " + url + "открыта");
     }
-
-    // TODO Данный метод лучше держать в менеджере драйвера
-
-    /**
-     * Метод для закрытия
-     */
-    public void close() {
-        swDriver.getDriver().close();
-        System.out.println("Закрыл вкладку.");
-    }
-
-    // TODO Реализацию данного метода лучше держать в менеджере драйвера
-    public BasePage screenshot() {
-        try {
-            File screenshot = ((TakesScreenshot) getWebDriver()).getScreenshotAs(OutputType.FILE);
-            FileUtils.copyToDirectory(screenshot, new File("screenshots/"));
-            LOG.debug("screenshot has done");
-        } catch (IOException e) {
-        }
-        return this;
-    }
-
 
 }

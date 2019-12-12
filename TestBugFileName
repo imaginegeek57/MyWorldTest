@@ -1,3 +1,5 @@
-16:29:03.562 [main] INFO  page.BasePage В поле 'Логин' записать: performance.test
-16:29:04.063 [main] INFO  page.BasePage Пароль заполнен
-16:29:13.160 [main] DEBUG page.BasePage screenshot has done
+17:06:14.068 [main] INFO  page.BasePage Страница https://my.mail.ru/открыта
+17:06:14.077 [main] INFO  page.BasePage В поле 'Логин' записать: performance.test
+17:06:14.540 [main] INFO  page.BasePage Пароль заполнен
+17:06:20.090 [main] DEBUG page.BasePage screenshot has done
+17:06:20.159 [main] DEBUG page.BasePage Закрытие браузера
