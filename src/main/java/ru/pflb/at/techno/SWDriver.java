@@ -5,10 +5,10 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
 import static ru.pflb.at.page.BasePage.LOG;
 
@@ -45,16 +45,11 @@ public class SWDriver {
         return driver;
     }
 
-    /**
-     * работа с ожиданиями
-     */
-    public static WebDriverWait wait;
-
     private SWDriver() {
-        System.setProperty("webdriver.chrome.driver", "bin/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", SWDriver.class.getResource("/webdrivers/chromedriver.exe").getPath());
         driver = new ChromeDriver();
         driver.manage().window().maximize();
-        wait = new WebDriverWait(driver, 10, 250);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 
     public void screenshot() {
@@ -70,7 +65,8 @@ public class SWDriver {
      * Метод для закрытия
      */
     public void close() {
-        if (getDriver() == null) return;
+        if (getDriver() == null)
+            return;
         try {
             LOG.debug("Закрытие браузера");
             getDriver().quit();

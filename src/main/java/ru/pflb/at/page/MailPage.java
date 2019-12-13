@@ -2,6 +2,8 @@ package ru.pflb.at.page;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import ru.pflb.at.techno.SWDriver;
 
 
@@ -25,7 +27,7 @@ public class MailPage extends BasePage {
      * Кнопка "Почта"
      */
     @FindBy(xpath = "//td/a/span[text()='Почта']")
-    private WebElement bottonMail;
+    private WebElement buttonMail;
 
     /**
      * Кнопка "Написать письмо"
@@ -48,8 +50,8 @@ public class MailPage extends BasePage {
     /**
      * Текстовое поле "Письмо"
      */
-    @FindBy(xpath = "//div[@class='editable-znht cke_editable cke_editable_inline cke_contents_true cke_show_borders']/div/div")
-    private WebElement letter;
+    @FindBy(css = "div.cke_editable")
+    private WebElement letterBody;
 
     /**
      * Кнопка "Отправить"
@@ -57,12 +59,43 @@ public class MailPage extends BasePage {
     @FindBy(xpath = "//span[@class='button2 button2_base button2_primary button2_hover-support js-shortcut']/span")
     private WebElement bottonSent;
 
+    /**
+     * Кнопка "Закрыть рекламу"
+     */
+    @FindBy(xpath = "//div[@class='b-popup__header__close icon-crumbs_delete-album icon-crumbs_delete-album']")
+    private WebElement buttonCloseAd;
+
+    /**
+     * Ожидающий осьминог
+     */
+    @FindBy(id = "app-loader")
+    private WebElement appLoader;
 
     /**
      * Жмем кнопку 'Почта'
      */
     public MailPage enterMail() {
-        bottonMail.click();
+        buttonMail.click();
+        new WebDriverWait(getWebDriver(), 60)
+                .until(ExpectedConditions.invisibilityOf(appLoader));
+        screenshot();
+        return this;
+    }
+
+    /**
+     * Жмем кнопку 'Закрыть рекламу'
+     */
+    public MailPage closeAd() {
+        buttonCloseAd.click();
+        screenshot();
+        return this;
+    }
+
+    /**
+     * Жмем кнопку 'Написать'
+     */
+    public MailPage newLetter() {
+        bottonNewLetter.click();
         screenshot();
         return this;
     }
@@ -88,8 +121,8 @@ public class MailPage extends BasePage {
     /**
      * Текст письма
      */
-    public MailPage letter(String text) {
-        letter.sendKeys(text);
+    public MailPage letterBody(String text) {
+        letterBody.sendKeys(text);
         LOG.info("В поле 'Письма' записано: {}", text);
         return this;
     }

@@ -1,9 +1,12 @@
 package ru.pflb.at.page;
 
+import org.hamcrest.Matcher;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import ru.pflb.at.techno.SWDriver;
 import ru.pflb.at.techno.UserProperties;
+
+import static org.hamcrest.MatcherAssert.assertThat;
 
 public class RegistrationPage extends BasePage {
 
@@ -41,6 +44,13 @@ public class RegistrationPage extends BasePage {
     private WebElement buttonEnter;
 
     /**
+     * Локатор ошибки "Неправильное имя пользователя или пароль"
+     */
+    @FindBy(xpath = "//div[text()='Неправильное имя пользователя или пароль']")
+    private WebElement registrationError;
+
+
+    /**
      * Вводим логин
      */
     public RegistrationPage checkLogin(String login) {
@@ -75,6 +85,9 @@ public class RegistrationPage extends BasePage {
         return this;
     }
 
+
+    //div[text()='Неправильное имя пользователя или пароль']
+
     /**
      * Авторизация
      *
@@ -89,13 +102,11 @@ public class RegistrationPage extends BasePage {
     }
 
     public String getErrorMessage() {
-
-        return "Ошибка";
+        return registrationError.getText();
     }
 
-    public RegistrationPage assertThatErrorMessageIs(String errorMessage) {
-
-        return null;
+    public RegistrationPage assertThatErrorMessage(Matcher <String> matcher) {
+        assertThat("Сообщение об ошибке не удовлетворяет условию", getErrorMessage(), matcher);
+        return this;
     }
-
 }
