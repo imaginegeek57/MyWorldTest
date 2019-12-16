@@ -3,7 +3,7 @@ package ru.pflb.at.test;
 import org.junit.jupiter.api.Test;
 import ru.pflb.at.techno.BaseTest;
 
-public class LoginTest extends BaseTest {
+public class LoginMailTest extends BaseTest {
 
     @Test
     public void login_positive_test() {

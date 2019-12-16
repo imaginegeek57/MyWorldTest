@@ -4,7 +4,12 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ru.pflb.at.techno.BaseTest;
 
-public class AppTest extends BaseTest {
+public class AddMusicTest extends BaseTest {
+
+    /**
+     * URL картинки
+     */
+    public static final String MUSIC_URL = "50 cent";
 
     @BeforeEach
     public void setUp() {
@@ -12,13 +17,9 @@ public class AppTest extends BaseTest {
         loginHomePage.closeAdvert();
     }
 
-
     @Test
-    public void sent_mail_positive_test() {
-        mailPage
-                .enterMail();
-        System.out.println();
+    public void upload_photo_by_link() {
+        musicPage.screenshot();
+
     }
-
 }
-

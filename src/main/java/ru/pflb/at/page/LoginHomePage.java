@@ -49,6 +49,12 @@ public class LoginHomePage extends BasePage {
     @FindBy(xpath = "//div[text()='Неправильное имя пользователя или пароль']")
     private WebElement registrationError;
 
+    /**
+     * Кнопка "Закрыть рекламу"
+     */
+    @FindBy(xpath = "//div[@class='b-popup__header__close icon-crumbs_delete-album icon-crumbs_delete-album']")
+    private WebElement buttonCloseAd;
+
 
     /**
      * Вводим логин
@@ -85,9 +91,6 @@ public class LoginHomePage extends BasePage {
         return this;
     }
 
-
-    //div[text()='Неправильное имя пользователя или пароль']
-
     /**
      * Авторизация
      *
@@ -99,6 +102,16 @@ public class LoginHomePage extends BasePage {
                 .checkLogin(userProperties.getLogin())
                 .checkPassword(userProperties.getPassword())
                 .enter();
+    }
+
+    /**
+     * Жмем кнопку 'Закрыть рекламу'
+     */
+    public LoginHomePage closeAdvert() {
+        buttonCloseAd.click();
+        LOG.info("Реклама закрыта");
+        screenshot();
+        return this;
     }
 
     public String getErrorMessage() {

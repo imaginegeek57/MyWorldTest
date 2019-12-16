@@ -15,16 +15,17 @@ public class UploadPhotoTest extends BaseTest {
     @BeforeEach
     public void setUp() {
         loginHomePage.login(userProperties);
+        loginHomePage.closeAdvert();
     }
 
     @Test
     public void upload_photo_by_link() {
-        uploadPhotoByLink
-                .closeAdvert()
+        photoPage
                 .enterPhoto()
                 .addPhoto()
                 .addByLink()
                 .mailToUser(IMAGE_URL)
-                .downloadPhotoLink();
+                .uploadPhoto()
+                .savePhoto();
     }
 }

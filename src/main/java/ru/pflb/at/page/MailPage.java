@@ -60,12 +60,6 @@ public class MailPage extends BasePage {
     private WebElement buttonSent;
 
     /**
-     * Кнопка "Закрыть рекламу"
-     */
-    @FindBy(xpath = "//div[@class='b-popup__header__close icon-crumbs_delete-album icon-crumbs_delete-album']")
-    private WebElement buttonCloseAd;
-
-    /**
      * Ожидающий осьминог
      */
     @FindBy(id = "app-loader")
@@ -78,16 +72,6 @@ public class MailPage extends BasePage {
         buttonMail.click();
         new WebDriverWait(getWebDriver(), 60)
                 .until(ExpectedConditions.invisibilityOf(appLoader));
-        screenshot();
-        return this;
-    }
-
-    /**
-     * Жмем кнопку 'Закрыть рекламу'
-     */
-    public MailPage closeAd() {
-        buttonCloseAd.click();
-        LOG.info("Реклама закрыта");
         screenshot();
         return this;
     }
