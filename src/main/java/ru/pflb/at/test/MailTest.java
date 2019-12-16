@@ -8,7 +8,7 @@ public class MailTest extends BaseTest {
 
     @BeforeEach
     public void setUp() {
-        registrationHomePage.login(userProperties);
+        loginHomePage.login(userProperties);
     }
 
     @Test
@@ -16,7 +16,7 @@ public class MailTest extends BaseTest {
         mailPage
                 .closeAd()
                 .enterMail()
-                .newLetter()
+                .newMail()
                 .mailToUser("performance.test@mail.ru")
                 .mailSubject("тест")
                 .letterBody("Текст письма")

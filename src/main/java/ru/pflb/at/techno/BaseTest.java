@@ -2,8 +2,9 @@ package ru.pflb.at.techno;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import ru.pflb.at.page.LoginHomePage;
 import ru.pflb.at.page.MailPage;
-import ru.pflb.at.page.RegistrationPage;
+import ru.pflb.at.page.UploadPhotoByLink;
 
 
 public abstract class BaseTest {
@@ -11,15 +12,17 @@ public abstract class BaseTest {
     public UserProperties userProperties;
     public SWDriver swDriver;
 
-    public RegistrationPage registrationHomePage;
+    public LoginHomePage loginHomePage;
     public MailPage mailPage;
+    public UploadPhotoByLink uploadPhotoByLink;
 
     @BeforeEach
     public void baseSetUp() {
         userProperties = new UserProperties();
         swDriver = SWDriver.getInstance();
-        registrationHomePage = new RegistrationPage(swDriver);
+        loginHomePage = new LoginHomePage(swDriver);
         mailPage = new MailPage(swDriver);
+        uploadPhotoByLink = new UploadPhotoByLink(swDriver);
     }
 
     @AfterEach

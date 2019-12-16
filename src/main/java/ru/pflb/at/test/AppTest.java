@@ -8,7 +8,7 @@ public class AppTest extends BaseTest {
 
     @BeforeEach
     public void setUp() {
-        registrationHomePage.login(userProperties);
+        loginHomePage.login(userProperties);
     }
 
     @Test

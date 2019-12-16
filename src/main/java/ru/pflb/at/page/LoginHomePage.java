@@ -8,7 +8,7 @@ import ru.pflb.at.techno.UserProperties;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 
-public class RegistrationPage extends BasePage {
+public class LoginHomePage extends BasePage {
 
     /**
      * Мой мир 'url'
@@ -20,7 +20,7 @@ public class RegistrationPage extends BasePage {
      *
      * @param swDriver
      */
-    public RegistrationPage(SWDriver swDriver) {
+    public LoginHomePage(SWDriver swDriver) {
         super(swDriver);
     }
 
@@ -53,7 +53,7 @@ public class RegistrationPage extends BasePage {
     /**
      * Вводим логин
      */
-    public RegistrationPage checkLogin(String login) {
+    public LoginHomePage checkLogin(String login) {
         LOG.info("В поле 'Логин' записать: {}", login);
         elementLogin.sendKeys(login);
         return this;
@@ -62,7 +62,7 @@ public class RegistrationPage extends BasePage {
     /**
      * Вводим пароль
      */
-    public RegistrationPage checkPassword(String password) {
+    public LoginHomePage checkPassword(String password) {
         elementPassword.sendKeys(password);
         LOG.info("Пароль заполнен");
         return this;
@@ -71,7 +71,7 @@ public class RegistrationPage extends BasePage {
     /**
      * Жмем кнопку вход
      */
-    public RegistrationPage enter() {
+    public LoginHomePage enter() {
         buttonEnter.click();
         screenshot();
         return this;
@@ -80,7 +80,7 @@ public class RegistrationPage extends BasePage {
     /**
      * Открытие веб-страницы 'Мой мир'
      */
-    public RegistrationPage open() {
+    public LoginHomePage open() {
         openPage(url);
         return this;
     }
@@ -93,7 +93,7 @@ public class RegistrationPage extends BasePage {
      *
      * @param userProperties параметры для входа
      */
-    public RegistrationPage login(UserProperties userProperties) {
+    public LoginHomePage login(UserProperties userProperties) {
         return this
                 .open()
                 .checkLogin(userProperties.getLogin())
@@ -105,7 +105,7 @@ public class RegistrationPage extends BasePage {
         return registrationError.getText();
     }
 
-    public RegistrationPage assertThatErrorMessage(Matcher <String> matcher) {
+    public LoginHomePage assertThatErrorMessage(Matcher <String> matcher) {
         assertThat("Сообщение об ошибке не удовлетворяет условию", getErrorMessage(), matcher);
         return this;
     }

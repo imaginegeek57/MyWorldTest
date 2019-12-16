@@ -33,7 +33,7 @@ public class MailPage extends BasePage {
      * Кнопка "Написать письмо"
      */
     @FindBy(xpath = "//span/span[@class='compose-button__wrapper']")
-    private WebElement bottonNewLetter;
+    private WebElement buttonNewMail;
 
     /**
      * Текстовое поле "кому"
@@ -51,13 +51,13 @@ public class MailPage extends BasePage {
      * Текстовое поле "Письмо"
      */
     @FindBy(css = "div.cke_editable")
-    private WebElement letterBody;
+    private WebElement mailBody;
 
     /**
      * Кнопка "Отправить"
      */
     @FindBy(xpath = "//span[@class='button2 button2_base button2_primary button2_hover-support js-shortcut']/span")
-    private WebElement bottonSent;
+    private WebElement buttonSent;
 
     /**
      * Кнопка "Закрыть рекламу"
@@ -87,15 +87,16 @@ public class MailPage extends BasePage {
      */
     public MailPage closeAd() {
         buttonCloseAd.click();
+        LOG.info("Реклама закрыта");
         screenshot();
         return this;
     }
 
     /**
-     * Жмем кнопку 'Написать'
+     * Жмем кнопку 'Написать письмо'
      */
-    public MailPage newLetter() {
-        bottonNewLetter.click();
+    public MailPage newMail() {
+        buttonNewMail.click();
         screenshot();
         return this;
     }
@@ -104,8 +105,8 @@ public class MailPage extends BasePage {
      * Вводим кому пишем
      */
     public MailPage mailToUser(String addres) {
-        LOG.info("В поле 'Кому' записано: {}", addres);
         mailToUser.sendKeys(addres);
+        LOG.info("В поле 'Кому' записано: {}", addres);
         return this;
     }
 
@@ -122,17 +123,18 @@ public class MailPage extends BasePage {
      * Текст письма
      */
     public MailPage letterBody(String text) {
-        letterBody.sendKeys(text);
+        mailBody.sendKeys(text);
         LOG.info("В поле 'Письма' записано: {}", text);
         return this;
     }
 
     /**
-     * Жмем кнопку 'Почта'
+     * Жмем кнопку 'Отправить письмо'
      */
     public MailPage sentTo() {
         screenshot();
-        bottonSent.click();
+        buttonSent.click();
+        LOG.info("Пиьмо отправлено");
         return this;
     }
 

@@ -7,7 +7,7 @@ public class LoginTest extends BaseTest {
 
     @Test
     public void login_positive_test() {
-        registrationHomePage
+        loginHomePage
                 .open()
                 .checkLogin(userProperties.getLogin())
                 .checkPassword(userProperties.getPassword())
@@ -16,13 +16,13 @@ public class LoginTest extends BaseTest {
 
     @Test
     public void login_wrong_password_test() {
-        registrationHomePage
+        loginHomePage
                 .open()
                 .checkLogin(userProperties.getLogin())
                 .checkPassword("1234")
                 .enter();
 
-        assert "Неправильное имя пользователя или пароль".equals(registrationHomePage.getErrorMessage());
+        assert "Неправильное имя пользователя или пароль".equals(loginHomePage.getErrorMessage());
     }
 
 }
