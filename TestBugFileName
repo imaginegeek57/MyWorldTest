@@ -1,9 +1,6 @@
-15:53:54.430 [main] INFO  page.BasePage Страница https://my.mail.ru/открыта
-15:53:54.438 [main] INFO  page.BasePage В поле 'Логин' записать: performance.test
-15:53:55.123 [main] INFO  page.BasePage Пароль заполнен
-15:54:02.890 [main] DEBUG page.BasePage screenshot has done
-15:54:03.013 [main] INFO  page.BasePage Реклама закрыта
-15:54:03.702 [main] DEBUG page.BasePage screenshot has done
-15:54:03.768 [main] INFO  page.BasePage Жмем кнопку 'Фото'
-15:54:04.394 [main] DEBUG page.BasePage screenshot has done
-15:54:14.473 [main] DEBUG page.BasePage Закрытие браузера
+17:34:29.360 [main] INFO  page.BasePage Страница https://my.mail.ru/открыта
+17:34:29.369 [main] INFO  page.BasePage В поле 'Логин' записать: performance.test
+17:34:29.801 [main] INFO  page.BasePage Пароль заполнен
+17:34:34.720 [main] DEBUG page.BasePage screenshot has done
+17:34:34.824 [main] INFO  page.BasePage Реклама закрыта
+17:34:35.502 [main] DEBUG page.BasePage screenshot has done
