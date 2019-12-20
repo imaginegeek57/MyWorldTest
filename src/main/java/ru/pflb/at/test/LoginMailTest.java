@@ -3,6 +3,8 @@ package ru.pflb.at.test;
 import org.junit.jupiter.api.Test;
 import ru.pflb.at.techno.BaseTest;
 
+import static org.hamcrest.Matchers.equalTo;
+
 public class LoginMailTest extends BaseTest {
 
     @Test
@@ -11,7 +13,8 @@ public class LoginMailTest extends BaseTest {
                 .open()
                 .checkLogin(userProperties.getLogin())
                 .checkPassword(userProperties.getPassword())
-                .enter();
+                .enter()
+                .assertThatCurrentUserMail(equalTo(userProperties.getMail()));
     }
 
     @Test
@@ -20,9 +23,7 @@ public class LoginMailTest extends BaseTest {
                 .open()
                 .checkLogin(userProperties.getLogin())
                 .checkPassword("1234")
-                .enter();
-
-        assert "Неправильное имя пользователя или пароль".equals(loginHomePage.getErrorMessage());
+                .enter()
+                .assertThatErrorMessage(equalTo("Неправильное имя пользователя или пароль"));
     }
-
 }

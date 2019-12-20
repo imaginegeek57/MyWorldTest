@@ -12,7 +12,6 @@ public abstract class BaseTest {
 
     public UserProperties userProperties;
     public SWDriver swDriver;
-
     public LoginHomePage loginHomePage;
     public MailPage mailPage;
     public PhotoPage photoPage;

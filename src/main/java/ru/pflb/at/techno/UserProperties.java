@@ -10,11 +10,17 @@ public class UserProperties {
 
     private String login;
 
+    private String mail;
+
+    private String password;
+
     public String getLogin() {
         return login;
     }
 
-    private String password;
+    public String getMail() {
+        return mail;
+    }
 
     public String getPassword() {
         return password;
@@ -31,6 +37,7 @@ public class UserProperties {
 
             login = config.getProperty("LOGIN");
             password = config.getProperty("PASSWORD");
+            mail = config.getProperty("MAIL");
 
         } catch (Exception e) {
             throw new IllegalStateException(e);

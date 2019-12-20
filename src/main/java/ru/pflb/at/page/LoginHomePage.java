@@ -55,6 +55,11 @@ public class LoginHomePage extends BasePage {
     @FindBy(xpath = "//div[@class='b-popup__header__close icon-crumbs_delete-album icon-crumbs_delete-album']")
     private WebElement buttonCloseAd;
 
+    /**
+     * Почта пользователя
+     */
+    @FindBy(id = "PH_user-email")
+    private WebElement currentUserMail;
 
     /**
      * Вводим логин
@@ -118,8 +123,24 @@ public class LoginHomePage extends BasePage {
         return registrationError.getText();
     }
 
+    public String getCurrentUserMail() {
+        return currentUserMail.getText();
+    }
+
     public LoginHomePage assertThatErrorMessage(Matcher <String> matcher) {
+        LOG.info("Проверка сообщения об ошибке при авторизации");
         assertThat("Сообщение об ошибке не удовлетворяет условию", getErrorMessage(), matcher);
+        return this;
+    }
+
+    /**
+     * Проверка что почта текущего пользователя соответствует условию
+     *
+     * @param matcher условию
+     */
+    public LoginHomePage assertThatCurrentUserMail(Matcher <String> matcher) {
+        LOG.info("Проверка что почта текущего пользователя удовлетворяет условию: {}", matcher);
+        assertThat("Отображаемая почта текущего пользователя не соответствует условию", getCurrentUserMail(), matcher);
         return this;
     }
 }

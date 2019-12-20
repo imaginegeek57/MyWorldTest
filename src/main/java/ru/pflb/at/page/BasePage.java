@@ -39,7 +39,7 @@ public abstract class BasePage {
      */
     protected void openPage(String url) {
         swDriver.getDriver().get(url);
-        LOG.info("Страница " + url + "открыта");
+        LOG.info("Страница " + url + " открыта");
     }
 
 }
