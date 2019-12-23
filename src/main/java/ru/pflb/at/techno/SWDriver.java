@@ -10,7 +10,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
-import static ru.pflb.at.page.BasePage.LOG;
+import static ru.pflb.at.techno.BasePage.LOG;
 
 public class SWDriver {
 

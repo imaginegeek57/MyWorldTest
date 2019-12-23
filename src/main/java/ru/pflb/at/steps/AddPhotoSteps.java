@@ -27,22 +27,14 @@ public class AddPhotoSteps implements En {
             photoPage.enterPhoto();
         });
 
-        When("I add a photo link from internet", () -> {
+        When("I add a photo from internet by this link: {url}", (String url) -> {
             photoPage
                     .addPhoto()
                     .addByLink()
-                    .mailToUser(PICTURE_URL)
-                    .uploadPhoto();
+                    .mailToUser(url)
+                    .uploadPhoto()
+                    .enterPhoto();
         });
-
-        Then("I save my picture", () -> {
-            photoPage.enterPhoto();
-        });
-
-//        Then("I check my Email", () -> {
-//            loginHomePage.assertThatCurrentUserMail(equalTo(userProperties.getMail()));
-//        });
-
 
     }
 }

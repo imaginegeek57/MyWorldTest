@@ -18,20 +18,11 @@ public class LoginSteps implements En {
         swDriver = SWDriver.getInstance();
         loginHomePage = new LoginHomePage(swDriver);
 
-        Given("I open the login page", () -> {
-            loginHomePage.open();
-        });
-
-        When("I write login", () -> {
-            loginHomePage.checkLogin(userProperties.getLogin());
-        });
-
-        And("I write password", () -> {
-            loginHomePage.checkPassword(userProperties.getPassword());
-        });
-
-        And("I enter the site", () -> {
-            loginHomePage.enter();
+        Given("I go to the email", () -> {
+            loginHomePage.open()
+                    .checkLogin(userProperties.getLogin())
+                    .checkPassword(userProperties.getPassword())
+                    .enter();
         });
 
         Then("I check my Email", () -> {

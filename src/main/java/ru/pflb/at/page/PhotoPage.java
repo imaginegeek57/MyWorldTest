@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import ru.pflb.at.techno.BasePage;
 import ru.pflb.at.techno.SWDriver;
 
 public class PhotoPage extends BasePage {

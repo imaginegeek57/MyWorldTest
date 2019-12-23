@@ -3,6 +3,7 @@ package ru.pflb.at.page;
 import org.hamcrest.Matcher;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import ru.pflb.at.techno.BasePage;
 import ru.pflb.at.techno.SWDriver;
 import ru.pflb.at.techno.UserProperties;
 
