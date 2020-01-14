@@ -14,6 +14,12 @@ public class UserProperties {
 
     private String password;
 
+    private String url;
+
+    public String getUrl() {
+        return url;
+    }
+
     public String getLogin() {
         return login;
     }
@@ -38,6 +44,7 @@ public class UserProperties {
             login = config.getProperty("LOGIN");
             password = config.getProperty("PASSWORD");
             mail = config.getProperty("MAIL");
+            url = config.getProperty("URL");
 
         } catch (Exception e) {
             throw new IllegalStateException(e);

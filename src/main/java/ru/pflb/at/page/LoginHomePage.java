@@ -12,11 +12,6 @@ import static org.hamcrest.MatcherAssert.assertThat;
 public class LoginHomePage extends BasePage {
 
     /**
-     * Мой мир 'url'
-     */
-    private static String url = "https://my.mail.ru/";
-
-    /**
      * Конструктор класса
      *
      * @param swDriver
@@ -90,9 +85,11 @@ public class LoginHomePage extends BasePage {
     }
 
     /**
-     * Открытие веб-страницы 'Мой мир'
+     * Переход на веб-страницу
+     *
+     * @param url адрес
      */
-    public LoginHomePage open() {
+    public LoginHomePage open(String url) {
         openPage(url);
         return this;
     }
@@ -104,7 +101,7 @@ public class LoginHomePage extends BasePage {
      */
     public LoginHomePage login(UserProperties userProperties) {
         return this
-                .open()
+                .open(userProperties.getUrl())
                 .checkLogin(userProperties.getLogin())
                 .checkPassword(userProperties.getPassword())
                 .enter();

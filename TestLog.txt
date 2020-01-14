@@ -1,0 +1,13 @@
+2020-01-14 21:16:11.491 [main] INFO  techno.BasePage - Страница https://my.mail.ru/ открыта
+2020-01-14 21:16:11.500 [main] INFO  techno.BasePage - В поле 'Логин' записать: performance.test
+2020-01-14 21:16:12.541 [main] INFO  techno.BasePage - Пароль заполнен
+2020-01-14 21:16:16.067 [main] INFO  techno.BasePage - Реклама закрыта
+2020-01-14 21:16:16.654 [main] INFO  techno.BasePage - Жмем кнопку 'Ещё'
+2020-01-14 21:16:17.302 [main] INFO  techno.BasePage - Жмем кнопку 'Музыка'
+2020-01-14 21:16:17.956 [main] INFO  techno.BasePage - Жмем кнопку 'Добавить из поиска'
+2020-01-14 21:16:18.579 [main] INFO  techno.BasePage - В поле 'Поиск' записано: 50 cent
+2020-01-14 21:16:20.020 [main] INFO  techno.BasePage - Треки выбранны
+2020-01-14 21:16:20.547 [main] INFO  techno.BasePage - Жмем кнопку 'Добавить выбранные треки'
+2020-01-14 21:16:21.105 [main] INFO  techno.BasePage - Жмем кнопку 'Ещё'
+2020-01-14 21:16:21.739 [main] INFO  techno.BasePage - В поле 'Публикации' записано: #50forever
+2020-01-14 21:16:21.816 [main] INFO  techno.BasePage - Жмем кнопку 'Добавить публекацию'

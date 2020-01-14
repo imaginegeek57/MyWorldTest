@@ -7,6 +7,7 @@ import ru.pflb.at.techno.BasePage;
 import ru.pflb.at.techno.SWDriver;
 
 public class MusicPage extends BasePage {
+
     /**
      * Конструктор класса
      *
@@ -17,46 +18,27 @@ public class MusicPage extends BasePage {
     }
 
     /**
-     *
+     * Текстовое поле "Искать"
      */
-    @FindBy(xpath = "//textarea[@placeholder='Расскажите о новом событии...']")
-    private WebElement buttonTell;
-
-    /**
-     *
-     */
-    @FindBy(xpath = "//div/div[text()='Музыка']")
-    private WebElement buttonMus;
-
-    /**
-     * Кнопка "Ещё"
-     */
-    @FindBy(xpath = "//i[@class='b-history_filter-more__icon ui-icon']")
-    private WebElement buttonElse;
+    @FindBy(css = ".b-publisher__text")
+    private WebElement buttonSearch;
 
     /**
      * Кнопка "Музыка"
      */
-    @FindBy(xpath = "//li/div[text()='Музыка']")
+    @FindBy(xpath = "//div/div[text()='Музыка']")
     private WebElement buttonMusic;
 
     /**
      * Кнопка добавить музыку из поиска
      */
-    @FindBy(css = "//button[@class='b-audio-upload__link__button b-audio-upload__link__button-search ui-button-gray']")
+    @FindBy(css = ".b-audio-upload__link__button-search")
     private WebElement addMusic;
-
     /**
      * Текстовое поле "Поиск"
      */
     @FindBy(xpath = "//input[@placeholder='Поиск']")
-    private WebElement searchMus;
-
-    /**
-     * Веб элемент "tracks list"
-     */
-    @FindBy(xpath = "//div[@class='b-audio-upload__search-form__content__list']")
-    private WebElement tracksList;
+    private WebElement searchMusic;
 
     /**
      * Бокс отметки выбранных треков
@@ -71,6 +53,12 @@ public class MusicPage extends BasePage {
     private WebElement addTrack;
 
     /**
+     * Кнопка "Поделиться"
+     */
+    @FindBy(css = ".b-publisher__controls__submit ")
+    private WebElement buttonPublish;
+
+    /**
      * Жмем кнопку 'Музыка'
      */
     public MusicPage enterMusic() {
@@ -81,10 +69,10 @@ public class MusicPage extends BasePage {
     }
 
     /**
-     * Жмем кнопку 'Ещё'
+     * Жмем кнопку 'Искать'
      */
-    public MusicPage pressElse() {
-        buttonElse.click();
+    public MusicPage pressSearch() {
+        buttonSearch.click();
         LOG.info("Жмем кнопку 'Ещё'");
         screenshot();
         return this;
@@ -105,7 +93,7 @@ public class MusicPage extends BasePage {
      * Вводим название музыки для поиска
      */
     public MusicPage searchMusic(String search) {
-        searchMus.sendKeys(search);
+        searchMusic.sendKeys(search);
         LOG.info("В поле 'Поиск' записано: {}", search);
         return this;
     }
@@ -126,6 +114,25 @@ public class MusicPage extends BasePage {
     public MusicPage addTracks() {
         addTrack.click();
         LOG.info("Жмем кнопку 'Добавить выбранные треки'");
+        screenshot();
+        return this;
+    }
+
+    /**
+     * Вводим название записи для публикации
+     */
+    public MusicPage publish(String text) {
+        buttonSearch.sendKeys(text);
+        LOG.info("В поле 'Публикации' записано: {}", text);
+        return this;
+    }
+
+    /**
+     * Жмем кнопку 'Добавить публекацию'
+     */
+    public MusicPage addPublish() {
+        buttonPublish.click();
+        LOG.info("Жмем кнопку 'Добавить публекацию'");
         screenshot();
         return this;
     }

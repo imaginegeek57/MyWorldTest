@@ -1,6 +1,8 @@
 package ru.pflb.at.techno;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -10,9 +12,9 @@ import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
-import static ru.pflb.at.techno.BasePage.LOG;
-
 public class SWDriver {
+
+    public static final Logger LOG = LogManager.getLogger(SWDriver.class);
 
     /**
      * Единственный экземпляр класса

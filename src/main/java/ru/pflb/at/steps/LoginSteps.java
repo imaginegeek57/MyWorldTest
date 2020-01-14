@@ -18,12 +18,14 @@ public class LoginSteps implements En {
         swDriver = SWDriver.getInstance();
         loginHomePage = new LoginHomePage(swDriver);
 
-        Given("I go to the email", () -> {
-            loginHomePage.open()
+        Given("I am authorizing by email", () -> {
+            loginHomePage.open(userProperties.getUrl())
                     .checkLogin(userProperties.getLogin())
                     .checkPassword(userProperties.getPassword())
-                    .enter();
+                    .enter()
+                    .closeAdvert();
         });
+
 
         Then("I check my Email", () -> {
             loginHomePage.assertThatCurrentUserMail(equalTo(userProperties.getMail()));

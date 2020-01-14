@@ -10,7 +10,7 @@ public class LoginMailTest extends BaseTest {
     @Test
     public void login_positive_test() {
         loginHomePage
-                .open()
+                .open(userProperties.getUrl())
                 .checkLogin(userProperties.getLogin())
                 .checkPassword(userProperties.getPassword())
                 .enter()
@@ -20,7 +20,7 @@ public class LoginMailTest extends BaseTest {
     @Test
     public void login_wrong_password_test() {
         loginHomePage
-                .open()
+                .open(userProperties.getUrl())
                 .checkLogin(userProperties.getLogin())
                 .checkPassword("1234")
                 .enter()

@@ -115,18 +115,6 @@ public class PhotoPage extends BasePage {
         return this;
     }
 
-
-    public static void main(String[] args) {
-        PhotoPage musicPage = new PhotoPage(null);
-
-
-        for (int i = 0; i < 10; i++) {
-            musicPage.getTrackByNumber(i).clickAddButton();
-        }
-
-    }
-
-
     private static final String trackRowByNumberSelector = "//div[contains(@class, 'track-row')][%d]";
 
     public TrackRow getTrackByNumber(int number) {
