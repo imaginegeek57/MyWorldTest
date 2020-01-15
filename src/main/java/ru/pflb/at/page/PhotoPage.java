@@ -1,7 +1,5 @@
 package ru.pflb.at.page;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -20,27 +18,27 @@ public class PhotoPage extends BasePage {
     }
 
     /**
-     * Кнопка "Фото"
+     * Текстовое поле "Искать"
      */
-    @FindBy(xpath = "//li[@data-id='photo']/a")
-    private WebElement buttonPhoto;
+    @FindBy(css = ".b-publisher__text")
+    private WebElement buttonSearch;
 
     /**
-     * Кнопка "Добавить фото"
+     * Кнопка "Фото"
      */
-    @FindBy(xpath = "//div[@data-mru-fragment='content-tools/photo/upload/button']")
-    private WebElement buttonAddPhoto;
+    @FindBy(css = ".icon-crumbs_make-photo")
+    private WebElement buttonPhoto;
 
     /**
      * Кнопка "Добавить фото по ссылке из интернета"
      */
-    @FindBy(xpath = "//div[@class='b-photo-upload__link']/div")
+    @FindBy(css = ".b-photo-upload__link__button-network")
     private WebElement addPhotoByLink;
 
     /**
      * Текстовое поле "URL"
      */
-    @FindBy(css = "input.b-photo-upload__network__item__input")
+    @FindBy(css = ".b-photo-upload__network__item__input")
     private WebElement writeURL;
 
     /**
@@ -50,10 +48,32 @@ public class PhotoPage extends BasePage {
     private WebElement buttonUpload;
 
     /**
+     * Текстовое поле "Описание фото"
+     */
+    @FindBy(css = ".b-photo-upload__edit-item-expanded__description")
+    private WebElement buttondescribe;
+
+    /**
      * Кнопка "Сохранить фото"
      */
     @FindBy(xpath = "//div[text()='Сохранить']")
     private WebElement savePhoto;
+
+    /**
+     * Кнопка "Поделиться"
+     */
+    @FindBy(css = ".b-publisher__controls__submit")
+    private WebElement buttonPublish;
+
+    /**
+     * Жмем кнопку 'Искать'
+     */
+    public PhotoPage pressSearch() {
+        buttonSearch.click();
+        LOG.info("Жмем кнопку 'Искать'");
+        screenshot();
+        return this;
+    }
 
     /**
      * Жмем кнопку 'Фото'
@@ -61,16 +81,6 @@ public class PhotoPage extends BasePage {
     public PhotoPage enterPhoto() {
         buttonPhoto.click();
         LOG.info("Жмем кнопку 'Фото'");
-        screenshot();
-        return this;
-    }
-
-    /**
-     * Жмем кнопку 'Добавить фото'
-     */
-    public PhotoPage addPhoto() {
-        buttonAddPhoto.click();
-        LOG.info("Жмем кнопку 'Добавить Фото'");
         screenshot();
         return this;
     }
@@ -88,7 +98,7 @@ public class PhotoPage extends BasePage {
     /**
      * Вводим URL
      */
-    public PhotoPage mailToUser(String url) {
+    public PhotoPage writeUrl(String url) {
         writeURL.sendKeys(url);
         LOG.info("В поле 'URL' записано: {}", url);
         return this;
@@ -115,31 +125,34 @@ public class PhotoPage extends BasePage {
         return this;
     }
 
-    private static final String trackRowByNumberSelector = "//div[contains(@class, 'track-row')][%d]";
-
-    public TrackRow getTrackByNumber(int number) {
-        String xpath = String.format(trackRowByNumberSelector, number);
-        WebElement trackElement = getWebDriver().findElement(By.xpath(xpath));
-        return new TrackRow(getWebDriver(), trackElement);
+    /**
+     * Текстовое поле описание фотографии
+     */
+    public PhotoPage describePhoto(String text) {
+        new WebDriverWait(getWebDriver(), 10);
+        buttondescribe.sendKeys(text);
+        LOG.info("Добавлено описания фотографии: {}", text);
+        screenshot();
+        return this;
     }
 
-    public static class TrackRow {
 
-        private WebDriver driver;
+    /**
+     * Вводим название записи для публикации
+     */
+    public PhotoPage publish(String text) {
+        buttonSearch.sendKeys(text);
+        LOG.info("В поле 'Публикации' записано: {}", text);
+        return this;
+    }
 
-        private WebElement rootElement;
-
-        public TrackRow(WebDriver driver, WebElement rootElement) {
-            this.driver = driver;
-            this.rootElement = rootElement;
-        }
-
-        private static final By addButtonSelector = By.cssSelector("div.add-button");
-
-        public void clickAddButton() {
-            WebElement addButton = rootElement.findElement(addButtonSelector);
-            addButton.click();
-        }
-
+    /**
+     * Жмем кнопку 'Добавить публекацию'
+     */
+    public PhotoPage addPublish() {
+        buttonPublish.click();
+        LOG.info("Жмем кнопку 'Добавить публекацию'");
+        screenshot();
+        return this;
     }
 }

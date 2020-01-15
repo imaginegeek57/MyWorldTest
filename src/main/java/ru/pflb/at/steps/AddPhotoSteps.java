@@ -20,18 +20,22 @@ public class AddPhotoSteps implements En {
         photoPage = new PhotoPage(swDriver);
 
 
-        Given("I open a photo tab", () -> {
-            photoPage.enterPhoto();
-        });
-
-        When("I add a photo from internet by this link: {string}", (String url) -> {
+        Given("I upload a photo from internet by link: {string}", (String url) -> {
             photoPage
-                    .addPhoto()
+                    .pressSearch()
+                    .enterPhoto()
                     .addByLink()
-                    .mailToUser(url)
-                    .uploadPhoto()
-                    .enterPhoto();
+                    .writeUrl(url)
+                    .uploadPhoto();
         });
 
+        Then("I write describe to photo: {string} and make new publish: {string}", (String describe, String publish) -> {
+            photoPage
+                    .describePhoto(describe)
+                    .savePhoto()
+                    .publish(publish)
+                    .addPublish();
+
+        });
     }
 }

@@ -1,23 +1,23 @@
-2020-01-14 21:16:11.491 [main] INFO  techno.BasePage - Страница https://my.mail.ru/ открыта
-2020-01-14 21:16:11.500 [main] INFO  techno.BasePage - В поле 'Логин' записать: performance.test
-2020-01-14 21:16:12.541 [main] INFO  techno.BasePage - Пароль заполнен
-2020-01-14 21:16:14.927 [main] DEBUG techno.SWDriver - screenshot has done
-2020-01-14 21:16:16.067 [main] INFO  techno.BasePage - Реклама закрыта
-2020-01-14 21:16:16.562 [main] DEBUG techno.SWDriver - screenshot has done
-2020-01-14 21:16:16.654 [main] INFO  techno.BasePage - Жмем кнопку 'Ещё'
-2020-01-14 21:16:17.232 [main] DEBUG techno.SWDriver - screenshot has done
-2020-01-14 21:16:17.302 [main] INFO  techno.BasePage - Жмем кнопку 'Музыка'
-2020-01-14 21:16:17.863 [main] DEBUG techno.SWDriver - screenshot has done
-2020-01-14 21:16:17.956 [main] INFO  techno.BasePage - Жмем кнопку 'Добавить из поиска'
-2020-01-14 21:16:18.434 [main] DEBUG techno.SWDriver - screenshot has done
-2020-01-14 21:16:18.579 [main] INFO  techno.BasePage - В поле 'Поиск' записано: 50 cent
-2020-01-14 21:16:20.020 [main] INFO  techno.BasePage - Треки выбранны
-2020-01-14 21:16:20.434 [main] DEBUG techno.SWDriver - screenshot has done
-2020-01-14 21:16:20.547 [main] INFO  techno.BasePage - Жмем кнопку 'Добавить выбранные треки'
-2020-01-14 21:16:21.055 [main] DEBUG techno.SWDriver - screenshot has done
-2020-01-14 21:16:21.105 [main] INFO  techno.BasePage - Жмем кнопку 'Ещё'
-2020-01-14 21:16:21.574 [main] DEBUG techno.SWDriver - screenshot has done
-2020-01-14 21:16:21.739 [main] INFO  techno.BasePage - В поле 'Публикации' записано: #50forever
-2020-01-14 21:16:21.816 [main] INFO  techno.BasePage - Жмем кнопку 'Добавить публекацию'
-2020-01-14 21:16:22.301 [main] DEBUG techno.SWDriver - screenshot has done
-2020-01-14 21:16:22.302 [main] DEBUG techno.SWDriver - Закрытие браузера
+2020-01-15 11:06:48.896 [main] INFO  techno.BasePage - Страница https://my.mail.ru/ открыта
+2020-01-15 11:06:48.904 [main] INFO  techno.BasePage - В поле 'Логин' записать: performance.test
+2020-01-15 11:06:49.467 [main] INFO  techno.BasePage - Пароль заполнен
+2020-01-15 11:06:54.027 [main] DEBUG techno.SWDriver - screenshot has done
+2020-01-15 11:06:54.120 [main] INFO  techno.BasePage - Реклама закрыта
+2020-01-15 11:06:54.777 [main] DEBUG techno.SWDriver - screenshot has done
+2020-01-15 11:06:54.868 [main] INFO  techno.BasePage - Жмем кнопку 'Искать'
+2020-01-15 11:06:55.466 [main] DEBUG techno.SWDriver - screenshot has done
+2020-01-15 11:06:55.534 [main] INFO  techno.BasePage - Жмем кнопку 'Фото'
+2020-01-15 11:06:56.155 [main] DEBUG techno.SWDriver - screenshot has done
+2020-01-15 11:06:56.381 [main] INFO  techno.BasePage - Жмем кнопку 'Добавить по ссылке'
+2020-01-15 11:06:56.850 [main] DEBUG techno.SWDriver - screenshot has done
+2020-01-15 11:06:58.349 [main] INFO  techno.BasePage - В поле 'URL' записано: https://avatars.mds.yandex.net/get-pdb/1976538/7ea9875b-c3cb-49ff-9ab3-9dc436be6ab4/s1200
+2020-01-15 11:06:58.414 [main] INFO  techno.BasePage - Фотография загружена
+2020-01-15 11:06:58.884 [main] DEBUG techno.SWDriver - screenshot has done
+2020-01-15 11:06:58.978 [main] INFO  techno.BasePage - Добавлено описания фотографии: Мой кот
+2020-01-15 11:06:59.456 [main] DEBUG techno.SWDriver - screenshot has done
+2020-01-15 11:07:08.939 [main] INFO  techno.BasePage - Фотография сохранена
+2020-01-15 11:07:09.447 [main] DEBUG techno.SWDriver - screenshot has done
+2020-01-15 11:07:09.548 [main] INFO  techno.BasePage - В поле 'Публикации' записано: #Кот
+2020-01-15 11:07:09.616 [main] INFO  techno.BasePage - Жмем кнопку 'Добавить публекацию'
+2020-01-15 11:07:10.090 [main] DEBUG techno.SWDriver - screenshot has done
+2020-01-15 11:07:10.091 [main] DEBUG techno.SWDriver - Закрытие браузера

@@ -73,7 +73,7 @@ public class MusicPage extends BasePage {
      */
     public MusicPage pressSearch() {
         buttonSearch.click();
-        LOG.info("Жмем кнопку 'Ещё'");
+        LOG.info("Жмем кнопку 'Искать'");
         screenshot();
         return this;
     }

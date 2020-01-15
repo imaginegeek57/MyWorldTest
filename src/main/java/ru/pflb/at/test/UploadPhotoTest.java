@@ -21,11 +21,14 @@ public class UploadPhotoTest extends BaseTest {
     @Test
     public void upload_photo_by_link() {
         photoPage
+                .pressSearch()
                 .enterPhoto()
-                .addPhoto()
                 .addByLink()
-                .mailToUser(IMAGE_URL)
+                .writeUrl(IMAGE_URL)
                 .uploadPhoto()
-                .savePhoto();
+                .describePhoto("Мой кот")
+                .savePhoto()
+                .publish("#кот")
+                .addPublish();
     }
 }
