@@ -18,6 +18,8 @@ public class AppTest extends BaseTest {
         mailPage
                 .enterMail();
         System.out.println();
+
+
     }
 
 }

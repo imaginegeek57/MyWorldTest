@@ -1,33 +1,25 @@
-package ru.pflb.at.page;
+package ru.pflb.at.page.elements;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import ru.pflb.at.techno.BasePage;
 import ru.pflb.at.techno.SWDriver;
 
-public class PhotoPage extends BasePage {
+public class AddPhoto extends BasePage {
+
+    public static final Logger LOG = LogManager.getLogger(AddPhoto.class);
 
     /**
      * Конструктор класса
      *
      * @param swDriver
      */
-    public PhotoPage(SWDriver swDriver) {
+    public AddPhoto(SWDriver swDriver) {
         super(swDriver);
     }
-
-    /**
-     * Текстовое поле "Искать"
-     */
-    @FindBy(css = ".b-publisher__text")
-    private WebElement buttonSearch;
-
-    /**
-     * Кнопка "Фото"
-     */
-    @FindBy(css = ".icon-crumbs_make-photo")
-    private WebElement buttonPhoto;
 
     /**
      * Кнопка "Добавить фото по ссылке из интернета"
@@ -60,35 +52,9 @@ public class PhotoPage extends BasePage {
     private WebElement savePhoto;
 
     /**
-     * Кнопка "Поделиться"
-     */
-    @FindBy(css = ".b-publisher__controls__submit")
-    private WebElement buttonPublish;
-
-    /**
-     * Жмем кнопку 'Искать'
-     */
-    public PhotoPage pressSearch() {
-        buttonSearch.click();
-        LOG.info("Жмем кнопку 'Искать'");
-        screenshot();
-        return this;
-    }
-
-    /**
-     * Жмем кнопку 'Фото'
-     */
-    public PhotoPage enterPhoto() {
-        buttonPhoto.click();
-        LOG.info("Жмем кнопку 'Фото'");
-        screenshot();
-        return this;
-    }
-
-    /**
      * Жмем кнопку 'Добавить по ссылке из интернета'
      */
-    public PhotoPage addByLink() {
+    public AddPhoto addByLink() {
         addPhotoByLink.click();
         LOG.info("Жмем кнопку 'Добавить по ссылке'");
         screenshot();
@@ -98,7 +64,7 @@ public class PhotoPage extends BasePage {
     /**
      * Вводим URL
      */
-    public PhotoPage writeUrl(String url) {
+    public AddPhoto writeUrl(String url) {
         writeURL.sendKeys(url);
         LOG.info("В поле 'URL' записано: {}", url);
         return this;
@@ -107,7 +73,7 @@ public class PhotoPage extends BasePage {
     /**
      * Жмем кнопку 'Добавить фото'
      */
-    public PhotoPage uploadPhoto() {
+    public AddPhoto uploadPhoto() {
         buttonUpload.click();
         LOG.info("Фотография загружена");
         screenshot();
@@ -117,7 +83,7 @@ public class PhotoPage extends BasePage {
     /**
      * Жмем кнопку 'Сохранить'
      */
-    public PhotoPage savePhoto() {
+    public AddPhoto savePhoto() {
         new WebDriverWait(getWebDriver(), 10);
         savePhoto.click();
         LOG.info("Фотография сохранена");
@@ -128,30 +94,10 @@ public class PhotoPage extends BasePage {
     /**
      * Текстовое поле описание фотографии
      */
-    public PhotoPage describePhoto(String text) {
+    public AddPhoto describePhoto(String text) {
         new WebDriverWait(getWebDriver(), 10);
         buttondescribe.sendKeys(text);
         LOG.info("Добавлено описания фотографии: {}", text);
-        screenshot();
-        return this;
-    }
-
-
-    /**
-     * Вводим название записи для публикации
-     */
-    public PhotoPage publish(String text) {
-        buttonSearch.sendKeys(text);
-        LOG.info("В поле 'Публикации' записано: {}", text);
-        return this;
-    }
-
-    /**
-     * Жмем кнопку 'Добавить публекацию'
-     */
-    public PhotoPage addPublish() {
-        buttonPublish.click();
-        LOG.info("Жмем кнопку 'Добавить публекацию'");
         screenshot();
         return this;
     }

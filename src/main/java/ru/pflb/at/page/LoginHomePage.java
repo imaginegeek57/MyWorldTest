@@ -20,7 +20,6 @@ public class LoginHomePage extends BasePage {
         super(swDriver);
     }
 
-
     /**
      * Текстовое поле "логин"
      */

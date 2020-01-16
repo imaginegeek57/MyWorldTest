@@ -2,7 +2,7 @@ package ru.pflb.at.steps;
 
 import io.cucumber.java8.En;
 import ru.pflb.at.page.LoginHomePage;
-import ru.pflb.at.page.PhotoPage;
+import ru.pflb.at.page.elements.AddPhoto;
 import ru.pflb.at.techno.SWDriver;
 import ru.pflb.at.techno.UserProperties;
 
@@ -11,13 +11,13 @@ public class AddPhotoSteps implements En {
     public UserProperties userProperties;
     public SWDriver swDriver;
     public LoginHomePage loginHomePage;
-    public PhotoPage photoPage;
+    public AddPhoto photoPage;
 
     public AddPhotoSteps() {
         userProperties = new UserProperties();
         swDriver = SWDriver.getInstance();
         loginHomePage = new LoginHomePage(swDriver);
-        photoPage = new PhotoPage(swDriver);
+        photoPage = new AddPhoto(swDriver);
 
 
         Given("I upload a photo from internet by link: {string}", (String url) -> {

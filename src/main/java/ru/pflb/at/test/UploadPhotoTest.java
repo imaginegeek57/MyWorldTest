@@ -4,7 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ru.pflb.at.techno.BaseTest;
 
-
+@Deprecated
 public class UploadPhotoTest extends BaseTest {
 
     /**
@@ -20,15 +20,15 @@ public class UploadPhotoTest extends BaseTest {
 
     @Test
     public void upload_photo_by_link() {
-        photoPage
-                .pressSearch()
-                .enterPhoto()
-                .addByLink()
-                .writeUrl(IMAGE_URL)
-                .uploadPhoto()
-                .describePhoto("Мой кот")
-                .savePhoto()
-                .publish("#кот")
-                .addPublish();
+//        photoPage
+//                .pressSearch()
+//                .enterPhoto()
+//                .addByLink()
+//                .writeUrl(IMAGE_URL)
+//                .uploadPhoto()
+//                .describePhoto("Мой кот")
+//                .savePhoto()
+//                .publish("#кот")
+//                .addPublish();
     }
 }

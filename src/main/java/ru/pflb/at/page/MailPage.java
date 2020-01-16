@@ -1,5 +1,7 @@
 package ru.pflb.at.page;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -10,10 +12,7 @@ import ru.pflb.at.techno.SWDriver;
 
 public class MailPage extends BasePage {
 
-    /**
-     * Почта 'url'
-     */
-    private static String url = "https://my.mail.ru/";
+    public static final Logger LOG = LogManager.getLogger(MailPage.class);
 
     /**
      * Конструктор класса
@@ -122,10 +121,4 @@ public class MailPage extends BasePage {
         LOG.info("Пиьмо отправлено");
         return this;
     }
-
-    public MailPage open() {
-        openPage(url);
-        return this;
-    }
-
 }

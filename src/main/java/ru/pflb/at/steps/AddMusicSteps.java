@@ -2,7 +2,7 @@ package ru.pflb.at.steps;
 
 import io.cucumber.java8.En;
 import ru.pflb.at.page.LoginHomePage;
-import ru.pflb.at.page.MusicPage;
+import ru.pflb.at.page.elements.AddMusic;
 import ru.pflb.at.techno.SWDriver;
 import ru.pflb.at.techno.UserProperties;
 
@@ -11,13 +11,13 @@ public class AddMusicSteps implements En {
     public UserProperties userProperties;
     public SWDriver swDriver;
     public LoginHomePage loginHomePage;
-    public MusicPage musicPage;
+    public AddMusic musicPage;
 
     public AddMusicSteps() {
         userProperties = new UserProperties();
         swDriver = SWDriver.getInstance();
         loginHomePage = new LoginHomePage(swDriver);
-        musicPage = new MusicPage(swDriver);
+        musicPage = new AddMusic(swDriver);
 
         Given("I open a page and search music: {string}", (String text) -> {
             musicPage
