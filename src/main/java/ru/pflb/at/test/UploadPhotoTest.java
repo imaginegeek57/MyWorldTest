@@ -20,6 +20,23 @@ public class UploadPhotoTest extends BaseTest {
 
     @Test
     public void upload_photo_by_link() {
+//        mainPage.getNewEventForm()
+//                .addPhoto();
+//        mainPage.getAddPhotoWindow()
+//                .fromUrl()
+//                .setUrl(IMAGE_URL)
+//                .upload()
+//                .setDescribe("Мой кот")
+//                .save();
+//        mainPage.getNewEventForm()
+//                .setText("#кот")
+//                .publish();
+
+
+
+
+
+
 //        photoPage
 //                .pressSearch()
 //                .enterPhoto()

@@ -8,16 +8,16 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import ru.pflb.at.techno.BasePage;
 import ru.pflb.at.techno.SWDriver;
 
-public class AddMusic extends BasePage {
+public class MusicWindow extends BasePage {
 
-    public static final Logger LOG = LogManager.getLogger(AddMusic.class);
+    public static final Logger LOG = LogManager.getLogger(MusicWindow.class);
 
     /**
      * Конструктор класса
      *
      * @param swDriver
      */
-    public AddMusic(SWDriver swDriver) {
+    public MusicWindow(SWDriver swDriver) {
         super(swDriver);
     }
 
@@ -54,7 +54,7 @@ public class AddMusic extends BasePage {
     /**
      * Жмем кнопку 'Добавить из поиска'
      */
-    public AddMusic addMusicFromSearch() {
+    public MusicWindow addMusicFromSearch() {
         new WebDriverWait(getWebDriver(), 10);
         addFromSearch.click();
         LOG.info("Жмем кнопку 'Добавить из поиска'");
@@ -65,7 +65,7 @@ public class AddMusic extends BasePage {
     /**
      * Вводим название музыки для поиска
      */
-    public AddMusic searchMusic(String search) {
+    public MusicWindow searchMusic(String search) {
         searchMusic.sendKeys(search);
         LOG.info("В поле 'Поиск' записано: {}", search);
         return this;
@@ -74,7 +74,7 @@ public class AddMusic extends BasePage {
     /**
      * Отмечаем выбранные треки
      */
-    public AddMusic enterSearch() {
+    public MusicWindow enterSearch() {
         checkBox.click();
         LOG.info("Треки выбранны");
         screenshot();
@@ -84,7 +84,7 @@ public class AddMusic extends BasePage {
     /**
      * Жмем кнопку 'Добавить выбранные треки'
      */
-    public AddMusic addTracks() {
+    public MusicWindow addTracks() {
         addTrack.click();
         LOG.info("Жмем кнопку 'Добавить выбранные треки'");
         screenshot();

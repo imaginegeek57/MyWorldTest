@@ -8,16 +8,16 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import ru.pflb.at.techno.BasePage;
 import ru.pflb.at.techno.SWDriver;
 
-public class AddPhoto extends BasePage {
+public class PhotoWindow extends BasePage {
 
-    public static final Logger LOG = LogManager.getLogger(AddPhoto.class);
+    public static final Logger LOG = LogManager.getLogger(PhotoWindow.class);
 
     /**
      * Конструктор класса
      *
      * @param swDriver
      */
-    public AddPhoto(SWDriver swDriver) {
+    public PhotoWindow(SWDriver swDriver) {
         super(swDriver);
     }
 
@@ -54,7 +54,7 @@ public class AddPhoto extends BasePage {
     /**
      * Жмем кнопку 'Добавить по ссылке из интернета'
      */
-    public AddPhoto addByLink() {
+    public PhotoWindow addByLink() {
         addPhotoByLink.click();
         LOG.info("Жмем кнопку 'Добавить по ссылке'");
         screenshot();
@@ -64,7 +64,7 @@ public class AddPhoto extends BasePage {
     /**
      * Вводим URL
      */
-    public AddPhoto writeUrl(String url) {
+    public PhotoWindow writeUrl(String url) {
         writeURL.sendKeys(url);
         LOG.info("В поле 'URL' записано: {}", url);
         return this;
@@ -73,7 +73,7 @@ public class AddPhoto extends BasePage {
     /**
      * Жмем кнопку 'Добавить фото'
      */
-    public AddPhoto uploadPhoto() {
+    public PhotoWindow uploadPhoto() {
         buttonUpload.click();
         LOG.info("Фотография загружена");
         screenshot();
@@ -83,7 +83,7 @@ public class AddPhoto extends BasePage {
     /**
      * Жмем кнопку 'Сохранить'
      */
-    public AddPhoto savePhoto() {
+    public PhotoWindow savePhoto() {
         new WebDriverWait(getWebDriver(), 10);
         savePhoto.click();
         LOG.info("Фотография сохранена");
@@ -94,7 +94,7 @@ public class AddPhoto extends BasePage {
     /**
      * Текстовое поле описание фотографии
      */
-    public AddPhoto describePhoto(String text) {
+    public PhotoWindow describePhoto(String text) {
         new WebDriverWait(getWebDriver(), 10);
         buttondescribe.sendKeys(text);
         LOG.info("Добавлено описания фотографии: {}", text);

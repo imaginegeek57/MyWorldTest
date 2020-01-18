@@ -1,13 +1,4 @@
-2020-01-15 11:45:15.284 [main] INFO  techno.BasePage - Страница https://my.mail.ru/ открыта
-2020-01-15 11:45:15.292 [main] INFO  techno.BasePage - В поле 'Логин' записать: performance.test
-2020-01-15 11:45:15.637 [main] INFO  techno.BasePage - Пароль заполнен
-2020-01-15 11:45:19.829 [main] INFO  techno.BasePage - Реклама закрыта
-2020-01-15 11:45:20.458 [main] INFO  techno.BasePage - Жмем кнопку 'Искать'
-2020-01-15 11:45:21.051 [main] INFO  techno.BasePage - Жмем кнопку 'Фото'
-2020-01-15 11:45:21.825 [main] INFO  techno.BasePage - Жмем кнопку 'Добавить по ссылке'
-2020-01-15 11:45:23.547 [main] INFO  techno.BasePage - В поле 'URL' записано: https://avatars.mds.yandex.net/get-pdb/1976538/7ea9875b-c3cb-49ff-9ab3-9dc436be6ab4/s1200
-2020-01-15 11:45:23.616 [main] INFO  techno.BasePage - Фотография загружена
-2020-01-15 11:45:24.206 [main] INFO  techno.BasePage - Добавлено описания фотографии: Мой кот
-2020-01-15 11:45:25.914 [main] INFO  techno.BasePage - Фотография сохранена
-2020-01-15 11:45:26.491 [main] INFO  techno.BasePage - В поле 'Публикации' записано: #Кот
-2020-01-15 11:45:26.558 [main] INFO  techno.BasePage - Жмем кнопку 'Добавить публекацию'
+2020-01-17 16:11:16.588 [main] INFO  techno.BasePage - Страница https://my.mail.ru/ открыта
+2020-01-17 16:11:16.595 [main] INFO  techno.BasePage - В поле 'Логин' записать: performance.test
+2020-01-17 16:11:17.032 [main] INFO  techno.BasePage - Пароль заполнен
+2020-01-17 16:11:24.078 [main] INFO  techno.BasePage - Реклама закрыта
