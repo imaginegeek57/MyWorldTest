@@ -3,93 +3,78 @@ package ru.pflb.at.page.elements;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import ru.pflb.at.techno.BasePage;
 import ru.pflb.at.techno.SWDriver;
 
-public class NewEventForm extends BasePage {
+//TODO Base element page
+public class NewEventForm {
 
     public static final Logger LOG = LogManager.getLogger(NewEventForm.class);
 
-    /**
-     * Конструктор класса
-     *
-     * @param swDriver
-     */
-    public NewEventForm(SWDriver swDriver) {
-        super(swDriver);
+    private SWDriver swDriver;
+    private WebElement rootElement;
+
+    public NewEventForm(WebElement rootElement, SWDriver swDriver) {
+        this.rootElement = rootElement;
+        this.swDriver = swDriver;
+    }
+
+    public NewEventForm setWriteStatus(boolean value) {
+        WebElement checkboxElement = this.rootElement.findElement(By.id("b-publisher__controls__status__checkbox"));
+        WebElement labelElement = this.rootElement.findElement(By.cssSelector("label[for='b-publisher__controls__status__checkbox']"));
+        if (value != ("true".equals(checkboxElement.getAttribute("checked")))) {
+            labelElement.click();
+        }
+        return this;
     }
 
     /**
-     * Текстовое поле "Расскажите о новом событии..."
+     * Выбираем текстовое поле "Расскажите о новом событии..."
      */
-    @FindBy(css = ".b-publisher__text")
-    private WebElement buttonSearch;
-
-    /**
-     * Кнопка "Музыка"
-     */
-    @FindBy(xpath = "//div/div[text()='Музыка']")
-    private WebElement buttonMusic;
-
-    /**
-     * Кнопка "Фото"
-     */
-    @FindBy(css = ".icon-crumbs_make-photo")
-    private WebElement buttonPhoto;
-
-    /**
-     * Кнопка "Добавить публекацию"
-     */
-    @FindBy(css = ".b-publisher__controls__submit ")
-    private WebElement buttonPublish;
-
-    /**
-     * Жмем кнопку 'Искать'
-     */
-    public NewEventForm pressSearch() {
-        buttonSearch.click();
-        LOG.info("Жмем кнопку 'Искать'");
-        screenshot();
+    public NewEventForm pressNewEvent() {
+        WebElement webElement = rootElement.findElement(By.cssSelector(".b-publisher__text"));
+        webElement.click();
+        LOG.info("Выбираем текстовое поле 'Расскажите о новом событии...'");
         return this;
     }
 
     /**
      * Жмем кнопку 'Фото'
      */
-    public NewEventForm enterPhoto() {
-        buttonPhoto.click();
+    public NewEventForm pressPhoto() {
+        WebElement webElement = rootElement.findElement(By.cssSelector(".icon-crumbs_make-photo"));
+        webElement.click();
         LOG.info("Жмем кнопку 'Фото'");
-        screenshot();
         return this;
     }
 
     /**
      * Жмем кнопку 'Музыка'
      */
-    public NewEventForm enterMusic() {
-        buttonMusic.click();
+    public NewEventForm pressMusic() {
+        WebElement webElement = rootElement.findElement(By.xpath("//div/div[text()='Музыка']"));
+        webElement.click();
         LOG.info("Жмем кнопку 'Музыка'");
-        screenshot();
         return this;
     }
 
     /**
      * Жмем кнопку 'Добавить публекацию'
      */
-    public NewEventForm addPublish() {
-        buttonPublish.click();
+    public NewEventForm pressPublish() {
+        WebElement webElement = rootElement.findElement(By.cssSelector("b-publisher__controls__submit"));
+        webElement.click();
         LOG.info("Жмем кнопку 'Добавить публекацию'");
-        screenshot();
         return this;
     }
 
     /**
      * Вводим название записи для публикации
      */
-    public NewEventForm publish(String text) {
-        buttonSearch.sendKeys(text);
+    public NewEventForm enterPublishName(String text) {
+        WebElement webElement = rootElement.findElement(By.cssSelector(".b-publisher__text"));
+        webElement.sendKeys(text);
         LOG.info("В поле 'Публикации' записано: {}", text);
         return this;
     }

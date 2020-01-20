@@ -4,6 +4,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import ru.pflb.at.page.LoginHomePage;
 import ru.pflb.at.page.MailPage;
+import ru.pflb.at.page.MainPage;
 import ru.pflb.at.page.elements.MusicWindow;
 import ru.pflb.at.page.elements.PhotoWindow;
 
@@ -16,6 +17,7 @@ public abstract class BaseTest {
     public MailPage mailPage;
     public PhotoWindow photoPage;
     public MusicWindow musicPage;
+    public MainPage mainPage;
 
     @BeforeEach
     public void baseSetUp() {
@@ -24,7 +26,8 @@ public abstract class BaseTest {
         loginHomePage = new LoginHomePage(swDriver);
         mailPage = new MailPage(swDriver);
         photoPage = new PhotoWindow(swDriver);
-        musicPage = new MusicWindow(swDriver);
+//        musicPage = new MusicWindow(swDriver);
+        mainPage = new MainPage(swDriver);
     }
 
     @AfterEach

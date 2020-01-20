@@ -30,7 +30,7 @@ public class UploadPhotoTest extends BaseTest {
 //                .save();
 //        mainPage.getNewEventForm()
 //                .setText("#кот")
-//                .publish();
+//                .enterPublishName();
 
 
 
@@ -38,14 +38,14 @@ public class UploadPhotoTest extends BaseTest {
 
 
 //        photoPage
-//                .pressSearch()
-//                .enterPhoto()
+//                .pressNewEvent()
+//                .pressPhoto()
 //                .addByLink()
 //                .writeUrl(IMAGE_URL)
 //                .uploadPhoto()
 //                .describePhoto("Мой кот")
 //                .savePhoto()
-//                .publish("#кот")
-//                .addPublish();
+//                .enterPublishName("#кот")
+//                .pressPublish();
     }
 }

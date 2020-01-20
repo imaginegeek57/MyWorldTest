@@ -17,23 +17,23 @@ public class AddMusicSteps implements En {
         userProperties = new UserProperties();
         swDriver = SWDriver.getInstance();
         loginHomePage = new LoginHomePage(swDriver);
-        musicPage = new MusicWindow(swDriver);
+//        musicPage = new MusicWindow(swDriver);
 
         Given("I open a page and search music: {string}", (String text) -> {
 //            musicPage
-//                    .pressSearch()
-//                    .enterMusic()
+//                    .pressNewEvent()
+//                    .pressMusic()
 //                    .addMusicFrom()
-//                    .searchMusic(text);
+//                    .enterMusicName(text);
         });
 
-        Then("I add a music track with # to my publish: {string}", (String text) -> {
+        Then("I add a music track with # to my enterPublishName: {string}", (String text) -> {
 //            musicPage
-//                    .enterSearch()
-//                    .addTracks()
-//                    .pressSearch()
-//                    .publish(text)
-//                    .addPublish();
+//                    .markTrack()
+//                    .pressAddTracks()
+//                    .pressNewEvent()
+//                    .enterPublishName(text)
+//                    .pressPublish();
         });
 
     }

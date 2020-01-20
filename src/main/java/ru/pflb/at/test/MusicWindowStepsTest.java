@@ -14,14 +14,14 @@ public class MusicWindowStepsTest extends BaseTest {
 //    @Test
 //    public void add_music_track_test() {
 //        musicPage
-//              //  .pressSearch()
-//                .enterMusic()
+//              //  .pressNewEvent()
+//                .pressMusic()
 //                .addMusicFrom()
-//                .searchMusic("50 cent")
-//                .enterSearch()
-//                .addTracks()
-//                .pressSearch()
-//                .publish("#50forever!")
-//                .addPublish();
+//                .enterMusicName("50 cent")
+//                .markTrack()
+//                .pressAddTracks()
+//                .pressNewEvent()
+//                .enterPublishName("#50forever!")
+//                .pressPublish();
 //    }
 }

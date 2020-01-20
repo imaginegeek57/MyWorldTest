@@ -22,19 +22,19 @@ public class AddPhotoSteps implements En {
 
         Given("I upload a photo from internet by link: {string}", (String url) -> {
 //            photoPage
-//                    .pressSearch()
-//                    .enterPhoto()
+//                    .pressNewEvent()
+//                    .pressPhoto()
 //                    .addByLink()
 //                    .writeUrl(url)
 //                    .uploadPhoto();
         });
 
-        Then("I write describe to photo: {string} and make new publish: {string}", (String describe, String publish) -> {
+        Then("I write describe to photo: {string} and make new enterPublishName: {string}", (String describe, String publish) -> {
 //            photoPage
 //                    .describePhoto(describe)
 //                    .savePhoto()
-//                    .publish(publish)
-//                    .addPublish();
+//                    .enterPublishName(enterPublishName)
+//                    .pressPublish();
 
         });
     }

@@ -1,7 +1,15 @@
-2020-01-17 16:11:16.588 [main] INFO  techno.BasePage - Страница https://my.mail.ru/ открыта
-2020-01-17 16:11:16.595 [main] INFO  techno.BasePage - В поле 'Логин' записать: performance.test
-2020-01-17 16:11:17.032 [main] INFO  techno.BasePage - Пароль заполнен
-2020-01-17 16:11:23.976 [main] DEBUG techno.SWDriver - screenshot has done
-2020-01-17 16:11:24.078 [main] INFO  techno.BasePage - Реклама закрыта
-2020-01-17 16:11:24.769 [main] DEBUG techno.SWDriver - screenshot has done
-2020-01-17 16:15:13.753 [main] DEBUG techno.SWDriver - Закрытие браузера
+2020-01-20 17:51:40.134 [main] INFO  techno.BasePage - Страница https://my.mail.ru/ открыта
+2020-01-20 17:51:40.141 [main] INFO  techno.BasePage - В поле 'Логин' записать: performance.test
+2020-01-20 17:51:40.550 [main] INFO  techno.BasePage - Пароль заполнен
+2020-01-20 17:51:46.111 [main] DEBUG techno.SWDriver - screenshot has done
+2020-01-20 17:51:46.270 [main] INFO  techno.BasePage - Реклама закрыта
+2020-01-20 17:51:47.193 [main] DEBUG techno.SWDriver - screenshot has done
+2020-01-20 17:52:32.627 [main] DEBUG techno.SWDriver - screenshot has done
+2020-01-20 17:52:38.099 [main] DEBUG techno.SWDriver - screenshot has done
+2020-01-20 17:52:50.717 [main] DEBUG techno.SWDriver - screenshot has done
+2020-01-20 17:52:56.721 [main] DEBUG techno.SWDriver - screenshot has done
+2020-01-20 17:52:59.008 [main] DEBUG techno.SWDriver - screenshot has done
+2020-01-20 17:53:00.546 [main] DEBUG techno.SWDriver - screenshot has done
+2020-01-20 17:53:06.221 [main] DEBUG techno.SWDriver - screenshot has done
+2020-01-20 17:53:07.980 [main] DEBUG techno.SWDriver - screenshot has done
+2020-01-20 17:53:09.338 [main] DEBUG techno.SWDriver - screenshot has done

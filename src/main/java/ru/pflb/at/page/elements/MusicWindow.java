@@ -5,20 +5,18 @@ import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import ru.pflb.at.techno.BasePage;
 import ru.pflb.at.techno.SWDriver;
 
-public class MusicWindow extends BasePage {
+public class MusicWindow {
 
     public static final Logger LOG = LogManager.getLogger(MusicWindow.class);
 
-    /**
-     * Конструктор класса
-     *
-     * @param swDriver
-     */
-    public MusicWindow(SWDriver swDriver) {
-        super(swDriver);
+    private SWDriver swDriver;
+    protected WebElement rootElement;
+
+    public MusicWindow(WebElement rootElement, SWDriver swDriver) {
+        this.rootElement = rootElement;
+        this.swDriver = swDriver;
     }
 
     /**
@@ -51,43 +49,41 @@ public class MusicWindow extends BasePage {
     @FindBy(xpath = "//button[text()='Добавить']")
     private WebElement addTrack;
 
+
     /**
      * Жмем кнопку 'Добавить из поиска'
      */
-    public MusicWindow addMusicFromSearch() {
-        new WebDriverWait(getWebDriver(), 10);
+    public MusicWindow pressAddFromSearch() {
+        new WebDriverWait(swDriver.getDriver(), 10);
         addFromSearch.click();
         LOG.info("Жмем кнопку 'Добавить из поиска'");
-        screenshot();
         return this;
     }
 
     /**
      * Вводим название музыки для поиска
      */
-    public MusicWindow searchMusic(String search) {
-        searchMusic.sendKeys(search);
-        LOG.info("В поле 'Поиск' записано: {}", search);
+    public MusicWindow enterMusicName(String name) {
+        searchMusic.sendKeys(name);
+        LOG.info("В поле 'Поиск' записано: {}", name);
         return this;
     }
 
     /**
      * Отмечаем выбранные треки
      */
-    public MusicWindow enterSearch() {
+    public MusicWindow markTraks() {
         checkBox.click();
         LOG.info("Треки выбранны");
-        screenshot();
         return this;
     }
 
     /**
      * Жмем кнопку 'Добавить выбранные треки'
      */
-    public MusicWindow addTracks() {
+    public MusicWindow pressAddTracks() {
         addTrack.click();
         LOG.info("Жмем кнопку 'Добавить выбранные треки'");
-        screenshot();
         return this;
     }
 }

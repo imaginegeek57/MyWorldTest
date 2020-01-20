@@ -3,70 +3,42 @@ package ru.pflb.at.page.elements;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import ru.pflb.at.techno.BasePage;
 import ru.pflb.at.techno.SWDriver;
 
-public class MainMenu extends BasePage {
+public class MainMenu {
 
     public static final Logger LOG = LogManager.getLogger(MainMenu.class);
 
+    protected WebElement rootElement;
+    protected SWDriver swDriver;
+
+    public MainMenu(WebElement rootElement, SWDriver swDriver) {
+        this.rootElement = rootElement;
+        this.swDriver = swDriver;
+    }
+
     /**
-     * Конструктор класса
+     * Выбираем строкчку меню
+     * feed - Лента
+     * friends - Друзья
+     * photo - Фото
+     * video - Видео
+     * music - Музыка
      *
-     * @param swDriver
+     * @return
      */
-    public MainMenu(SWDriver swDriver) {
-        super(swDriver);
+//    public MainMenu getMainMenuItem(String item) {
+//        WebElement element = getWebDriver().findElement(By.xpath("//ul[@class='b-left-menu__items']/li[@data-id='" + item + "']"));
+//        LOG.info("Выбрана строчка меню: {}", item);
+//        screenshot();
+//        return new MainMenu(element, getSwDriver());
+//    }
+    public void clickFriends() {
+
     }
 
-    /**
-     * Кнопка "Лента"
-     */
-    @FindBy(xpath = "//span[text()='Лента']")
-    private WebElement buttonLine;
+    public void clickMusic() {
 
-    /**
-     * Кнопка "Друзья"
-     */
-    @FindBy(xpath = "//span[text()='Друзья']")
-    private WebElement buttonFriend;
-
-    /**
-     * Кнопка "Фото"
-     */
-    @FindBy(xpath = "//span[text()='Фото']")
-    private WebElement buttonPhoto;
-
-
-    /**
-     * Жмем кнопку 'Лента'
-     */
-    public MainMenu pressLine() {
-        buttonLine.click();
-        LOG.info("Жмем кнопку 'Лента'");
-        screenshot();
-        return this;
-    }
-
-    /**
-     * Жмем кнопку 'Друзья'
-     */
-    public MainMenu pressFriend() {
-        buttonFriend.click();
-        LOG.info("Жмем кнопку 'Друзья'");
-        screenshot();
-        return this;
-    }
-
-    /**
-     * Жмем кнопку 'Фото'
-     */
-    public MainMenu pressPhoto() {
-        buttonPhoto.click();
-        LOG.info("Жмем кнопку 'Фото'");
-        screenshot();
-        return this;
     }
 
 }
