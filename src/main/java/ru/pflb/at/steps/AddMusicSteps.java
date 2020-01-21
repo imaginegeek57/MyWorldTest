@@ -19,7 +19,7 @@ public class AddMusicSteps implements En {
         loginHomePage = new LoginHomePage(swDriver);
 //        musicPage = new MusicWindow(swDriver);
 
-        Given("I open a page and search music: {string}", (String text) -> {
+        Given("I openPage a page and search music: {string}", (String text) -> {
 //            musicPage
 //                    .pressNewEvent()
 //                    .pressMusic()

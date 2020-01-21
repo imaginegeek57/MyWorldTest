@@ -19,7 +19,7 @@ public class LoginSteps implements En {
         loginHomePage = new LoginHomePage(swDriver);
 
         Given("I am authorizing by email", () -> {
-            loginHomePage.open(userProperties.getUrl())
+            loginHomePage.openPage(userProperties.getUrl())
                     .checkLogin(userProperties.getLogin())
                     .checkPassword(userProperties.getPassword())
                     .enter()

@@ -2,13 +2,15 @@ package ru.pflb.at.page.elements;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import ru.pflb.at.techno.BasePage;
+import ru.pflb.at.techno.BaseElements;
 import ru.pflb.at.techno.SWDriver;
 
-public class PhotoWindow extends BasePage {
+import static org.openqa.selenium.By.cssSelector;
+import static org.openqa.selenium.support.ui.ExpectedConditions.invisibilityOfElementLocated;
+
+public class PhotoWindow extends BaseElements {
 
     public static final Logger LOG = LogManager.getLogger(PhotoWindow.class);
 
@@ -16,47 +18,20 @@ public class PhotoWindow extends BasePage {
      * Конструктор класса
      *
      * @param swDriver
+     * @param rootElement
      */
-    public PhotoWindow(SWDriver swDriver) {
-        super(swDriver);
+    public PhotoWindow(WebElement rootElement, SWDriver swDriver) {
+        super(rootElement, swDriver);
     }
 
-    /**
-     * Кнопка "Добавить фото по ссылке из интернета"
-     */
-    @FindBy(css = ".b-photo-upload__link__button-network")
-    private WebElement addPhotoByLink;
 
     /**
-     * Текстовое поле "URL"
+     * Жмем кнопку 'Добавить фото по ссылке из интернета'
      */
-    @FindBy(css = ".b-photo-upload__network__item__input")
-    private WebElement writeURL;
-
-    /**
-     * Кнопка "Загрузить фото"
-     */
-    @FindBy(xpath = "//div[text()='Загрузить']")
-    private WebElement buttonUpload;
-
-    /**
-     * Текстовое поле "Описание фото"
-     */
-    @FindBy(css = ".b-photo-upload__edit-item-expanded__description")
-    private WebElement buttondescribe;
-
-    /**
-     * Кнопка "Сохранить фото"
-     */
-    @FindBy(xpath = "//div[text()='Сохранить']")
-    private WebElement savePhoto;
-
-    /**
-     * Жмем кнопку 'Добавить по ссылке из интернета'
-     */
-    public PhotoWindow addByLink() {
-        addPhotoByLink.click();
-        LOG.info("Жмем кнопку 'Добавить по ссылке'");
+    public PhotoWindow addPhotoByLink() {
+        LOG.info("Жмем кнопку 'Добавить фото по ссылке из интернета'");
+        WebElement elementAddByLink = getRoot().findElement(cssSelector(".b-photo-upload__link__button-network"));
+        elementAddByLink.click();
         screenshot();
         return this;
     }
@@ -65,28 +40,20 @@ public class PhotoWindow extends BasePage {
      * Вводим URL
      */
     public PhotoWindow writeUrl(String url) {
-        writeURL.sendKeys(url);
         LOG.info("В поле 'URL' записано: {}", url);
-        return this;
-    }
-
-    /**
-     * Жмем кнопку 'Добавить фото'
-     */
-    public PhotoWindow uploadPhoto() {
-        buttonUpload.click();
-        LOG.info("Фотография загружена");
+        WebElement elementwriteUrl = getRoot().findElement(cssSelector(".b-photo-upload__network__item__input"));
+        elementwriteUrl.sendKeys(url);
         screenshot();
         return this;
     }
 
     /**
-     * Жмем кнопку 'Сохранить'
+     * Жмем кнопку 'Загрузить'
      */
-    public PhotoWindow savePhoto() {
-        new WebDriverWait(getWebDriver(), 10);
-        savePhoto.click();
-        LOG.info("Фотография сохранена");
+    public PhotoWindow uploadPhoto() {
+        LOG.info("Фотография загружена");
+        WebElement elementAddByLink = getRoot().findElement(By.xpath("//div[text()='Загрузить']"));
+        elementAddByLink.click();
         screenshot();
         return this;
     }
@@ -95,9 +62,21 @@ public class PhotoWindow extends BasePage {
      * Текстовое поле описание фотографии
      */
     public PhotoWindow describePhoto(String text) {
-        new WebDriverWait(getWebDriver(), 10);
-        buttondescribe.sendKeys(text);
         LOG.info("Добавлено описания фотографии: {}", text);
+        WebElement elementAddByLink = getRoot().findElement(cssSelector(".b-photo-upload__edit-item-expanded__description"));
+        elementAddByLink.sendKeys(text);
+        screenshot();
+        return this;
+    }
+
+    /**
+     * Жмем кнопку 'Сохранить'
+     */
+    public PhotoWindow savePhoto() {
+        LOG.info("Фотография сохранена");
+        WebElement elementAddByLink = getRoot().findElement(By.xpath("//div[text()='Сохранить']"));
+        elementAddByLink.click();
+        webWait(10).until(invisibilityOfElementLocated(cssSelector(".b-popup__fade")));
         screenshot();
         return this;
     }

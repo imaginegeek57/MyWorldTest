@@ -33,10 +33,6 @@ public class UploadPhotoTest extends BaseTest {
 //                .enterPublishName();
 
 
-
-
-
-
 //        photoPage
 //                .pressNewEvent()
 //                .pressPhoto()

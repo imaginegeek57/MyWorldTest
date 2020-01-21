@@ -88,8 +88,9 @@ public class LoginHomePage extends BasePage {
      *
      * @param url адрес
      */
-    public LoginHomePage open(String url) {
-        openPage(url);
+    public LoginHomePage openPage(String url) {
+        LOG.info("Переход на веб-страницу: " + url);
+        getSwDriver().getDriver().get(url);
         return this;
     }
 
@@ -100,7 +101,7 @@ public class LoginHomePage extends BasePage {
      */
     public LoginHomePage login(UserProperties userProperties) {
         return this
-                .open(userProperties.getUrl())
+                .openPage(userProperties.getUrl())
                 .checkLogin(userProperties.getLogin())
                 .checkPassword(userProperties.getPassword())
                 .enter();

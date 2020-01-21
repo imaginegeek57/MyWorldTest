@@ -17,7 +17,7 @@ public class AddPhotoSteps implements En {
         userProperties = new UserProperties();
         swDriver = SWDriver.getInstance();
         loginHomePage = new LoginHomePage(swDriver);
-        photoPage = new PhotoWindow(swDriver);
+        //  photoPage = new PhotoWindow(swDriver);
 
 
         Given("I upload a photo from internet by link: {string}", (String url) -> {
