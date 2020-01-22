@@ -5,7 +5,7 @@ import java.util.Properties;
 
 public class UserProperties {
 
-    private static final String PROPERTIES_FILE = "/UserProperties.properties";
+    private static final String PROPERTIES_FILE = "/User.properties";
 
     private String login;
 

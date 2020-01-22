@@ -6,7 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import ru.pflb.at.techno.BasePage;
 import ru.pflb.at.techno.SWDriver;
 import ru.pflb.at.techno.UserProperties;
-import ru.pflb.at.techno.jsonParser.JacksonParser;
+import ru.pflb.at.techno.webConfig.WebConfig;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 
@@ -100,9 +100,9 @@ public class LoginHomePage extends BasePage {
      *
      * @param userProperties параметры для входа
      */
-    public LoginHomePage login(JacksonParser jackson, UserProperties userProperties) {
+    public LoginHomePage login(WebConfig jackson, UserProperties userProperties) {
         return this
-                .openPage(jackson.get_Url())
+                .openPage(jackson.getUrl())
                 .checkLogin(userProperties.getLogin())
                 .checkPassword(userProperties.getPassword())
                 .enter();

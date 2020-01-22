@@ -6,8 +6,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public abstract class BaseElements {
-    public static final Logger LOG = LogManager.getLogger(BasePage.class);
+public abstract class BaseElement {
+    public static final Logger LOG = LogManager.getLogger(BaseElement.class);
 
     private SWDriver swDriver;
     private WebElement rootElement;
@@ -15,7 +15,7 @@ public abstract class BaseElements {
     /**
      * Конструктор класса
      */
-    protected BaseElements(WebElement rootElement, SWDriver swDriver) {
+    protected BaseElement(WebElement rootElement, SWDriver swDriver) {
         this.rootElement = rootElement;
         this.swDriver = swDriver;
     }

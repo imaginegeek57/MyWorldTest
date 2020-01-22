@@ -4,13 +4,13 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import ru.pflb.at.techno.BaseElements;
+import ru.pflb.at.techno.BaseElement;
 import ru.pflb.at.techno.SWDriver;
 
 import static org.openqa.selenium.By.cssSelector;
 import static org.openqa.selenium.support.ui.ExpectedConditions.invisibilityOfElementLocated;
 
-public class PhotoWindow extends BaseElements {
+public class PhotoWindow extends BaseElement {
 
     public static final Logger LOG = LogManager.getLogger(PhotoWindow.class);
 

@@ -5,10 +5,10 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import ru.pflb.at.techno.BaseElements;
+import ru.pflb.at.techno.BaseElement;
 import ru.pflb.at.techno.SWDriver;
 
-public class NewEventForm extends BaseElements {
+public class NewEventForm extends BaseElement {
 
     private static final Logger LOG = LogManager.getLogger(NewEventForm.class);
 

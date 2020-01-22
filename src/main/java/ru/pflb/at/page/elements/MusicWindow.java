@@ -4,10 +4,10 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import ru.pflb.at.techno.BaseElements;
+import ru.pflb.at.techno.BaseElement;
 import ru.pflb.at.techno.SWDriver;
 
-public class MusicWindow extends BaseElements {
+public class MusicWindow extends BaseElement {
 
     public static final Logger LOG = LogManager.getLogger(MusicWindow.class);
 
@@ -28,7 +28,6 @@ public class MusicWindow extends BaseElements {
     public MusicWindow clickAddFromSearch() {
         LOG.info("Жмем кнопку 'Добавить из поиска музыки'");
         WebElement elementAddFrom = getRoot().findElement(By.cssSelector(".b-audio-upload__link__button-search"));
-        webWait(10);
         elementAddFrom.click();
         screenshot();
         return this;

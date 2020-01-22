@@ -8,7 +8,7 @@ public class SentMailTest extends BaseTest {
 
     @BeforeEach
     public void setUp() {
-        loginHomePage.login(jacksonParser, userProperties);
+        loginHomePage.login(webConfig, userProperties);
         loginHomePage.closeAdvert();
     }
 
@@ -22,5 +22,4 @@ public class SentMailTest extends BaseTest {
                 .letterBody("Текст письма")
                 .sentTo();
     }
-
 }

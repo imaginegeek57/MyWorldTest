@@ -6,14 +6,14 @@ import ru.pflb.at.page.elements.PhotoWindow;
 import ru.pflb.at.techno.SWDriver;
 import ru.pflb.at.techno.UserProperties;
 
-public class AddPhotoSteps implements En {
+public class PhotoWindowSteps implements En {
 
     public UserProperties userProperties;
     public SWDriver swDriver;
     public LoginHomePage loginHomePage;
     public PhotoWindow photoPage;
 
-    public AddPhotoSteps() {
+    public PhotoWindowSteps() {
         userProperties = new UserProperties();
         swDriver = SWDriver.getInstance();
         loginHomePage = new LoginHomePage(swDriver);
