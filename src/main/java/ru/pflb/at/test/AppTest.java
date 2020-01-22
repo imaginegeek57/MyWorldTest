@@ -16,38 +16,38 @@ public class AppTest extends BaseTest {
     }
 
 
-    @Test
-    public void test_photo() {
-        MainPage mainPage = new MainPage(SWDriver.getInstance());
-        mainPage.getNewEventForm()
-                .pressNewEvent()
-                .pressPhoto();
-        mainPage.getPhotoWindow()
-                .addPhotoByLink()
-                .writeUrl(jacksonParser.get_Image_url())
-                .uploadPhoto()
-                .describePhoto("Мой кот")
-                .savePhoto();
-        mainPage.getNewEventForm()
-                .enterPublishName("#Кот")
-                .pressPublish();
-    }
-//
 //    @Test
-//    public void test_test() throws InterruptedException {
+//    public void test_photo() {
 //        MainPage mainPage = new MainPage(SWDriver.getInstance());
 //        mainPage.getNewEventForm()
 //                .pressNewEvent()
-//                .pressMusic();
-//        mainPage.getMusicWindow()
-//                .clickAddFromSearch()
-//                .enterMusicName("50 cent")
-//                .markTrack()
-//                .clickAddTrack();
+//                .pressPhoto();
+//        mainPage.getPhotoWindow()
+//                .addPhotoByLink()
+//                .writeUrl(jacksonParser.get_Image_url())
+//                .uploadPhoto()
+//                .describePhoto("Мой кот")
+//                .savePhoto();
 //        mainPage.getNewEventForm()
-//                .enterPublishName("#50forefer!")
+//                .enterPublishName("#Кот")
 //                .pressPublish();
 //    }
+
+    @Test
+    public void test_test() {
+        MainPage mainPage = new MainPage(SWDriver.getInstance());
+        mainPage.getNewEventForm()
+                .pressNewEvent()
+                .pressMusic();
+        mainPage.getMusicWindow()
+                .clickAddFromSearch()
+                .enterMusicName("50 cent")
+                .markTrack()
+                .clickAddTrack();
+        mainPage.getNewEventForm()
+                .enterPublishName("#50forefer!")
+                .pressPublish();
+    }
 
 }
 

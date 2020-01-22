@@ -6,11 +6,10 @@ public class Storage {
     private String url;
     private String image_url;
 
-    public Storage() {
+    protected Storage() {
     }
 
-
-    public Storage(String url, String image_url) {
+    protected Storage(String url, String image_url) {
         this.url = url;
         this.image_url = image_url;
     }

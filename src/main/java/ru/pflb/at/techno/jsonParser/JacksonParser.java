@@ -7,21 +7,19 @@ import java.io.IOException;
 
 public class JacksonParser {
 
+    private Storage storage;
+
     public JacksonParser() {
         reader();
     }
-
-    private Storage storage;
 
     public void reader() {
         ObjectMapper mapper = new ObjectMapper();
 
         try {
             storage = mapper
-                    .readValue(new File("C:\\projects\\MyWorldTest\\src\\main\\resources\\OtherProperties.jsonParser"), Storage.class);
-            System.out.println(storage);
+                    .readValue(new File("C:\\projects\\MyWorldTest\\src\\main\\resources\\OtherProperties.json"), Storage.class);
 
-            storage.getImage_url();
         } catch (IOException e) {
             e.printStackTrace();
         }
