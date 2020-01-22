@@ -4,7 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ru.pflb.at.techno.BaseTest;
 
-
+@Deprecated
 public class UploadPhotoTest extends BaseTest {
 
     /**
@@ -14,21 +14,34 @@ public class UploadPhotoTest extends BaseTest {
 
     @BeforeEach
     public void setUp() {
-        loginHomePage.login(userProperties);
+        loginHomePage.login(jacksonParser, userProperties);
         loginHomePage.closeAdvert();
     }
 
     @Test
     public void upload_photo_by_link() {
-        photoPage
-                .pressSearch()
-                .enterPhoto()
-                .addByLink()
-                .writeUrl(IMAGE_URL)
-                .uploadPhoto()
-                .describePhoto("Мой кот")
-                .savePhoto()
-                .publish("#кот")
-                .addPublish();
+//        mainPage.getNewEventForm()
+//                .addPhoto();
+//        mainPage.getAddPhotoWindow()
+//                .fromUrl()
+//                .setUrl(IMAGE_URL)
+//                .upload()
+//                .setDescribe("Мой кот")
+//                .save();
+//        mainPage.getNewEventForm()
+//                .setText("#кот")
+//                .enterPublishName();
+
+
+//        photoPage
+//                .pressNewEvent()
+//                .pressPhoto()
+//                .addByLink()
+//                .writeUrl(IMAGE_URL)
+//                .uploadPhoto()
+//                .describePhoto("Мой кот")
+//                .savePhoto()
+//                .enterPublishName("#кот")
+//                .pressPublish();
     }
 }

@@ -6,6 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import ru.pflb.at.techno.BasePage;
 import ru.pflb.at.techno.SWDriver;
 import ru.pflb.at.techno.UserProperties;
+import ru.pflb.at.techno.jsonParser.JacksonParser;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 
@@ -19,7 +20,6 @@ public class LoginHomePage extends BasePage {
     public LoginHomePage(SWDriver swDriver) {
         super(swDriver);
     }
-
 
     /**
      * Текстовое поле "логин"
@@ -89,8 +89,9 @@ public class LoginHomePage extends BasePage {
      *
      * @param url адрес
      */
-    public LoginHomePage open(String url) {
-        openPage(url);
+    public LoginHomePage openPage(String url) {
+        LOG.info("Переход на веб-страницу: " + url);
+        getSwDriver().getDriver().get(url);
         return this;
     }
 
@@ -99,9 +100,9 @@ public class LoginHomePage extends BasePage {
      *
      * @param userProperties параметры для входа
      */
-    public LoginHomePage login(UserProperties userProperties) {
+    public LoginHomePage login(JacksonParser jackson, UserProperties userProperties) {
         return this
-                .open(userProperties.getUrl())
+                .openPage(jackson.get_Url())
                 .checkLogin(userProperties.getLogin())
                 .checkPassword(userProperties.getPassword())
                 .enter();
