@@ -3,20 +3,21 @@ package ru.pflb.at.techno;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
-public abstract class BasePage {
-
+public abstract class BaseElements {
     public static final Logger LOG = LogManager.getLogger(BasePage.class);
 
     private SWDriver swDriver;
+    private WebElement rootElement;
 
     /**
      * Конструктор класса
      */
-    protected BasePage(SWDriver swDriver) {
+    protected BaseElements(WebElement rootElement, SWDriver swDriver) {
+        this.rootElement = rootElement;
         this.swDriver = swDriver;
-        PageFactory.initElements(getWebDriver(), this);
     }
 
     protected SWDriver getSwDriver() {
@@ -29,5 +30,13 @@ public abstract class BasePage {
 
     public void screenshot() {
         getSwDriver().screenshot();
+    }
+
+    public WebDriverWait webWait(long timeOutInSeconds) {
+        return new WebDriverWait(getWebDriver(), timeOutInSeconds);
+    }
+
+    public WebElement getRoot() {
+        return rootElement;
     }
 }
