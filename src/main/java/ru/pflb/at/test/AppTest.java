@@ -8,26 +8,23 @@ import ru.pflb.at.techno.SWDriver;
 
 public class AppTest extends BaseTest {
 
-    /**
-     * URL картинки
-     */
-    public static final String IMAGE_URL = "https://avatars.mds.yandex.net/get-pdb/1976538/7ea9875b-c3cb-49ff-9ab3-9dc436be6ab4/s1200";
 
     @BeforeEach
     public void setUp() {
-        loginHomePage.login(userProperties);
+        loginHomePage.login(jacksonParser, userProperties);
         loginHomePage.closeAdvert();
     }
 
+
     @Test
-    public void test_photo() throws InterruptedException {
+    public void test_photo() {
         MainPage mainPage = new MainPage(SWDriver.getInstance());
         mainPage.getNewEventForm()
                 .pressNewEvent()
                 .pressPhoto();
         mainPage.getPhotoWindow()
                 .addPhotoByLink()
-                .writeUrl(IMAGE_URL)
+                .writeUrl(jacksonParser.get_Image_url())
                 .uploadPhoto()
                 .describePhoto("Мой кот")
                 .savePhoto();
@@ -35,22 +32,22 @@ public class AppTest extends BaseTest {
                 .enterPublishName("#Кот")
                 .pressPublish();
     }
-
-    @Test
-    public void test_test() throws InterruptedException {
-        MainPage mainPage = new MainPage(SWDriver.getInstance());
-        mainPage.getNewEventForm()
-                .pressNewEvent()
-                .pressMusic();
-        mainPage.getMusicWindow()
-                .clickAddFromSearch()
-                .enterMusicName("50 cent")
-                .markTrack()
-                .clickAddTrack();
-        mainPage.getNewEventForm()
-                .enterPublishName("#50forefer!")
-                .pressPublish();
-    }
+//
+//    @Test
+//    public void test_test() throws InterruptedException {
+//        MainPage mainPage = new MainPage(SWDriver.getInstance());
+//        mainPage.getNewEventForm()
+//                .pressNewEvent()
+//                .pressMusic();
+//        mainPage.getMusicWindow()
+//                .clickAddFromSearch()
+//                .enterMusicName("50 cent")
+//                .markTrack()
+//                .clickAddTrack();
+//        mainPage.getNewEventForm()
+//                .enterPublishName("#50forefer!")
+//                .pressPublish();
+//    }
 
 }
 

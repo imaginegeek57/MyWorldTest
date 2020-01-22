@@ -14,7 +14,7 @@ public class UploadPhotoTest extends BaseTest {
 
     @BeforeEach
     public void setUp() {
-        loginHomePage.login(userProperties);
+        loginHomePage.login(jacksonParser, userProperties);
         loginHomePage.closeAdvert();
     }
 
