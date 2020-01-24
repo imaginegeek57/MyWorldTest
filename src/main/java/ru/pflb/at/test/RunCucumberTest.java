@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         glue = "ru.pflb.at.steps",
         features = "src/main/resources/features",
-        tags = {"@PostPhoto"})
+        tags = {"@PostPhoto",})
 public class RunCucumberTest {
 
 }

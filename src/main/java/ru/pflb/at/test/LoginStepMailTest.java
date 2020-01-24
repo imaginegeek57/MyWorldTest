@@ -5,7 +5,7 @@ import ru.pflb.at.techno.BaseTest;
 
 import static org.hamcrest.Matchers.equalTo;
 
-public class LoginMailTest extends BaseTest {
+public class LoginStepMailTest extends BaseTest {
 
     @Test
     public void login_positive_test() {

@@ -100,9 +100,9 @@ public class LoginHomePage extends BasePage {
      *
      * @param userProperties параметры для входа
      */
-    public LoginHomePage login(WebConfig jackson, UserProperties userProperties) {
+    public LoginHomePage login(WebConfig webConfig, UserProperties userProperties) {
         return this
-                .openPage(jackson.getUrl())
+                .openPage(webConfig.getUrl())
                 .checkLogin(userProperties.getLogin())
                 .checkPassword(userProperties.getPassword())
                 .enter();
@@ -112,8 +112,8 @@ public class LoginHomePage extends BasePage {
      * Жмем кнопку 'Закрыть рекламу'
      */
     public LoginHomePage closeAdvert() {
-        buttonCloseAd.click();
         LOG.info("Реклама закрыта");
+        buttonCloseAd.click();
         screenshot();
         return this;
     }
