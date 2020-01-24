@@ -25,8 +25,8 @@ public class PhotoStep implements En {
 
         Given("I open a photo window", () -> {
             mainPage.getNewEventForm()
-                    .pressNewEvent()
-                    .pressPhoto();
+                    .clickNewEvent()
+                    .clickPhoto();
         });
 
         Given("I click upload photo from internet", () -> {
@@ -34,16 +34,16 @@ public class PhotoStep implements En {
                     .addPhotoByLink();
         });
 
-        Given("I add photo from internet by link {string}", (String link) -> {
+        Given("I add photo from internet by link", () -> {
             mainPage.getPhotoWindow()
                     .writeUrl(webConfig.getImageUrl())
-                    .uploadPhoto();
+                    .clickUploadPhoto();
         });
 
         Then("I write describe to photo: {string}", (String link) -> {
             mainPage.getPhotoWindow()
-                    .describePhoto(link)
-                    .savePhoto();
+                    .writeDescribePhoto(link)
+                    .clickSavePhoto();
         });
     }
 }

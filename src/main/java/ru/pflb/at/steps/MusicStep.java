@@ -24,22 +24,22 @@ public class MusicStep implements En {
 
         Given("I open a music window", () -> {
             mainPage.getNewEventForm()
-                    .pressNewEvent()
-                    .pressMusic();
+                    .clickNewEvent()
+                    .clickMusic();
         });
 
         Given("I search music from internet by name: {string}", (String text) -> {
             mainPage.getMusicWindow()
                     .clickAddFromSearch()
-                    .enterMusicName(text)
+                    .writeMusicName(text)
                     .markTrack()
                     .clickAddTrack();
         });
 
-        Then("I add new publish with #: {string}", (String text) -> {
+        Then("I add new publish: {string}", (String text) -> {
             mainPage.getNewEventForm()
-                    .enterPublishName(text)
-                    .pressPublish();
+                    .writePublishName(text)
+                    .clickPublish();
         });
     }
 }

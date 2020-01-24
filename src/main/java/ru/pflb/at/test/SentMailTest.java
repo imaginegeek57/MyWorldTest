@@ -15,11 +15,11 @@ public class SentMailTest extends BaseTest {
     @Test
     public void sent_mail_positive_test() {
         mailPage
-                .enterMail()
-                .newMail()
+                .clickMail()
+                .clickNewMail()
                 .mailToUser("performance.test@mail.ru")
-                .mailSubject("тест")
-                .letterBody("Текст письма")
-                .sentTo();
+                .writeSubject("тест")
+                .writeLetter("Текст письма")
+                .clickSent();
     }
 }

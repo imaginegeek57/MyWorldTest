@@ -10,20 +10,20 @@ public class LoginStepMailTest extends BaseTest {
     @Test
     public void login_positive_test() {
         loginHomePage
-                .openPage(webConfig.getUrl())
-                .checkLogin(userProperties.getLogin())
-                .checkPassword(userProperties.getPassword())
-                .enter()
+                .goToWebPage(webConfig.getUrl())
+                .writeLogin(userProperties.getLogin())
+                .writePassword(userProperties.getPassword())
+                .clickEnter()
                 .assertThatCurrentUserMail(equalTo(userProperties.getMail()));
     }
 
     @Test
     public void login_wrong_password_test() {
         loginHomePage
-                .openPage(webConfig.getUrl())
-                .checkLogin(userProperties.getLogin())
-                .checkPassword("1234")
-                .enter()
+                .goToWebPage(webConfig.getUrl())
+                .writeLogin(userProperties.getLogin())
+                .writePassword("1234")
+                .clickEnter()
                 .assertThatErrorMessage(equalTo("Неправильное имя пользователя или пароль"));
     }
 }

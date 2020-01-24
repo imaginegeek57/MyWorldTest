@@ -4,10 +4,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import ru.pflb.at.page.elements.MainMenu;
-import ru.pflb.at.page.elements.MusicWindow;
-import ru.pflb.at.page.elements.NewEventForm;
-import ru.pflb.at.page.elements.PhotoWindow;
+import ru.pflb.at.page.element.*;
 import ru.pflb.at.techno.BasePage;
 import ru.pflb.at.techno.SWDriver;
 
@@ -73,4 +70,15 @@ public class MainPage extends BasePage {
         return new MusicWindow(MusicWindowRoot, getSwDriver());
     }
 
+    @FindBy(css = ".content-wrapper_today")
+    private WebElement HistoryEventRoot;
+
+    /**
+     * Получение формы истории событий
+     *
+     * @return
+     */
+    public HistoryEvent getHistoryEvent() {
+        return new HistoryEvent(HistoryEventRoot, getSwDriver());
+    }
 }

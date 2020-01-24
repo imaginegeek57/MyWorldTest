@@ -1,4 +1,4 @@
-package ru.pflb.at.page.elements;
+package ru.pflb.at.page.element;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -23,7 +23,6 @@ public class PhotoWindow extends BaseElement {
     public PhotoWindow(WebElement rootElement, SWDriver swDriver) {
         super(rootElement, swDriver);
     }
-
 
     /**
      * Жмем кнопку 'Добавить фото по ссылке из интернета'
@@ -50,7 +49,7 @@ public class PhotoWindow extends BaseElement {
     /**
      * Жмем кнопку 'Загрузить'
      */
-    public PhotoWindow uploadPhoto() {
+    public PhotoWindow clickUploadPhoto() {
         LOG.info("Фотография загружена");
         WebElement elementAddByLink = getRoot().findElement(By.xpath("//div[text()='Загрузить']"));
         elementAddByLink.click();
@@ -61,7 +60,7 @@ public class PhotoWindow extends BaseElement {
     /**
      * Текстовое поле описание фотографии
      */
-    public PhotoWindow describePhoto(String text) {
+    public PhotoWindow writeDescribePhoto(String text) {
         LOG.info("Добавлено описания фотографии: {}", text);
         WebElement elementAddByLink = getRoot().findElement(cssSelector(".b-photo-upload__edit-item-expanded__description"));
         elementAddByLink.sendKeys(text);
@@ -72,7 +71,7 @@ public class PhotoWindow extends BaseElement {
     /**
      * Жмем кнопку 'Сохранить'
      */
-    public PhotoWindow savePhoto() {
+    public PhotoWindow clickSavePhoto() {
         LOG.info("Фотография сохранена");
         WebElement elementAddByLink = getRoot().findElement(By.xpath("//div[text()='Сохранить']"));
         elementAddByLink.click();

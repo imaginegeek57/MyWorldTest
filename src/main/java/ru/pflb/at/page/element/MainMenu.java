@@ -1,4 +1,4 @@
-package ru.pflb.at.page.elements;
+package ru.pflb.at.page.element;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

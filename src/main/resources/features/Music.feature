@@ -9,4 +9,4 @@ Feature: Add post to music
 
     Given I open a music window
     Given I search music from internet by name: "50 cent"
-    Then I add new publish with #: "#50forever!"
+    Then I add new publish: "#50forever!"

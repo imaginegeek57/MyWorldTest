@@ -18,33 +18,54 @@ public class AppTest extends BaseTest {
     public void test_photo() {
         MainPage mainPage = new MainPage(SWDriver.getInstance());
         mainPage.getNewEventForm()
-                .pressNewEvent()
-                .pressPhoto();
+                .clickNewEvent()
+                .clickPhoto();
         mainPage.getPhotoWindow()
                 .addPhotoByLink()
                 .writeUrl(webConfig.getImageUrl())
-                .uploadPhoto()
-                .describePhoto("Мой кот")
-                .savePhoto();
+                .clickUploadPhoto()
+                .writeDescribePhoto("Мой кот")
+                .clickSavePhoto();
         mainPage.getNewEventForm()
-                .enterPublishName("#Кот")
-                .pressPublish();
+                .setCheckboxStatus(true)
+                .writePublishName("#Кот")
+                .clickPublish();
+        mainPage.getHistoryEvent()
+                .clickRemove()
+                .clickYes();
     }
 
     @Test
     public void test_music() {
         MainPage mainPage = new MainPage(SWDriver.getInstance());
         mainPage.getNewEventForm()
-                .pressNewEvent()
-                .pressMusic();
+                .clickNewEvent()
+                .clickMusic();
         mainPage.getMusicWindow()
                 .clickAddFromSearch()
-                .enterMusicName("50 cent")
+                .writeMusicName("50 cent")
                 .markTrack()
                 .clickAddTrack();
         mainPage.getNewEventForm()
-                .enterPublishName("#50forefer!")
-                .pressPublish();
+                .writePublishName("#50forefer!")
+                .clickPublish();
+    }
+
+    @Test
+    public void test_history() {
+        MainPage mainPage = new MainPage(SWDriver.getInstance());
+        mainPage.getHistoryEvent()
+                .clickRemove()
+                .clickYes();
+    }
+
+    @Test
+    public void test_comment() {
+        MainPage mainPage = new MainPage(SWDriver.getInstance());
+        mainPage.getHistoryEvent()
+                .clickComment()
+                .writeComment("Hi")
+                .clickSent();
     }
 }
 

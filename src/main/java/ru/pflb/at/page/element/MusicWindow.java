@@ -1,4 +1,4 @@
-package ru.pflb.at.page.elements;
+package ru.pflb.at.page.element;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -21,7 +21,6 @@ public class MusicWindow extends BaseElement {
         super(rootElement, swDriver);
     }
 
-
     /**
      * Жмем кнопку 'Добавить из поиска музыки'
      */
@@ -36,7 +35,7 @@ public class MusicWindow extends BaseElement {
     /**
      * Вводим название музыки для поиска
      */
-    public MusicWindow enterMusicName(String name) {
+    public MusicWindow writeMusicName(String name) {
         LOG.info("В поле 'Поиск' записано: {}", name);
         WebElement elementEnterMusic = getRoot().findElement(By.xpath("//input[@placeholder='Поиск']"));
         elementEnterMusic.sendKeys(name);
@@ -45,7 +44,7 @@ public class MusicWindow extends BaseElement {
     }
 
     /**
-     * Отмечаем выбранные треки
+     * Отмечаем первый из списка трек
      */
     public MusicWindow markTrack() {
         LOG.info("Выбираем трек");
@@ -65,4 +64,6 @@ public class MusicWindow extends BaseElement {
         screenshot();
         return this;
     }
+
+
 }
