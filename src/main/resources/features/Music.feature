@@ -9,4 +9,8 @@ Feature: Add post to music
 
     Given I open a music window
     Given I search music from internet by name: "50 cent"
-    Then I add new publish: "#50forever!"
+    Given I write text for new publish: "#50forever!"
+    And I click button 'publish'
+    Then I compare text into my publish: "#50forever!"
+    And I compare time into my publish: "Только что"
+    And I remove a publication

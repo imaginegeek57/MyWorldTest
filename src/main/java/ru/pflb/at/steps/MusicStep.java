@@ -7,6 +7,8 @@ import ru.pflb.at.techno.SWDriver;
 import ru.pflb.at.techno.UserProperties;
 import ru.pflb.at.techno.webConfig.WebConfig;
 
+import static org.hamcrest.Matchers.equalTo;
+
 public class MusicStep implements En {
 
     public WebConfig webConfig;
@@ -36,10 +38,30 @@ public class MusicStep implements En {
                     .clickAddTrack();
         });
 
-        Then("I add new publish: {string}", (String text) -> {
+        Given("I write text for new publish: {string}", (String text) -> {
             mainPage.getNewEventForm()
-                    .writePublishName(text)
+                    .writePublishName(text);
+        });
+
+        And("I click button 'publish'", () -> {
+            mainPage.getNewEventForm()
                     .clickPublish();
+        });
+
+        Then("I compare text into my publish: {string}", (String text) -> {
+            mainPage.getHistoryEvent()
+                    .checkPublicationText(equalTo(text));
+        });
+
+        Then("I compare time into my publish: {string}", (String time) -> {
+            mainPage.getHistoryEvent()
+                    .checkPublicationTime(equalTo(time));
+        });
+
+        And("I remove a publication", () -> {
+            mainPage.getHistoryEvents()
+                    .clickRemove()
+                    .clickYes();
         });
     }
 }

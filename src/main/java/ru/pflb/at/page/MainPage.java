@@ -78,7 +78,20 @@ public class MainPage extends BasePage {
      *
      * @return
      */
-    public HistoryEvent getHistoryEvent() {
-        return new HistoryEvent(HistoryEventRoot, getSwDriver());
+    public HistoryEvents getHistoryEvents() {
+        return new HistoryEvents(HistoryEventRoot, getSwDriver());
     }
+
+    @FindBy(css = ".b-history-event")
+    private WebElement EventManagementRoot;
+
+    /**
+     * Получение формы истории событий
+     *
+     * @return
+     */
+    public HistoryEvent getHistoryEvent() {
+        return new HistoryEvent(EventManagementRoot, getSwDriver());
+    }
+
 }

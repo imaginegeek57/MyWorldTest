@@ -26,4 +26,6 @@ public class LoginStepMailTest extends BaseTest {
                 .clickEnter()
                 .assertThatErrorMessage(equalTo("Неправильное имя пользователя или пароль"));
     }
+
+
 }

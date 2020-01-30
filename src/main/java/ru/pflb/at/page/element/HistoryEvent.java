@@ -2,6 +2,8 @@ package ru.pflb.at.page.element;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.hamcrest.Matcher;
+import org.hamcrest.MatcherAssert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import ru.pflb.at.techno.BaseElement;
@@ -9,7 +11,7 @@ import ru.pflb.at.techno.SWDriver;
 
 public class HistoryEvent extends BaseElement {
 
-    private static final Logger LOG = LogManager.getLogger(HistoryEvent.class);
+    private static final Logger LOG = LogManager.getLogger(HistoryEvents.class);
 
     /**
      * Конструктор класса
@@ -21,60 +23,41 @@ public class HistoryEvent extends BaseElement {
         super(rootElement, swDriver);
     }
 
-    /**
-     * Жмем кнопку 'Удалить запись'
-     */
-    public HistoryEvent clickRemove() {
-        LOG.info("Жмем кнопку 'Удалить запись'");
-        WebElement webElement1 = getRoot().findElement(By.cssSelector(".history_icon-settings-ico"));
-        webElement1.click();
-        WebElement webElement2 = getRoot().findElement(By.xpath("//a[@data-event-control='remove']"));
-        webElement2.click();
-        screenshot();
+    public String getPublishTime() {
+        LOG.info("Получаем время публекации");
+        WebElement webElement = getRoot().findElement(By.cssSelector(".b-history-event_time"));
+        return webElement.getText();
+    }
+
+    public String getPostAuthor() {
+        LOG.info("Получаем автора поста");
+        WebElement webElement = getRoot().findElement(By.cssSelector(".b-history-event__ownername"));
+        return webElement.getText();
+    }
+
+    public String getText() {
+        LOG.info("Получаем содержимое поста");
+        WebElement webElement = getRoot().findElement(By.cssSelector(".b-history-event__body"));
+        return webElement.getText();
+    }
+
+    public HistoryEvent checkPublicationTime(Matcher <String> matcher) {
+        LOG.info("Проверяем время публикации: {}", matcher);
+        MatcherAssert.assertThat("не удовлетворяет условию", getPublishTime(), matcher);
         return this;
     }
 
-    /**
-     * Жмем кнопку 'ДА'
-     */
-    public HistoryEvent clickYes() {
-        LOG.info("Жмем кнопку 'ДА'");
-        WebElement webElement = getRoot().findElement(By.xpath("//span[@class='ui-button-main mr10 js-bubble__confirm-yes']"));
-        webElement.click();
-        screenshot();
+    public HistoryEvent checkPublicationAuthor(Matcher <String> matcher) {
+        LOG.info("Проверяем автора публикации: {}", matcher);
+        MatcherAssert.assertThat("не удовлетворяет условию", getPostAuthor(), matcher);
         return this;
     }
 
-    /**
-     * Жмем кнопку 'Комментировать '
-     */
-    public HistoryEvent clickComment() {
-        LOG.info("Жмем кнопку 'Комментировать'");
-        WebElement webElement = getRoot().findElement(By.xpath("//span[text()='Комментировать']"));
-        webElement.click();
-        screenshot();
+    public HistoryEvent checkPublicationText(Matcher <String> matcher) {
+        LOG.info("Проверяем текст публикации: {}", matcher);
+        MatcherAssert.assertThat("не удовлетворяет условию", getText(), matcher);
         return this;
     }
 
-    /**
-     * Текстовое поле 'Написать комментарий...'
-     */
-    public HistoryEvent writeComment(String text) {
-        LOG.info("Добавлен комментарий: {}", text);
-        WebElement webElement = getRoot().findElement(By.cssSelector("textarea[placeholder='Написать комментарий...']"));
-        webElement.sendKeys(text);
-        screenshot();
-        return this;
-    }
 
-    /**
-     * Жмем кнопку 'Отправить'
-     */
-    public HistoryEvent clickSent() {
-        LOG.info("Жмем кнопку 'Отправить'");
-        WebElement webElement = getRoot().findElement(By.xpath("//button[text()='Отправить']"));
-        webElement.click();
-        screenshot();
-        return this;
-    }
 }

@@ -6,6 +6,8 @@ import ru.pflb.at.page.MainPage;
 import ru.pflb.at.techno.BaseTest;
 import ru.pflb.at.techno.SWDriver;
 
+import static org.hamcrest.Matchers.equalTo;
+
 public class AppTest extends BaseTest {
 
     @BeforeEach
@@ -24,15 +26,12 @@ public class AppTest extends BaseTest {
                 .addPhotoByLink()
                 .writeUrl(webConfig.getImageUrl())
                 .clickUploadPhoto()
-                .writeDescribePhoto("Мой кот")
+                .writeDescribePhoto("ere Мой кот")
                 .clickSavePhoto();
         mainPage.getNewEventForm()
                 .setCheckboxStatus(true)
-                .writePublishName("#Кот")
+                .writePublishName("wfwwd #Кот")
                 .clickPublish();
-        mainPage.getHistoryEvent()
-                .clickRemove()
-                .clickYes();
     }
 
     @Test
@@ -49,12 +48,14 @@ public class AppTest extends BaseTest {
         mainPage.getNewEventForm()
                 .writePublishName("#50forefer!")
                 .clickPublish();
+        mainPage.getHistoryEvents();
+
     }
 
     @Test
     public void test_history() {
         MainPage mainPage = new MainPage(SWDriver.getInstance());
-        mainPage.getHistoryEvent()
+        mainPage.getHistoryEvents()
                 .clickRemove()
                 .clickYes();
     }
@@ -62,10 +63,19 @@ public class AppTest extends BaseTest {
     @Test
     public void test_comment() {
         MainPage mainPage = new MainPage(SWDriver.getInstance());
-        mainPage.getHistoryEvent()
+        mainPage.getHistoryEvents()
                 .clickComment()
                 .writeComment("Hi")
                 .clickSent();
+    }
+
+    @Test
+    public void test_comment1() {
+        MainPage mainPage = new MainPage(SWDriver.getInstance());
+        mainPage.getHistoryEvent()
+                .checkPublicationAuthor(equalTo("Вы"))
+                .checkPublicationText(equalTo("wfwwd #Кот"));
+        //        .checkPublicationTime(equalTo("1 час назад"));
     }
 }
 

@@ -2,15 +2,18 @@ Feature: Add post to photo
 
     # Выполняем авторизацию
   Background: Authorization
+    Given I do authorization to email
 
   @PostPhoto
   Scenario: Add post to photo positive test
 
-    Given I do authorization to email
     Given I open a photo window
-    Given I click upload photo from internet
-    Given I add photo from internet by link
-    Then I write describe to photo: "Мой кот"
-    Then I add new publish: "#50forever!"
-
+    Given I choose to upload a photo from the Internet
+    Given I add a photo from internet by link
+    Given I write a description for the photo: "Мой кот"
+    Given I write text for new publish: "#Кот"
+    And I click button 'publish'
+    Then I compare text into my publish: "#Кот"
+    And I compare time into my publish: "только что"
+    And I remove a publication
 

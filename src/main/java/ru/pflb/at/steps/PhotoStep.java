@@ -29,21 +29,22 @@ public class PhotoStep implements En {
                     .clickPhoto();
         });
 
-        Given("I click upload photo from internet", () -> {
+        Given("I choose to upload a photo from the Internet", () -> {
             mainPage.getPhotoWindow()
                     .addPhotoByLink();
         });
 
-        Given("I add photo from internet by link", () -> {
+        Given("I add a photo from internet by link", () -> {
             mainPage.getPhotoWindow()
                     .writeUrl(webConfig.getImageUrl())
                     .clickUploadPhoto();
         });
 
-        Then("I write describe to photo: {string}", (String link) -> {
+        Given("I write a description for the photo: {string}", (String link) -> {
             mainPage.getPhotoWindow()
                     .writeDescribePhoto(link)
                     .clickSavePhoto();
         });
+
     }
 }
