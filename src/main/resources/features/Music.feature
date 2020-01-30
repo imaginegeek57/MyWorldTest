@@ -8,9 +8,9 @@ Feature: Add post to music
   Scenario: Add post to music positive test
 
     Given I open a music window
-    Given I search music from internet by name: "50 cent"
-    Given I write text for new publish: "#50forever!"
-    And I click button 'publish'
-    Then I compare text into my publish: "#50forever!"
-    And I compare time into my publish: "Только что"
+    And I search music from internet by name: "50 cent"
+    And I write text for new publish: "#50forever!"
+    When I publish a new event
+    Then The last publish has text: "#50forever!"
+    And The last publish has time: "только что"
     And I remove a publication

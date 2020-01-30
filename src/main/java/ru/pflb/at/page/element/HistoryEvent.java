@@ -9,6 +9,9 @@ import org.openqa.selenium.WebElement;
 import ru.pflb.at.techno.BaseElement;
 import ru.pflb.at.techno.SWDriver;
 
+import static org.openqa.selenium.By.cssSelector;
+import static org.openqa.selenium.support.ui.ExpectedConditions.invisibilityOfElementLocated;
+
 public class HistoryEvent extends BaseElement {
 
     private static final Logger LOG = LogManager.getLogger(HistoryEvents.class);
@@ -26,10 +29,11 @@ public class HistoryEvent extends BaseElement {
     public String getPublishTime() {
         LOG.info("Получаем время публекации");
         WebElement webElement = getRoot().findElement(By.cssSelector(".b-history-event_time"));
+        webWait(10).until(invisibilityOfElementLocated(cssSelector(".b-history-event__action")));
         return webElement.getText();
     }
 
-    public String getPostAuthor() {
+    public String getAuthor() {
         LOG.info("Получаем автора поста");
         WebElement webElement = getRoot().findElement(By.cssSelector(".b-history-event__ownername"));
         return webElement.getText();
@@ -37,7 +41,7 @@ public class HistoryEvent extends BaseElement {
 
     public String getText() {
         LOG.info("Получаем содержимое поста");
-        WebElement webElement = getRoot().findElement(By.cssSelector(".b-history-event__body"));
+        WebElement webElement = getRoot().findElement(By.xpath("//div[@class='b-history-event__body']/div/div"));
         return webElement.getText();
     }
 
@@ -49,7 +53,7 @@ public class HistoryEvent extends BaseElement {
 
     public HistoryEvent checkPublicationAuthor(Matcher <String> matcher) {
         LOG.info("Проверяем автора публикации: {}", matcher);
-        MatcherAssert.assertThat("не удовлетворяет условию", getPostAuthor(), matcher);
+        MatcherAssert.assertThat("не удовлетворяет условию", getAuthor(), matcher);
         return this;
     }
 

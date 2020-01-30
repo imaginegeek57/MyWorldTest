@@ -75,7 +75,7 @@ public class PhotoWindow extends BaseElement {
         LOG.info("Фотография сохранена");
         WebElement elementAddByLink = getRoot().findElement(By.xpath("//div[text()='Сохранить']"));
         elementAddByLink.click();
-        webWait(10).until(invisibilityOfElementLocated(cssSelector(".b-popup__fade")));
+        webWait(10).until(invisibilityOfElementLocated(cssSelector(".b-history-event__action")));
         screenshot();
         return this;
     }

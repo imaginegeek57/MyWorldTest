@@ -43,17 +43,17 @@ public class MusicStep implements En {
                     .writePublishName(text);
         });
 
-        And("I click button 'publish'", () -> {
+        And("I publish a new event", () -> {
             mainPage.getNewEventForm()
                     .clickPublish();
         });
 
-        Then("I compare text into my publish: {string}", (String text) -> {
+        Then("The last publish has text: {string}", (String text) -> {
             mainPage.getHistoryEvent()
                     .checkPublicationText(equalTo(text));
         });
 
-        Then("I compare time into my publish: {string}", (String time) -> {
+        Then("The last publish has time: {string}", (String time) -> {
             mainPage.getHistoryEvent()
                     .checkPublicationTime(equalTo(time));
         });
