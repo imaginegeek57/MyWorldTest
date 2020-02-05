@@ -9,7 +9,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import ru.pflb.at.techno.BasePage;
 import ru.pflb.at.techno.SWDriver;
 
-
 public class MailPage extends BasePage {
 
     public static final Logger LOG = LogManager.getLogger(MailPage.class);
@@ -68,7 +67,7 @@ public class MailPage extends BasePage {
     /**
      * Жмем кнопку 'Почта'
      */
-    public MailPage enterMail() {
+    public MailPage clickMail() {
         buttonMail.click();
         new WebDriverWait(getWebDriver(), 60)
                 .until(ExpectedConditions.invisibilityOf(appLoader));
@@ -79,7 +78,7 @@ public class MailPage extends BasePage {
     /**
      * Жмем кнопку 'Написать письмо'
      */
-    public MailPage newMail() {
+    public MailPage clickNewMail() {
         buttonNewMail.click();
         screenshot();
         return this;
@@ -97,7 +96,7 @@ public class MailPage extends BasePage {
     /**
      * Вводим тему письма
      */
-    public MailPage mailSubject(String subject) {
+    public MailPage writeSubject(String subject) {
         mailSubject.sendKeys(subject);
         LOG.info("В поле 'Тема' записано: {}", subject);
         return this;
@@ -106,7 +105,7 @@ public class MailPage extends BasePage {
     /**
      * Текст письма
      */
-    public MailPage letterBody(String text) {
+    public MailPage writeLetter(String text) {
         mailBody.sendKeys(text);
         LOG.info("В поле 'Письма' записано: {}", text);
         return this;
@@ -115,7 +114,7 @@ public class MailPage extends BasePage {
     /**
      * Жмем кнопку 'Отправить письмо'
      */
-    public MailPage sentTo() {
+    public MailPage clickSent() {
         screenshot();
         buttonSent.click();
         LOG.info("Пиьмо отправлено");

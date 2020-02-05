@@ -6,6 +6,8 @@ import ru.pflb.at.page.MainPage;
 import ru.pflb.at.techno.BaseTest;
 import ru.pflb.at.techno.SWDriver;
 
+import static org.hamcrest.Matchers.equalTo;
+
 public class AppTest extends BaseTest {
 
     @BeforeEach
@@ -18,33 +20,62 @@ public class AppTest extends BaseTest {
     public void test_photo() {
         MainPage mainPage = new MainPage(SWDriver.getInstance());
         mainPage.getNewEventForm()
-                .pressNewEvent()
-                .pressPhoto();
+                .clickNewEvent()
+                .clickPhoto();
         mainPage.getPhotoWindow()
                 .addPhotoByLink()
                 .writeUrl(webConfig.getImageUrl())
-                .uploadPhoto()
-                .describePhoto("Мой кот")
-                .savePhoto();
+                .clickUploadPhoto()
+                .writeDescribePhoto("ere Мой кот")
+                .clickSavePhoto();
         mainPage.getNewEventForm()
-                .enterPublishName("#Кот")
-                .pressPublish();
+                .setCheckboxStatus(true)
+                .writePublishName("wfwwd #Кот")
+                .clickPublish();
     }
 
     @Test
     public void test_music() {
         MainPage mainPage = new MainPage(SWDriver.getInstance());
         mainPage.getNewEventForm()
-                .pressNewEvent()
-                .pressMusic();
+                .clickNewEvent()
+                .clickMusic();
         mainPage.getMusicWindow()
                 .clickAddFromSearch()
-                .enterMusicName("50 cent")
+                .writeMusicName("50 cent")
                 .markTrack()
                 .clickAddTrack();
         mainPage.getNewEventForm()
-                .enterPublishName("#50forefer!")
-                .pressPublish();
+                .writePublishName("#50forefer!")
+                .clickPublish();
+        mainPage.getHistoryEvents();
+
+    }
+
+    @Test
+    public void test_history() {
+        MainPage mainPage = new MainPage(SWDriver.getInstance());
+        mainPage.getHistoryEvents()
+                .clickRemove()
+                .clickYes();
+    }
+
+    @Test
+    public void test_comment() {
+        MainPage mainPage = new MainPage(SWDriver.getInstance());
+        mainPage.getHistoryEvents()
+                .clickComment()
+                .writeComment("Hi")
+                .clickSent();
+    }
+
+    @Test
+    public void test_comment1() {
+        MainPage mainPage = new MainPage(SWDriver.getInstance());
+        mainPage.getHistoryEvent()
+                .checkPublicationAuthor(equalTo("Вы"))
+                .checkPublicationText(equalTo("wfwwd #Кот"));
+        //        .checkPublicationTime(equalTo("1 час назад"));
     }
 }
 

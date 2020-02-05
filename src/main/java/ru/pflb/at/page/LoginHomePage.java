@@ -60,7 +60,7 @@ public class LoginHomePage extends BasePage {
     /**
      * Вводим логин
      */
-    public LoginHomePage checkLogin(String login) {
+    public LoginHomePage writeLogin(String login) {
         LOG.info("В поле 'Логин' записать: {}", login);
         elementLogin.sendKeys(login);
         return this;
@@ -69,7 +69,7 @@ public class LoginHomePage extends BasePage {
     /**
      * Вводим пароль
      */
-    public LoginHomePage checkPassword(String password) {
+    public LoginHomePage writePassword(String password) {
         elementPassword.sendKeys(password);
         LOG.info("Пароль заполнен");
         return this;
@@ -78,7 +78,7 @@ public class LoginHomePage extends BasePage {
     /**
      * Жмем кнопку вход
      */
-    public LoginHomePage enter() {
+    public LoginHomePage clickEnter() {
         buttonEnter.click();
         screenshot();
         return this;
@@ -89,7 +89,7 @@ public class LoginHomePage extends BasePage {
      *
      * @param url адрес
      */
-    public LoginHomePage openPage(String url) {
+    public LoginHomePage goToWebPage(String url) {
         LOG.info("Переход на веб-страницу: " + url);
         getSwDriver().getDriver().get(url);
         return this;
@@ -100,20 +100,20 @@ public class LoginHomePage extends BasePage {
      *
      * @param userProperties параметры для входа
      */
-    public LoginHomePage login(WebConfig jackson, UserProperties userProperties) {
+    public LoginHomePage login(WebConfig webConfig, UserProperties userProperties) {
         return this
-                .openPage(jackson.getUrl())
-                .checkLogin(userProperties.getLogin())
-                .checkPassword(userProperties.getPassword())
-                .enter();
+                .goToWebPage(webConfig.getUrl())
+                .writeLogin(userProperties.getLogin())
+                .writePassword(userProperties.getPassword())
+                .clickEnter();
     }
 
     /**
      * Жмем кнопку 'Закрыть рекламу'
      */
     public LoginHomePage closeAdvert() {
-        buttonCloseAd.click();
         LOG.info("Реклама закрыта");
+        buttonCloseAd.click();
         screenshot();
         return this;
     }

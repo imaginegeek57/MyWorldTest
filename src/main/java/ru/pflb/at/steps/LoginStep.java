@@ -8,28 +8,25 @@ import ru.pflb.at.techno.webConfig.WebConfig;
 
 import static org.hamcrest.Matchers.equalTo;
 
-public class LoginSteps implements En {
+public class LoginStep implements En {
 
+    public WebConfig webConfig;
     public UserProperties userProperties;
     public SWDriver swDriver;
     public LoginHomePage loginHomePage;
-    public WebConfig webConfig;
 
-    public LoginSteps() {
+    public LoginStep() {
+        webConfig = new WebConfig();
         userProperties = new UserProperties();
         swDriver = SWDriver.getInstance();
         loginHomePage = new LoginHomePage(swDriver);
 
-        Given("I am authorizing by email", () -> {
-            loginHomePage.openPage(webConfig.getUrl())
-                    .checkLogin(userProperties.getLogin())
-                    .checkPassword(userProperties.getPassword())
-                    .enter()
-                    .closeAdvert();
+        Given("I do authorization to email", () -> {
+            loginHomePage.login(webConfig, userProperties);
+            loginHomePage.closeAdvert();
         });
 
-
-        Then("I check my Email", () -> {
+        Then("I check authorization my email", () -> {
             loginHomePage.assertThatCurrentUserMail(equalTo(userProperties.getMail()));
         });
     }
