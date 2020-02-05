@@ -27,9 +27,9 @@ public class HistoryEvent extends BaseElement {
     }
 
     public String getPublishTime() {
-        LOG.info("Получаем время публекации");
+        LOG.info("Получаем время публикации");
         WebElement webElement = getRoot().findElement(By.cssSelector(".b-history-event_time"));
-        webWait(10).until(invisibilityOfElementLocated(cssSelector(".b-history-event__action")));
+        webWait(10).until(invisibilityOfElementLocated(cssSelector(".b-history-event_time")));
         return webElement.getText();
     }
 

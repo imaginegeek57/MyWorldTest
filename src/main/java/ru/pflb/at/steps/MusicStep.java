@@ -58,7 +58,7 @@ public class MusicStep implements En {
                     .checkPublicationTime(equalTo(time));
         });
 
-        And("I remove a publication", () -> {
+        And("I remove a publish", () -> {
             mainPage.getHistoryEvents()
                     .clickRemove()
                     .clickYes();

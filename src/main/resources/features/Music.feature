@@ -13,4 +13,4 @@ Feature: Add post to music
     When I publish a new event
     Then The last publish has text: "#50forever!"
     And The last publish has time: "только что"
-    And I remove a publication
+    And I remove a publish
