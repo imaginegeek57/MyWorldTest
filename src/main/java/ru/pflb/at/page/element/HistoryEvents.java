@@ -4,8 +4,16 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import ru.pflb.at.techno.BaseElement;
 import ru.pflb.at.techno.SWDriver;
+
+import java.util.LinkedList;
+import java.util.List;
+
+import static org.hamcrest.MatcherAssert.assertThat;
 
 public class HistoryEvents extends BaseElement {
 
@@ -22,58 +30,97 @@ public class HistoryEvents extends BaseElement {
     }
 
     /**
-     * Жмем кнопку 'Удалить запись'
+     * Жмем кнопку 'Фото'
      */
-    public HistoryEvents clickRemove() {
-        LOG.info("Жмем кнопку 'Удалить запись'");
-        WebElement webElement1 = getRoot().findElement(By.cssSelector(".history_icon-settings-ico"));
-        webElement1.click();
-        WebElement webElement2 = getRoot().findElement(By.xpath("//a[@data-event-control='remove']"));
+    public HistoryEvents clickPhoto() {
+        LOG.info("Жмем кнопку 'Фото'");
+        WebElement webElement = getRoot().findElement(By.xpath("//span[@data-filter='photo']"));
+        webElement.click();
+        screenshot();
+        return this;
+    }
+
+
+    /**
+     * Жмем кнопку 'Только записи'
+     */
+    public HistoryEvents clickRecords() {
+        LOG.info("Жмем кнопку 'Только записи'");
+        WebElement webElement = getRoot().findElement(By.xpath("//div[@data-item='filter']"));
+        webElement.click();
+        WebElement webElement2 = getRoot().findElement(By.xpath("//div[text()='Только записи']"));
         webElement2.click();
         screenshot();
         return this;
     }
 
     /**
-     * Жмем кнопку 'ДА'
+     * Получаем список событий
+     *
+     * @return events
      */
-    public HistoryEvents clickYes() {
-        LOG.info("Жмем кнопку 'ДА'");
-        WebElement webElement = getRoot().findElement(By.xpath("//span[@class='ui-button-main mr10 js-bubble__confirm-yes']"));
-        webElement.click();
-        screenshot();
+    public List <HistoryEvent> getListEvents() {
+        List <HistoryEvent> historyEvents = new LinkedList <>();
+        List <WebElement> elements = getRoot().findElements(By.cssSelector(".b-history_event_active-area"));
+        for (WebElement i : elements) {
+            HistoryEvent event = new HistoryEvent(i, getSwDriver());
+            historyEvents.add(event);
+        }
+        return historyEvents;
+    }
+
+    /**
+     * Проверяем фильтрацию записей
+     *
+     * @return boolean
+     */
+    public HistoryEvents checkRecordFilter() {
+        LOG.info("Проверяем фильтрацию записей");
+        String action = "добавили запись";
+        List <HistoryEvent> historyEvents = getListEvents();
+        boolean result = historyEvents.stream()
+                .map(HistoryEvent::getDescriptionOfPublish)
+                .filter(HistoryEvent -> HistoryEvent.contains(action))
+                .allMatch((txt -> txt.contains(action)));
+        assertThat("не удовлетворяет условию", result);
         return this;
     }
 
     /**
-     * Жмем кнопку 'Комментировать '
+     * Проверяем фильтрацию фото
+     *
+     * @return boolean
      */
-    public HistoryEvents clickComment() {
-        LOG.info("Жмем кнопку 'Комментировать'");
-        WebElement webElement = getRoot().findElement(By.xpath("//span[text()='Комментировать']"));
-        webElement.click();
-        screenshot();
+    public HistoryEvents checkPhotoFilter() {
+        LOG.info("Проверяем фильтрацию фото");
+        String action = "добавили фотографию";
+        List <HistoryEvent> historyEvents = getListEvents();
+        boolean result = historyEvents.stream()
+                .map(HistoryEvent::getDescriptionOfPublish)
+                //      .filter(HistoryEvent -> HistoryEvent.contains(action))
+                .allMatch((txt -> txt.contains(action)));
+        assertThat("не удовлетворяет условию", result);
         return this;
     }
 
-    /**
-     * Текстовое поле 'Написать комментарий...'
-     */
-    public HistoryEvents writeComment(String text) {
-        LOG.info("Добавлен комментарий: {}", text);
-        WebElement webElement = getRoot().findElement(By.cssSelector("textarea[placeholder='Написать комментарий...']"));
-        webElement.sendKeys(text);
-        screenshot();
-        return this;
-    }
 
+    //TODO доработать и пременить
     /**
-     * Жмем кнопку 'Отправить'
+     * Жмем кнопку 'Закрыть рекламу'
      */
-    public HistoryEvents clickSent() {
-        LOG.info("Жмем кнопку 'Отправить'");
-        WebElement webElement = getRoot().findElement(By.xpath("//button[text()='Отправить']"));
-        webElement.click();
+    public HistoryEvents closeAdvert() {
+        WebElement element = getRoot().findElement(By.xpath("//div[@class='trg-b-close-overlay js-close-overlay']"));
+        LOG.info("Реклама закрыта");
+        List <WebElement> elements = getRoot().findElements(By.cssSelector(".rb-banner"));
+        for (WebElement i : elements) {
+            Actions actions = new Actions(getWebDriver());
+            actions.moveToElement(i).build().perform();
+            new WebDriverWait(getWebDriver(), 5)
+                    .until(ExpectedConditions.invisibilityOf(element));
+            element.click();
+            i.findElement(By.xpath("//span[text()='Не интересует']"));
+            i.click();
+        }
         screenshot();
         return this;
     }

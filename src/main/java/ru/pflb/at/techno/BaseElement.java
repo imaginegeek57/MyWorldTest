@@ -20,6 +20,7 @@ public abstract class BaseElement {
         this.swDriver = swDriver;
     }
 
+
     protected SWDriver getSwDriver() {
         return swDriver;
     }

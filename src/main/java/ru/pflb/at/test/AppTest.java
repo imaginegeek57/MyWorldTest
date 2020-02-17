@@ -49,13 +49,12 @@ public class AppTest extends BaseTest {
                 .writePublishName("#50forefer!")
                 .clickPublish();
         mainPage.getHistoryEvents();
-
     }
 
     @Test
     public void test_history() {
         MainPage mainPage = new MainPage(SWDriver.getInstance());
-        mainPage.getHistoryEvents()
+        mainPage.getHistoryEvent()
                 .clickRemove()
                 .clickYes();
     }
@@ -63,7 +62,7 @@ public class AppTest extends BaseTest {
     @Test
     public void test_comment() {
         MainPage mainPage = new MainPage(SWDriver.getInstance());
-        mainPage.getHistoryEvents()
+        mainPage.getHistoryEvent()
                 .clickComment()
                 .writeComment("Hi")
                 .clickSent();
@@ -77,6 +76,26 @@ public class AppTest extends BaseTest {
                 .checkPublicationText(equalTo("wfwwd #Кот"));
         //        .checkPublicationTime(equalTo("1 час назад"));
     }
+
+    @Test
+    public void checkPhotoFilter() {
+        MainPage mainPage = new MainPage(SWDriver.getInstance());
+        mainPage.getHistoryEvents()
+                .clickPhoto()
+                .checkPhotoFilter();
+    }
+
+    @Test
+    public void checkRecordFilter() {
+        MainPage mainPage = new MainPage(SWDriver.getInstance());
+        mainPage.getHistoryEvents()
+                .clickPhoto()
+                .checkPhotoFilter()
+                .clickRecords()
+                .checkRecordFilter();
+    }
+
+
 }
 
 

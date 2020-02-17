@@ -13,6 +13,7 @@ Feature: Add post to photo
     And I write a description for the photo: "Мой кот"
     And I write text for new publish: "#Кот"
     When I publish a new event
+    # добавить проверку, что публикация содержит фото
     Then The last publish has text: "#Кот"
     And The last publish has time: "только что"
     And I remove a publish
