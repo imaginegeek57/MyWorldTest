@@ -5,8 +5,12 @@ import org.apache.logging.log4j.Logger;
 import org.hamcrest.Matcher;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import ru.pflb.at.techno.BaseElement;
 import ru.pflb.at.techno.SWDriver;
+
+import java.util.List;
+import java.util.Random;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 
@@ -27,45 +31,28 @@ public class HistoryEvent extends BaseElement {
     /**
      * Жмем кнопку 'Удалить запись'
      */
-    public HistoryEvent clickRemove() {
+    public HistoryEvent removeLastPublish() {
         LOG.info("Жмем кнопку 'Удалить запись'");
-        WebElement webElement1 = getRoot().findElement(By.cssSelector(".history_icon-settings-ico"));
+        new WebDriverWait(getWebDriver(), 0, 500);
+        WebElement webElement = getRoot().findElement(By.cssSelector(".history_icon-settings-ico"));
+        webElement.click();
+        WebElement webElement1 = getRoot().findElement(By.xpath("//a[@data-event-control='remove']"));
         webElement1.click();
-        WebElement webElement2 = getRoot().findElement(By.xpath("//a[@data-event-control='remove']"));
+        WebElement webElement2 = getRoot().findElement(By.xpath("//span[@class='ui-button-main mr10 js-bubble__confirm-yes']"));
         webElement2.click();
         screenshot();
         return this;
     }
 
     /**
-     * Жмем кнопку 'ДА'
-     */
-    public HistoryEvent clickYes() {
-        LOG.info("Жмем кнопку 'ДА'");
-        WebElement webElement = getRoot().findElement(By.xpath("//span[@class='ui-button-main mr10 js-bubble__confirm-yes']"));
-        webElement.click();
-        screenshot();
-        return this;
-    }
-
-    /**
-     * Жмем кнопку 'Комментировать '
-     */
-    public HistoryEvent clickComment() {
-        LOG.info("Жмем кнопку 'Комментировать'");
-        WebElement webElement = getRoot().findElement(By.xpath("//span[text()='Комментировать']"));
-        webElement.click();
-        screenshot();
-        return this;
-    }
-
-    /**
-     * Текстовое поле 'Написать комментарий...'
+     * Записываем комментарий в текстовое поле 'Написать комментарий...'
      */
     public HistoryEvent writeComment(String text) {
         LOG.info("Добавлен комментарий: {}", text);
-        WebElement webElement = getRoot().findElement(By.cssSelector("textarea[placeholder='Написать комментарий...']"));
-        webElement.sendKeys(text);
+        WebElement webElement = getRoot().findElement(By.cssSelector(".b-comments__history-button"));
+        webElement.click();
+        WebElement webElement1 = getRoot().findElement(By.cssSelector("textarea[placeholder='Написать комментарий...']"));
+        webElement1.sendKeys(text);
         screenshot();
         return this;
     }
@@ -81,11 +68,41 @@ public class HistoryEvent extends BaseElement {
         return this;
     }
 
-    public String getPublishTime() {
-        LOG.info("Получаем время публикации");
+    /**
+     * Удаляем последний комментарий
+     */
+    public HistoryEvent removeLastComment() {
+        LOG.info("Комментарий удален");
+        WebElement webElement = getRoot().findElement(By.cssSelector(".b-comments__settings"));
+        webElement.click();
+        WebElement webElement1 = getRoot().findElement(By.cssSelector(".js-ui-bubble"));
+        webElement1.click();
+        screenshot();
+        return this;
+    }
+
+    /**
+     * Кликаем случайный смайл
+     *
+     * @return events
+     */
+    public HistoryEvent clickRandomSmile() {
+        WebElement webElement = getRoot().findElement(By.cssSelector(".b-comments-writer__smiles-more"));
+        webElement.click();
+        List <WebElement> elements = getRoot().findElements(By.cssSelector(".b-comments-writer__smiles-list__item"));
+        Random random = new Random();
+        int num = random.nextInt(elements.size());
+        WebElement smile = elements.get(num);
+        smile.click();
+        return this;
+    }
+
+    public HistoryEvent checkPublicationTime(Matcher <String> matcher) {
+        LOG.info("Проверяем время публикации: {}", matcher);
         WebElement webElement = getRoot().findElement(By.cssSelector(".b-history-event_time"));
-        //webWait(10).until(invisibilityOfElementLocated(cssSelector(".b-history-event_time")));
-        return webElement.getText();
+        String result = webElement.getText();
+        assertThat("не удовлетворяет условию", result, matcher);
+        return this;
     }
 
     public String getDescriptionOfPublish() {
@@ -94,27 +111,26 @@ public class HistoryEvent extends BaseElement {
         return webElement.getText();
     }
 
-    public String getPublishText() {
-        LOG.info("Получаем текс поста");
-        WebElement webElement = getRoot().findElement(By.xpath("//div[@class='b-history-event__body']/div/div"));
-        return webElement.getText();
-    }
-
-    public HistoryEvent checkPublicationTime(Matcher <String> matcher) {
-        LOG.info("Проверяем время публикации: {}", matcher);
-        assertThat("не удовлетворяет условию", getPublishTime(), matcher);
-        return this;
-    }
-
-    public HistoryEvent checkPublicationAuthor(Matcher <String> matcher) {
-        LOG.info("Проверяем автора публикации: {}", matcher);
+    public HistoryEvent checkPublicationDescription(Matcher <String> matcher) {
+        LOG.info("Проверяем описание публикации: {}", matcher);
         assertThat("не удовлетворяет условию", getDescriptionOfPublish(), matcher);
         return this;
     }
 
     public HistoryEvent checkPublicationText(Matcher <String> matcher) {
         LOG.info("Проверяем текст публикации: {}", matcher);
-        assertThat("не удовлетворяет условию", getPublishText(), matcher);
+        WebElement webElement = getRoot().findElement(By.xpath("//div[@class='b-history-event__body']/div/div"));
+        String result = webElement.getText();
+        assertThat("не удовлетворяет условию", result, matcher);
         return this;
     }
+
+    public HistoryEvent checkComments(Matcher <String> matcher) {
+        LOG.info("Проверяем текст комментария: {}", matcher);
+        WebElement webElement = getRoot().findElement(By.cssSelector(".b-comments__item-text"));
+        String result = webElement.getText();
+        assertThat("не удовлетворяет условию", result, matcher);
+        return this;
+    }
+
 }

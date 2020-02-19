@@ -103,8 +103,21 @@ public class HistoryEvents extends BaseElement {
         return this;
     }
 
+    /**
+     * Жмем кнопку 'Удалить все записи'
+     */
+    public HistoryEvents removeAllPublish() {
+        LOG.info("Жмем кнопку 'Удалить все записи'");
+        List <HistoryEvent> historyEvents = getListEvents();
+        for (HistoryEvent i : historyEvents) {
+            i.removeLastPublish();
+        }
+        return this;
+    }
+
 
     //TODO доработать и пременить
+
     /**
      * Жмем кнопку 'Закрыть рекламу'
      */
@@ -122,6 +135,14 @@ public class HistoryEvents extends BaseElement {
             i.click();
         }
         screenshot();
+        return this;
+    }
+
+    public HistoryEvents checkRemoveOfPublication() {
+        LOG.info("Проверяем корректного удаление публикаций");
+        List <HistoryEvent> historyEvents = getListEvents();
+        boolean result = historyEvents.isEmpty();
+        assertThat("не удовлетворяет условию", result);
         return this;
     }
 

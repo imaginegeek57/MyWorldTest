@@ -55,24 +55,22 @@ public class AppTest extends BaseTest {
     public void test_history() {
         MainPage mainPage = new MainPage(SWDriver.getInstance());
         mainPage.getHistoryEvent()
-                .clickRemove()
-                .clickYes();
+                .removeLastPublish();
     }
 
     @Test
     public void test_comment() {
         MainPage mainPage = new MainPage(SWDriver.getInstance());
-        mainPage.getHistoryEvent()
-                .clickComment()
-                .writeComment("Hi")
-                .clickSent();
+        mainPage.getHistoryEvents()
+                .removeAllPublish()
+                .checkRemoveOfPublication();
     }
 
     @Test
     public void test_comment1() {
         MainPage mainPage = new MainPage(SWDriver.getInstance());
         mainPage.getHistoryEvent()
-                .checkPublicationAuthor(equalTo("Вы"))
+                .checkPublicationDescription(equalTo("Вы"))
                 .checkPublicationText(equalTo("wfwwd #Кот"));
         //        .checkPublicationTime(equalTo("1 час назад"));
     }
