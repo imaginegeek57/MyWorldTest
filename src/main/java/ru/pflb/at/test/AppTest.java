@@ -26,11 +26,11 @@ public class AppTest extends BaseTest {
                 .addPhotoByLink()
                 .writeUrl(webConfig.getImageUrl())
                 .clickUploadPhoto()
-                .writeDescribePhoto("ere Мой кот")
+                .writeDescribePhoto("Мой кот")
                 .clickSavePhoto();
         mainPage.getNewEventForm()
                 .setCheckboxStatus(true)
-                .writePublishName("wfwwd #Кот")
+                .writePublishName("Ура! #Кот")
                 .clickPublish();
     }
 
@@ -54,16 +54,19 @@ public class AppTest extends BaseTest {
     @Test
     public void test_history() {
         MainPage mainPage = new MainPage(SWDriver.getInstance());
-        mainPage.getHistoryEvent()
-                .removeLastPublish();
+        mainPage.getPhotoWindow()
+                .checkDescriptionOfPhoto(equalTo("Ура! #Кот"));
     }
 
     @Test
     public void test_comment() {
         MainPage mainPage = new MainPage(SWDriver.getInstance());
-        mainPage.getHistoryEvents()
-                .removeAllPublish()
-                .checkRemoveOfPublication();
+        mainPage.getHistoryEvent()
+                .writeComment("Hi 12345")
+                .putRandomSmile()
+                .clickSent()
+                .checkComments(equalTo("Hi 12345"));
+
     }
 
     @Test
@@ -92,7 +95,6 @@ public class AppTest extends BaseTest {
                 .clickRecords()
                 .checkRecordFilter();
     }
-
 
 }
 

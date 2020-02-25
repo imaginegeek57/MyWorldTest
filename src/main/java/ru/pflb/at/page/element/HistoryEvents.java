@@ -107,14 +107,24 @@ public class HistoryEvents extends BaseElement {
      * Жмем кнопку 'Удалить все записи'
      */
     public HistoryEvents removeAllPublish() {
-        LOG.info("Жмем кнопку 'Удалить все записи'");
+        LOG.info("Удаляем все записи'");
         List <HistoryEvent> historyEvents = getListEvents();
         for (HistoryEvent i : historyEvents) {
             i.removeLastPublish();
         }
+        //    getListEvents().clear();
         return this;
     }
 
+    //TODO переделать на 1 запись
+
+    public HistoryEvents checkRemoveOfPublication() {
+        LOG.info("Проверяем корректное удаление публикаций");
+        List <HistoryEvent> historyEvents = getListEvents();
+        boolean result = historyEvents.isEmpty();
+        assertThat("не удовлетворяет условию", result);
+        return this;
+    }
 
     //TODO доработать и пременить
 
@@ -137,14 +147,4 @@ public class HistoryEvents extends BaseElement {
         screenshot();
         return this;
     }
-
-    public HistoryEvents checkRemoveOfPublication() {
-        LOG.info("Проверяем корректного удаление публикаций");
-        List <HistoryEvent> historyEvents = getListEvents();
-        boolean result = historyEvents.isEmpty();
-        assertThat("не удовлетворяет условию", result);
-        return this;
-    }
-
-
 }

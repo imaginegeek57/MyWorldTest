@@ -27,5 +27,17 @@ public class LoginStepMailTest extends BaseTest {
                 .assertThatErrorMessage(equalTo("Неправильное имя пользователя или пароль"));
     }
 
+    @Test
+    public void Exit_test() {
+        loginHomePage
+                .goToWebPage(webConfig.getUrl())
+                .writeLogin(userProperties.getLogin())
+                .writePassword(userProperties.getPassword())
+                .clickEnter()
+                .closeAdvert()
+                .clickExit()
+                .assertThatCurrentUrl();
+    }
+
 
 }

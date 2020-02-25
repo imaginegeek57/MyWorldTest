@@ -2,10 +2,13 @@ package ru.pflb.at.page.element;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.hamcrest.Matcher;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import ru.pflb.at.techno.BaseElement;
 import ru.pflb.at.techno.SWDriver;
 
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.openqa.selenium.By.cssSelector;
 import static org.openqa.selenium.By.xpath;
 import static org.openqa.selenium.support.ui.ExpectedConditions.invisibilityOfElementLocated;
@@ -77,6 +80,24 @@ public class PhotoWindow extends BaseElement {
         webWait(10).until(invisibilityOfElementLocated(xpath("//div[text()='Сохранить']")));
         elementAddByLink.click();
         screenshot();
+        return this;
+    }
+
+    public PhotoWindow checkDescriptionOfPhoto(Matcher <String> matcher) {
+        LOG.info("Проверяем описание фото: {}", matcher);
+        WebElement element = getWebDriver().findElement(By.xpath("//ul[@class='b-left-menu__items']"))
+                .findElement(By.xpath("./li[@data-id='photo']"));
+        element.click();
+        WebElement webElement = getWebDriver().findElement(By.xpath("//div[@class='l-content__center']"))
+                .findElement(By.xpath("//a[@href='/mail/performance.test/photo/_mypagephoto']"));
+        webElement.click();
+
+        WebElement webElement1 = getWebDriver().findElement(By.xpath("//div[@class='b-catalog__photo-items']/div/a"));
+        webElement1.click();
+
+        WebElement webElement2 = getWebDriver().findElement(By.xpath("//span[@class='b-photo__content-description-text']"));
+        String result = webElement2.getText();
+        assertThat("не удовлетворяет условию", result, matcher);
         return this;
     }
 }

@@ -40,6 +40,12 @@ public class LoginHomePage extends BasePage {
     private WebElement buttonEnter;
 
     /**
+     * Кнопка "Выход"
+     */
+    @FindBy(id = "PH_logoutLink")
+    private WebElement buttonExit;
+
+    /**
      * Локатор ошибки "Неправильное имя пользователя или пароль"
      */
     @FindBy(xpath = "//div[text()='Неправильное имя пользователя или пароль']")
@@ -83,6 +89,16 @@ public class LoginHomePage extends BasePage {
         screenshot();
         return this;
     }
+
+    /**
+     * Жмем кнопку выход
+     */
+    public LoginHomePage clickExit() {
+        buttonExit.click();
+        screenshot();
+        return this;
+    }
+
 
     /**
      * Переход на веб-страницу
@@ -140,6 +156,18 @@ public class LoginHomePage extends BasePage {
     public LoginHomePage assertThatCurrentUserMail(Matcher <String> matcher) {
         LOG.info("Проверка что почта текущего пользователя удовлетворяет условию: {}", matcher);
         assertThat("Отображаемая почта текущего пользователя не соответствует условию", getCurrentUserMail(), matcher);
+        return this;
+    }
+
+    /**
+     * Проверка выхода из учетной записи
+     */
+    public LoginHomePage assertThatCurrentUrl() {
+        LOG.info("Проверка что выход из учетной записи удовлетворяет условию");
+        String currentURL = getWebDriver().getCurrentUrl();
+        String url = "https://my.mail.ru/";
+        boolean result = currentURL.equals(url);
+        assertThat("не удовлетворяет условию", result);
         return this;
     }
 }

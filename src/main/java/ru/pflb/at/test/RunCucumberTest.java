@@ -11,7 +11,7 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         glue = "ru.pflb.at.steps",
         features = "src/main/resources/features",
-        tags = {"@FilterEvents"})
+        tags = {"@WriteComment"})
 public class RunCucumberTest {
 
 }

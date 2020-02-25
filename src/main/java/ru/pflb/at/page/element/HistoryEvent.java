@@ -32,7 +32,7 @@ public class HistoryEvent extends BaseElement {
      * Жмем кнопку 'Удалить запись'
      */
     public HistoryEvent removeLastPublish() {
-        LOG.info("Жмем кнопку 'Удалить запись'");
+        LOG.info("Удаляем последнюю запись'");
         new WebDriverWait(getWebDriver(), 0, 500);
         WebElement webElement = getRoot().findElement(By.cssSelector(".history_icon-settings-ico"));
         webElement.click();
@@ -86,7 +86,7 @@ public class HistoryEvent extends BaseElement {
      *
      * @return events
      */
-    public HistoryEvent clickRandomSmile() {
+    public HistoryEvent putRandomSmile() {
         WebElement webElement = getRoot().findElement(By.cssSelector(".b-comments-writer__smiles-more"));
         webElement.click();
         List <WebElement> elements = getRoot().findElements(By.cssSelector(".b-comments-writer__smiles-list__item"));
@@ -97,18 +97,18 @@ public class HistoryEvent extends BaseElement {
         return this;
     }
 
+    public String getDescriptionOfPublish() {
+        LOG.info("Получаем описание публикации");
+        WebElement webElement = getRoot().findElement(By.cssSelector(".b-history-event__action"));
+        return webElement.getText();
+    }
+
     public HistoryEvent checkPublicationTime(Matcher <String> matcher) {
         LOG.info("Проверяем время публикации: {}", matcher);
         WebElement webElement = getRoot().findElement(By.cssSelector(".b-history-event_time"));
         String result = webElement.getText();
         assertThat("не удовлетворяет условию", result, matcher);
         return this;
-    }
-
-    public String getDescriptionOfPublish() {
-        LOG.info("Получаем описание поста");
-        WebElement webElement = getRoot().findElement(By.cssSelector(".b-history-event__action"));
-        return webElement.getText();
     }
 
     public HistoryEvent checkPublicationDescription(Matcher <String> matcher) {
@@ -132,5 +132,4 @@ public class HistoryEvent extends BaseElement {
         assertThat("не удовлетворяет условию", result, matcher);
         return this;
     }
-
 }
