@@ -29,5 +29,17 @@ public class LoginStep implements En {
         Then("I check authorization my email", () -> {
             loginHomePage.assertThatCurrentUserMail(equalTo(userProperties.getMail()));
         });
+
+        And("Check correct exit from account", () -> {
+            loginHomePage.checkCorrectExit();
+        });
+
+        And("Check correct exit from account: {string}", (String text) -> {
+            loginHomePage.goToWebPage(webConfig.getUrl())
+                    .writeLogin(userProperties.getLogin())
+                    .writePassword(text)
+                    .clickEnter()
+                    .assertThatErrorMessage(equalTo("Неправильное имя пользователя или пароль"));
+        });
     }
 }

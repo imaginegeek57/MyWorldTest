@@ -8,5 +8,12 @@ Feature: Email Authorization
 
     #название сценария и шага, ключевое слово
   @CheckAuthorization
-  Scenario: Login positive test
+  Scenario: Login and escape positive test
+    Given I do authorization to email
     Then I check authorization my email
+    And Check correct exit from account
+
+  @LoginError
+  Scenario: Login negative test
+    Given Check correct exit from account: "12345"
+

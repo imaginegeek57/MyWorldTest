@@ -36,7 +36,7 @@ public class LoginStepMailTest extends BaseTest {
                 .clickEnter()
                 .closeAdvert()
                 .clickExit()
-                .assertThatCurrentUrl();
+                .checkCorrectExit();
     }
 
 

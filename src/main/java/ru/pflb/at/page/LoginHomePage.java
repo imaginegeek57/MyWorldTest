@@ -1,6 +1,7 @@
 package ru.pflb.at.page;
 
 import org.hamcrest.Matcher;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import ru.pflb.at.techno.BasePage;
@@ -162,12 +163,11 @@ public class LoginHomePage extends BasePage {
     /**
      * Проверка выхода из учетной записи
      */
-    public LoginHomePage assertThatCurrentUrl() {
+    public LoginHomePage checkCorrectExit() {
         LOG.info("Проверка что выход из учетной записи удовлетворяет условию");
-        String currentURL = getWebDriver().getCurrentUrl();
-        String url = "https://my.mail.ru/";
-        boolean result = currentURL.equals(url);
-        assertThat("не удовлетворяет условию", result);
+        WebElement checkTopMenu = getWebDriver().findElement(By.cssSelector(".b-head__portal-navigation"));
+        boolean result = checkTopMenu.isSelected();
+        assertThat("не удовлетворяет условию", !result);
         return this;
     }
 }
