@@ -10,10 +10,24 @@ Feature: Add post to photo
     Given I open a photo window
     And I choose to upload a photo from the Internet
     And I add a photo from internet by link
+    And I add a photo from internet by link
     And I write a description for the photo: "Мой кот"
+    And Click button save photo
     And I write text for new publish: "#Кот"
     When I publish a new event
-    # добавить проверку, что публикация содержит фото
     Then The last publish has text: "#Кот"
     And The last publish has time: "только что"
     And I remove a publish
+
+  @AlbumContainsPhoto
+  Scenario: Add post to photo, album has the photo with description positive test
+
+    Given I open a photo window
+    And I choose to upload a photo from the Internet
+    And I add a photo from internet by link
+    And I write a description for the photo: "Мой кот!"
+    And I write text for new publish: "#Кот!"
+    When I publish a new event
+    And Click button photo on left menu
+    Then Open photo in album
+    And Photo has description: "Мой кот!"

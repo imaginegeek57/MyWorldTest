@@ -165,9 +165,9 @@ public class LoginHomePage extends BasePage {
      */
     public LoginHomePage checkCorrectExit() {
         LOG.info("Проверка что выход из учетной записи удовлетворяет условию");
-        WebElement checkTopMenu = getWebDriver().findElement(By.cssSelector(".b-head__portal-navigation"));
-        boolean result = checkTopMenu.isSelected();
-        assertThat("не удовлетворяет условию", !result);
+        WebElement loginPage = getWebDriver().findElement(By.cssSelector(".g-loginpage"));
+        boolean result = loginPage.isDisplayed();
+        assertThat("не удовлетворяет условию", result);
         return this;
     }
 }

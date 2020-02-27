@@ -30,15 +30,29 @@ public class LoginStep implements En {
             loginHomePage.assertThatCurrentUserMail(equalTo(userProperties.getMail()));
         });
 
+        And("Click button 'EXIT'", () -> {
+            loginHomePage.clickExit();
+        });
+
         And("Check correct exit from account", () -> {
             loginHomePage.checkCorrectExit();
         });
 
-        And("Check correct exit from account: {string}", (String text) -> {
+        Given("Write correct login to account", () -> {
             loginHomePage.goToWebPage(webConfig.getUrl())
-                    .writeLogin(userProperties.getLogin())
-                    .writePassword(text)
-                    .clickEnter()
+                    .writeLogin(userProperties.getLogin());
+        });
+
+        And("Write random characters to password: {string}", (String text) -> {
+            loginHomePage.writePassword(text);
+        });
+
+        And("Click button 'ENTER'", () -> {
+            loginHomePage.clickEnter();
+        });
+
+        Then("Page has string about error", () -> {
+            loginHomePage
                     .assertThatErrorMessage(equalTo("Неправильное имя пользователя или пароль"));
         });
     }

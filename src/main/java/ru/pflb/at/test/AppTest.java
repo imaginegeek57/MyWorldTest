@@ -26,11 +26,11 @@ public class AppTest extends BaseTest {
                 .addPhotoByLink()
                 .writeUrl(webConfig.getImageUrl())
                 .clickUploadPhoto()
-                .writeDescribePhoto("Мой кот")
+                .writeDescribePhoto("Мой кот!-!")
                 .clickSavePhoto();
         mainPage.getNewEventForm()
                 .setCheckboxStatus(true)
-                .writePublishName("Ура! #Кот")
+                .writePublishName("Ура! #Кот!-!")
                 .clickPublish();
     }
 
@@ -52,38 +52,15 @@ public class AppTest extends BaseTest {
     }
 
     @Test
-    public void test_history() {
-        MainPage mainPage = new MainPage(SWDriver.getInstance());
-        mainPage.getPhotoWindow()
-                .checkDescriptionOfPhoto(equalTo("Ура! #Кот"));
-    }
-
-    @Test
     public void test_comment() {
         MainPage mainPage = new MainPage(SWDriver.getInstance());
+        test_photo();
         mainPage.getHistoryEvent()
                 .writeComment("Hi 12345")
                 .putRandomSmile()
                 .clickSent()
-                .checkComments(equalTo("Hi 12345"));
-
-    }
-
-    @Test
-    public void test_comment1() {
-        MainPage mainPage = new MainPage(SWDriver.getInstance());
-        mainPage.getHistoryEvent()
-                .checkPublicationDescription(equalTo("Вы"))
-                .checkPublicationText(equalTo("wfwwd #Кот"));
-        //        .checkPublicationTime(equalTo("1 час назад"));
-    }
-
-    @Test
-    public void checkPhotoFilter() {
-        MainPage mainPage = new MainPage(SWDriver.getInstance());
-        mainPage.getHistoryEvents()
-                .clickPhoto()
-                .checkPhotoFilter();
+                .checkComments(equalTo("Hi 12345"))
+                .removeLastComment();
     }
 
     @Test
@@ -96,7 +73,11 @@ public class AppTest extends BaseTest {
                 .checkRecordFilter();
     }
 
+    @Test
+    public void test_albumContainsPhoto() {
+        MainPage mainPage = new MainPage(SWDriver.getInstance());
+        mainPage.getPhotoWindow()
+                .openPhotoInAlbum()
+                .checkPhotoDescription(equalTo("#Кот"));
+    }
 }
-
-
-

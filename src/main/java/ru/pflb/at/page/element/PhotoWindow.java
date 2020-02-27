@@ -65,8 +65,8 @@ public class PhotoWindow extends BaseElement {
      */
     public PhotoWindow writeDescribePhoto(String text) {
         LOG.info("Добавлено описания фотографии: {}", text);
-        WebElement elementAddByLink = getRoot().findElement(cssSelector(".b-photo-upload__edit-item-expanded__description"));
-        elementAddByLink.sendKeys(text);
+        WebElement textElement = getRoot().findElement(cssSelector(".b-photo-upload__edit-item-expanded__description"));
+        textElement.sendKeys(text);
         screenshot();
         return this;
     }
@@ -76,27 +76,34 @@ public class PhotoWindow extends BaseElement {
      */
     public PhotoWindow clickSavePhoto() {
         LOG.info("Фотография сохранена");
-        WebElement elementAddByLink = getRoot().findElement(xpath("//div[text()='Сохранить']"));
+        WebElement element = getRoot().findElement(xpath("//div[text()='Сохранить']"));
         webWait(10).until(invisibilityOfElementLocated(xpath("//div[text()='Сохранить']")));
-        elementAddByLink.click();
+        element.click();
         screenshot();
         return this;
     }
 
-    public PhotoWindow checkDescriptionOfPhoto(Matcher <String> matcher) {
-        LOG.info("Проверяем описание фото: {}", matcher);
+    public PhotoWindow clickButtonPhotoLeftMenu() {
+        LOG.info("В левом меню жмем кнопку 'ФОТО'");
         WebElement element = getWebDriver().findElement(By.xpath("//ul[@class='b-left-menu__items']"))
                 .findElement(By.xpath("./li[@data-id='photo']"));
         element.click();
-        WebElement webElement = getWebDriver().findElement(By.xpath("//div[@class='l-content__center']"))
-                .findElement(By.xpath("//a[@href='/mail/performance.test/photo/_mypagephoto']"));
+        return this;
+    }
+
+    public PhotoWindow openPhotoInAlbum() {
+        LOG.info("Открываем фото в альбоме");
+        WebElement webElement = getWebDriver().findElement(By.xpath("//a[@href='/mail/performance.test/photo/_mypagephoto']"));
         webElement.click();
-
-        WebElement webElement1 = getWebDriver().findElement(By.xpath("//div[@class='b-catalog__photo-items']/div/a"));
+        WebElement webElement1 = getWebDriver().findElement(By.xpath("//div[@class='b-catalog__photo-item can-edit']/a"));
         webElement1.click();
+        return this;
+    }
 
-        WebElement webElement2 = getWebDriver().findElement(By.xpath("//span[@class='b-photo__content-description-text']"));
-        String result = webElement2.getText();
+    public PhotoWindow checkPhotoDescription(Matcher <String> matcher) {
+        LOG.info("Проверяем описание фото в альбоме");
+        WebElement webElement = getWebDriver().findElement(By.xpath("//span[@class='b-photo__content-description-text']"));
+        String result = webElement.getText();
         assertThat("не удовлетворяет условию", result, matcher);
         return this;
     }

@@ -31,16 +31,25 @@ public class EventStep implements En {
             mainPage.getHistoryEvents()
                     .clickRecords();
         });
+
         Then("Page has only events with photos", () -> {
             mainPage.getHistoryEvents()
                     .checkPhotoFilter();
         });
-
 
         And("Page has only events with records", () -> {
             mainPage.getHistoryEvents()
                     .checkRecordFilter();
         });
 
+        When("Remove all events from page", () -> {
+            mainPage.getHistoryEvents()
+                    .removeAllPublish();
+        });
+
+        Then("Page doesn't have events", () -> {
+            mainPage.getHistoryEvents()
+                    .checkRemoveOfPublication();
+        });
     }
 }

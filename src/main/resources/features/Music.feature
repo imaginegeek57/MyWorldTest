@@ -11,7 +11,7 @@ Feature: Add post to music
     And I search music from internet by name: "50 cent"
     And I write text for new publish: "#50forever!"
     When I publish a new event
-        # добавить проверку, что публикация содержит музыку
     Then The last publish has text: "#50forever!"
     And The last publish has time: "только что"
     And I remove a publish
+

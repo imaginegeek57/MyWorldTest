@@ -39,9 +39,13 @@ public class CommentStep implements En {
                     .clickSent();
         });
 
-        Then("Check that text of comment and smile equals my last comment: {string}", (String text) -> {
+        Then("Check that text of comment equals my last comment: {string}", (String text) -> {
             mainPage.getHistoryEvent()
                     .checkComments(equalTo(text));
+        });
+
+        Then("Remove last comment", () -> {
+            mainPage.getHistoryEvent().removeLastComment();
         });
     }
 }

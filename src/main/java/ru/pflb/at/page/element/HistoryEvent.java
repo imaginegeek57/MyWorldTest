@@ -111,12 +111,6 @@ public class HistoryEvent extends BaseElement {
         return this;
     }
 
-    public HistoryEvent checkPublicationDescription(Matcher <String> matcher) {
-        LOG.info("Проверяем описание публикации: {}", matcher);
-        assertThat("не удовлетворяет условию", getDescriptionOfPublish(), matcher);
-        return this;
-    }
-
     public HistoryEvent checkPublicationText(Matcher <String> matcher) {
         LOG.info("Проверяем текст публикации: {}", matcher);
         WebElement webElement = getRoot().findElement(By.xpath("//div[@class='b-history-event__body']/div/div"));

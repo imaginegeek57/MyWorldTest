@@ -1,11 +1,11 @@
-Feature: Filter for events
+Feature: Work with comments under events
 
       # Выполняем авторизацию
   Background: Authorization
     Given I do authorization to email
 
   @WriteComment
-  Scenario: Check filter publications positive test
+  Scenario: Write comment under last photo event positive test
 
     Given I open a photo window
     And I choose to upload a photo from the Internet
@@ -16,5 +16,6 @@ Feature: Filter for events
     When I write new comment: "funny picture"
     And I put random smile
     And I click button sent
-    Then Check that text of comment and smile equals my last comment: "funny picture"
+    Then Check that text of comment equals my last comment: "funny picture"
+    And Remove last comment
 

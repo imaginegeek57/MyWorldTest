@@ -38,6 +38,4 @@ public class LoginStepMailTest extends BaseTest {
                 .clickExit()
                 .checkCorrectExit();
     }
-
-
 }
