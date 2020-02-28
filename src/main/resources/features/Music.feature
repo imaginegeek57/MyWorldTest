@@ -4,6 +4,7 @@ Feature: Add post to music
   Background: Authorization
     Given I do authorization to email
 
+  @PositiveTest
   @PostMusic
   Scenario: Add post to music positive test
 

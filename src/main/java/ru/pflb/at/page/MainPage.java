@@ -83,15 +83,17 @@ public class MainPage extends BasePage {
     }
 
     @FindBy(css = ".b-history-event")
-    private WebElement EventManagementRoot;
+    private WebElement eventManagementRoot;
 
     /**
-     * Получение формы истории событий
+     * Получение формы истории события
      *
      * @return
      */
     public HistoryEvent getHistoryEvent() {
-        return new HistoryEvent(EventManagementRoot, getSwDriver());
+        return new HistoryEvent(eventManagementRoot, getSwDriver());
     }
 
+    @FindBy(css = ".content-wrapper_today")
+    private WebElement eventRoot;
 }

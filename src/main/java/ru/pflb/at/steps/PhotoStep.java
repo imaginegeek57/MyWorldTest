@@ -7,6 +7,8 @@ import ru.pflb.at.techno.SWDriver;
 import ru.pflb.at.techno.UserProperties;
 import ru.pflb.at.techno.webConfig.WebConfig;
 
+import static org.hamcrest.Matchers.equalTo;
+
 public class PhotoStep implements En {
 
     public WebConfig webConfig;
@@ -29,22 +31,40 @@ public class PhotoStep implements En {
                     .clickPhoto();
         });
 
-        Given("I choose to upload a photo from the Internet", () -> {
+        And("I choose to upload a photo from the Internet", () -> {
             mainPage.getPhotoWindow()
                     .addPhotoByLink();
         });
 
-        Given("I add a photo from internet by link", () -> {
+        And("I add a photo from internet by link", () -> {
             mainPage.getPhotoWindow()
                     .writeUrl(webConfig.getImageUrl())
                     .clickUploadPhoto();
         });
 
-        Given("I write a description for the photo: {string}", (String link) -> {
+        And("I write a description for the photo: {string}", (String link) -> {
             mainPage.getPhotoWindow()
-                    .writeDescribePhoto(link)
+                    .writeDescribePhoto(link);
+        });
+
+        Then("Click button save photo", () -> {
+            mainPage.getPhotoWindow()
                     .clickSavePhoto();
         });
 
+        Then("Click button photo on left menu", () -> {
+            mainPage.getPhotoWindow()
+                    .clickButtonPhotoLeftMenu();
+        });
+
+        Then("Open photo in album", () -> {
+            mainPage.getPhotoWindow()
+                    .openPhotoInAlbum();
+        });
+
+        And("Photo has description: {string}", (String text) -> {
+            mainPage.getPhotoWindow()
+                    .checkPhotoDescription(equalTo(text));
+        });
     }
 }

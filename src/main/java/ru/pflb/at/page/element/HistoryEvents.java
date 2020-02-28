@@ -7,6 +7,11 @@ import org.openqa.selenium.WebElement;
 import ru.pflb.at.techno.BaseElement;
 import ru.pflb.at.techno.SWDriver;
 
+import java.util.LinkedList;
+import java.util.List;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+
 public class HistoryEvents extends BaseElement {
 
     private static final Logger LOG = LogManager.getLogger(HistoryEvents.class);
@@ -22,61 +27,94 @@ public class HistoryEvents extends BaseElement {
     }
 
     /**
-     * Жмем кнопку 'Удалить запись'
+     * Жмем кнопку 'Фото'
      */
-    public HistoryEvents clickRemove() {
-        LOG.info("Жмем кнопку 'Удалить запись'");
-        WebElement webElement1 = getRoot().findElement(By.cssSelector(".history_icon-settings-ico"));
-        webElement1.click();
-        WebElement webElement2 = getRoot().findElement(By.xpath("//a[@data-event-control='remove']"));
+    public HistoryEvents clickPhoto() {
+        LOG.info("Жмем кнопку 'Фото'");
+        WebElement webElement = getRoot().findElement(By.xpath("//span[@data-filter='photo']"));
+        webElement.click();
+        screenshot();
+        return this;
+    }
+
+
+    /**
+     * Жмем кнопку 'Только записи'
+     */
+    public HistoryEvents clickRecords() {
+        LOG.info("Жмем кнопку 'Только записи'");
+        WebElement webElement = getRoot().findElement(By.xpath("//div[@data-item='filter']"));
+        webElement.click();
+        WebElement webElement2 = getRoot().findElement(By.xpath("//div[text()='Только записи']"));
         webElement2.click();
         screenshot();
         return this;
     }
 
     /**
-     * Жмем кнопку 'ДА'
+     * Получаем список событий
+     *
+     * @return events
      */
-    public HistoryEvents clickYes() {
-        LOG.info("Жмем кнопку 'ДА'");
-        WebElement webElement = getRoot().findElement(By.xpath("//span[@class='ui-button-main mr10 js-bubble__confirm-yes']"));
-        webElement.click();
-        screenshot();
+    public List <HistoryEvent> getListEvents() {
+        List <HistoryEvent> historyEvents = new LinkedList <>();
+        List <WebElement> elements = getRoot().findElements(By.cssSelector(".b-history_event_active-area"));
+        for (WebElement i : elements) {
+            HistoryEvent event = new HistoryEvent(i, getSwDriver());
+            historyEvents.add(event);
+        }
+        return historyEvents;
+    }
+
+    /**
+     * Проверяем фильтрацию записей
+     *
+     * @return boolean
+     */
+    public HistoryEvents checkRecordFilter() {
+        LOG.info("Проверяем фильтрацию записей");
+        String action = "сказали";
+        List <HistoryEvent> historyEvents = getListEvents();
+        boolean result = historyEvents.stream()
+                .map(HistoryEvent::getDescriptionOfPublish)
+                .allMatch((txt -> txt.contains(action)));
+        assertThat("не удовлетворяет условию", result);
         return this;
     }
 
     /**
-     * Жмем кнопку 'Комментировать '
+     * Проверяем фильтрацию фото
+     *
+     * @return boolean
      */
-    public HistoryEvents clickComment() {
-        LOG.info("Жмем кнопку 'Комментировать'");
-        WebElement webElement = getRoot().findElement(By.xpath("//span[text()='Комментировать']"));
-        webElement.click();
-        screenshot();
+    public HistoryEvents checkPhotoFilter() {
+        LOG.info("Проверяем фильтрацию фото");
+        String action = "добавили фотографию";
+        List <HistoryEvent> historyEvents = getListEvents();
+        boolean result = historyEvents.stream()
+                .map(HistoryEvent::getDescriptionOfPublish)
+                .allMatch((txt -> txt.contains(action)));
+        assertThat("не удовлетворяет условию", result);
         return this;
     }
 
     /**
-     * Текстовое поле 'Написать комментарий...'
+     * Жмем кнопку 'Удалить все записи'
      */
-    public HistoryEvents writeComment(String text) {
-        LOG.info("Добавлен комментарий: {}", text);
-        WebElement webElement = getRoot().findElement(By.cssSelector("textarea[placeholder='Написать комментарий...']"));
-        webElement.sendKeys(text);
-        screenshot();
+    public HistoryEvents removeAllPublish() {
+        LOG.info("Удаляем все записи'");
+        List <HistoryEvent> historyEvents = getListEvents();
+        for (HistoryEvent i : historyEvents) {
+            i.removeLastPublish();
+        }
         return this;
     }
 
-    /**
-     * Жмем кнопку 'Отправить'
-     */
-    public HistoryEvents clickSent() {
-        LOG.info("Жмем кнопку 'Отправить'");
-        WebElement webElement = getRoot().findElement(By.xpath("//button[text()='Отправить']"));
-        webElement.click();
-        screenshot();
+    public HistoryEvents checkRemoveOfPublication() {
+        LOG.info("Проверяем корректное удаление публикаций");
+        List <HistoryEvent> historyEvents = getListEvents();
+        boolean result = historyEvents.isEmpty();
+        assertThat("не удовлетворяет условию", result);
         return this;
     }
-
-
 }

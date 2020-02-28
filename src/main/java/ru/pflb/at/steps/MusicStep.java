@@ -59,9 +59,8 @@ public class MusicStep implements En {
         });
 
         And("I remove a publish", () -> {
-            mainPage.getHistoryEvents()
-                    .clickRemove()
-                    .clickYes();
+            mainPage.getHistoryEvent()
+                    .removeLastPublish();
         });
     }
 }

@@ -26,11 +26,11 @@ public class AppTest extends BaseTest {
                 .addPhotoByLink()
                 .writeUrl(webConfig.getImageUrl())
                 .clickUploadPhoto()
-                .writeDescribePhoto("ere Мой кот")
+                .writeDescribePhoto("Мой кот!-!")
                 .clickSavePhoto();
         mainPage.getNewEventForm()
                 .setCheckboxStatus(true)
-                .writePublishName("wfwwd #Кот")
+                .writePublishName("Ура! #Кот!")
                 .clickPublish();
     }
 
@@ -49,35 +49,36 @@ public class AppTest extends BaseTest {
                 .writePublishName("#50forefer!")
                 .clickPublish();
         mainPage.getHistoryEvents();
-
-    }
-
-    @Test
-    public void test_history() {
-        MainPage mainPage = new MainPage(SWDriver.getInstance());
-        mainPage.getHistoryEvents()
-                .clickRemove()
-                .clickYes();
     }
 
     @Test
     public void test_comment() {
         MainPage mainPage = new MainPage(SWDriver.getInstance());
-        mainPage.getHistoryEvents()
-                .clickComment()
-                .writeComment("Hi")
-                .clickSent();
+        test_photo();
+        mainPage.getHistoryEvent()
+                .writeComment("Hi 12345")
+                .putRandomSmile()
+                .clickSent()
+                .checkComments(equalTo("Hi 12345"))
+                .removeLastComment();
     }
 
     @Test
-    public void test_comment1() {
+    public void checkRecordFilter() {
         MainPage mainPage = new MainPage(SWDriver.getInstance());
-        mainPage.getHistoryEvent()
-                .checkPublicationAuthor(equalTo("Вы"))
-                .checkPublicationText(equalTo("wfwwd #Кот"));
-        //        .checkPublicationTime(equalTo("1 час назад"));
+        mainPage.getHistoryEvents()
+                .clickPhoto()
+                .checkPhotoFilter()
+                .clickRecords()
+                .checkRecordFilter();
+    }
+
+    @Test
+    public void test_albumContainsPhoto() {
+        test_photo();
+        mainPage.getPhotoWindow()
+                .clickButtonPhotoLeftMenu()
+                .openPhotoInAlbum()
+                .checkPhotoDescription(equalTo("Ура! #Кот!"));
     }
 }
-
-
-

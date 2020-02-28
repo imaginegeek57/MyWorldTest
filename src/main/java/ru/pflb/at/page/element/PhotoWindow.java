@@ -2,10 +2,14 @@ package ru.pflb.at.page.element;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.hamcrest.Matcher;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import ru.pflb.at.techno.BaseElement;
 import ru.pflb.at.techno.SWDriver;
 
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.openqa.selenium.By.cssSelector;
 import static org.openqa.selenium.By.xpath;
 import static org.openqa.selenium.support.ui.ExpectedConditions.invisibilityOfElementLocated;
@@ -62,8 +66,8 @@ public class PhotoWindow extends BaseElement {
      */
     public PhotoWindow writeDescribePhoto(String text) {
         LOG.info("Добавлено описания фотографии: {}", text);
-        WebElement elementAddByLink = getRoot().findElement(cssSelector(".b-photo-upload__edit-item-expanded__description"));
-        elementAddByLink.sendKeys(text);
+        WebElement textElement = getRoot().findElement(cssSelector(".b-photo-upload__edit-item-expanded__description"));
+        textElement.sendKeys(text);
         screenshot();
         return this;
     }
@@ -73,10 +77,36 @@ public class PhotoWindow extends BaseElement {
      */
     public PhotoWindow clickSavePhoto() {
         LOG.info("Фотография сохранена");
-        WebElement elementAddByLink = getRoot().findElement(xpath("//div[text()='Сохранить']"));
+        WebElement element = getRoot().findElement(xpath("//div[text()='Сохранить']"));
         webWait(10).until(invisibilityOfElementLocated(xpath("//div[text()='Сохранить']")));
-        elementAddByLink.click();
+        element.click();
         screenshot();
+        return this;
+    }
+
+    public PhotoWindow clickButtonPhotoLeftMenu() {
+        LOG.info("В левом меню жмем кнопку 'ФОТО'");
+        WebElement element = getWebDriver().findElement(By.xpath("//ul[@class='b-left-menu__items']"))
+                .findElement(By.xpath("./li[@data-id='photo']"));
+        element.click();
+        return this;
+    }
+
+    public PhotoWindow openPhotoInAlbum() {
+        LOG.info("Открываем фото в альбоме");
+        WebElement webElement = getWebDriver().findElement(By.xpath("//a[@href='/mail/performance.test/photo/_mypagephoto']"));
+        webElement.click();
+        new WebDriverWait(getWebDriver(), 0, 800);
+        WebElement webElement1 = getWebDriver().findElement(By.xpath("//div[@class='b-catalog__photo-item can-edit']/a"));
+        webElement1.click();
+        return this;
+    }
+
+    public PhotoWindow checkPhotoDescription(Matcher <String> matcher) {
+        LOG.info("Проверяем описание фото в альбоме");
+        WebElement webElement1 = getWebDriver().findElement(By.cssSelector(".b-photo__content-description-text"));
+        String result = webElement1.getText();
+        assertThat("не удовлетворяет условию", result, matcher);
         return this;
     }
 }

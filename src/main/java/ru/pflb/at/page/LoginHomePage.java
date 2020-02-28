@@ -1,6 +1,7 @@
 package ru.pflb.at.page;
 
 import org.hamcrest.Matcher;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import ru.pflb.at.techno.BasePage;
@@ -38,6 +39,12 @@ public class LoginHomePage extends BasePage {
      */
     @FindBy(xpath = "//div/input[@class='ui-button-main']")
     private WebElement buttonEnter;
+
+    /**
+     * Кнопка "Выход"
+     */
+    @FindBy(id = "PH_logoutLink")
+    private WebElement buttonExit;
 
     /**
      * Локатор ошибки "Неправильное имя пользователя или пароль"
@@ -83,6 +90,16 @@ public class LoginHomePage extends BasePage {
         screenshot();
         return this;
     }
+
+    /**
+     * Жмем кнопку выход
+     */
+    public LoginHomePage clickExit() {
+        buttonExit.click();
+        screenshot();
+        return this;
+    }
+
 
     /**
      * Переход на веб-страницу
@@ -140,6 +157,17 @@ public class LoginHomePage extends BasePage {
     public LoginHomePage assertThatCurrentUserMail(Matcher <String> matcher) {
         LOG.info("Проверка что почта текущего пользователя удовлетворяет условию: {}", matcher);
         assertThat("Отображаемая почта текущего пользователя не соответствует условию", getCurrentUserMail(), matcher);
+        return this;
+    }
+
+    /**
+     * Проверка выхода из учетной записи
+     */
+    public LoginHomePage checkCorrectExit() {
+        LOG.info("Проверка что выход из учетной записи удовлетворяет условию");
+        WebElement loginPage = getWebDriver().findElement(By.cssSelector(".g-loginpage"));
+        boolean result = loginPage.isDisplayed();
+        assertThat("не удовлетворяет условию", result);
         return this;
     }
 }
