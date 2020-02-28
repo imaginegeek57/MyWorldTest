@@ -1,10 +1,19 @@
-2020-02-27 16:42:57.775 [main] INFO  techno.BasePage - Переход на веб-страницу: https://my.mail.ru/
-2020-02-27 16:42:59.850 [main] INFO  techno.BasePage - В поле 'Логин' записать: performance.test
-2020-02-27 16:43:00.550 [main] INFO  techno.BasePage - Пароль заполнен
-2020-02-27 16:43:02.686 [main] INFO  techno.BasePage - Реклама закрыта
-2020-02-27 16:43:05.401 [main] INFO  element.NewEventForm - Выбираем текстовое поле 'Расскажите о новом событии...'
-2020-02-27 16:43:06.206 [main] INFO  element.NewEventForm - Жмем кнопку 'Фото'
-2020-02-27 16:43:07.054 [main] INFO  element.PhotoWindow - Жмем кнопку 'Добавить фото по ссылке из интернета'
-2020-02-27 16:43:07.911 [main] INFO  element.PhotoWindow - В поле 'URL' записано: https://avatars.mds.yandex.net/get-pdb/1976538/7ea9875b-c3cb-49ff-9ab3-9dc436be6ab4/s1200
-2020-02-27 16:43:09.743 [main] INFO  element.PhotoWindow - Фотография загружена
-2020-02-27 16:43:10.397 [main] INFO  element.PhotoWindow - В поле 'URL' записано: https://avatars.mds.yandex.net/get-pdb/1976538/7ea9875b-c3cb-49ff-9ab3-9dc436be6ab4/s1200
+2020-01-30 11:11:17.649 [main] INFO  techno.BasePage - Переход на веб-страницу: https://my.mail.ru/
+2020-01-30 11:11:19.535 [main] INFO  techno.BasePage - В поле 'Логин' записать: performance.test
+2020-01-30 11:11:19.797 [main] INFO  techno.BasePage - Пароль заполнен
+2020-01-30 11:11:21.821 [main] INFO  techno.BasePage - Реклама закрыта
+2020-01-30 11:11:23.122 [main] INFO  element.NewEventForm - Выбираем текстовое поле 'Расскажите о новом событии...'
+2020-01-30 11:11:24.229 [main] INFO  element.NewEventForm - Жмем кнопку 'Фото'
+2020-01-30 11:11:24.948 [main] INFO  element.PhotoWindow - Жмем кнопку 'Добавить фото по ссылке из интернета'
+2020-01-30 11:11:25.828 [main] INFO  element.PhotoWindow - В поле 'URL' записано: https://avatars.mds.yandex.net/get-pdb/1976538/7ea9875b-c3cb-49ff-9ab3-9dc436be6ab4/s1200
+2020-01-30 11:11:27.217 [main] INFO  element.PhotoWindow - Фотография загружена
+2020-01-30 11:11:27.903 [main] INFO  element.PhotoWindow - Добавлено описания фотографии: Мой кот
+2020-01-30 11:11:28.572 [main] INFO  element.PhotoWindow - Фотография сохранена
+2020-01-30 11:11:31.363 [main] INFO  element.NewEventForm - В поле 'Публикации' записано: #Кот
+2020-01-30 11:11:32.072 [main] INFO  element.NewEventForm - Жмем кнопку 'Добавить публекацию'
+2020-01-30 11:11:32.695 [main] INFO  element.HistoryEvents - Проверяем текст публикации: "#Кот"
+2020-01-30 11:11:32.695 [main] INFO  element.HistoryEvents - Получаем содержимое поста
+2020-01-30 11:11:32.741 [main] INFO  element.HistoryEvents - Проверяем время публикации: "только что"
+2020-01-30 11:11:32.742 [main] INFO  element.HistoryEvents - Получаем время публекации
+2020-01-30 11:11:32.779 [main] INFO  element.HistoryEvents - Жмем кнопку 'Удалить запись'
+2020-01-30 11:11:33.795 [main] INFO  element.HistoryEvents - Жмем кнопку 'ДА'
