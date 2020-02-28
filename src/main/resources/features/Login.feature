@@ -1,13 +1,15 @@
 Feature: Authorization to my world
 
-  @CorrectAuthorization_positiveTest
+  @PositiveTest
+  @CorrectAuthorization
   Scenario: Login and logout
     Given I do authorization to email
     Then I check authorization my email
     When Click button 'ВЫХОД'
     Then Check correct exit from account
 
-  @LoginError_negativeTest
+  @NegativeTest
+  @LoginError
   Scenario: Login error, incorrect password
     Given Enter correct login to account
     Given Enter wrong password: "abc12345"

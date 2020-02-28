@@ -81,7 +81,7 @@ public class NewEventForm extends BaseElement {
         LOG.info("Жмем кнопку 'Добавить публекацию'");
         WebElement webElement = getRoot().findElement(By.cssSelector(".b-publisher__controls__submit"));
         webElement.click();
-        new WebDriverWait(getWebDriver(), 0, 800);
+        new WebDriverWait(getWebDriver(), 0, 900);
         screenshot();
         return this;
     }

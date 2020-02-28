@@ -4,7 +4,8 @@ Feature: Add post to photo
   Background: Authorization
     Given I do authorization to email
 
-  @PostPhoto_positiveTest
+  @PositiveTest
+  @PostPhoto
   Scenario: Add post to photo positive test
 
     Given I open a photo window
@@ -18,7 +19,8 @@ Feature: Add post to photo
     And The last publish has time: "только что"
     And I remove a publish
 
-  @AlbumContainsPhoto_positiveTest
+  @PositiveTest
+  @AlbumContainsPhoto
   Scenario: Add post to photo, album has the photo with description positive test
 
     Given I open a photo window

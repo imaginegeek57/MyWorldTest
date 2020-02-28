@@ -97,7 +97,6 @@ public class PhotoWindow extends BaseElement {
         WebElement webElement = getWebDriver().findElement(By.xpath("//a[@href='/mail/performance.test/photo/_mypagephoto']"));
         webElement.click();
         new WebDriverWait(getWebDriver(), 0, 800);
-
         WebElement webElement1 = getWebDriver().findElement(By.xpath("//div[@class='b-catalog__photo-item can-edit']/a"));
         webElement1.click();
         return this;

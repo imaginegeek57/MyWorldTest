@@ -4,7 +4,8 @@ Feature: Work with comments under events
   Background: Authorization
     Given I do authorization to email
 
-  @WriteComment_positiveTest
+  @PositiveTest
+  @WriteComment
   Scenario: Write comment under last photo event
 
     Given I open a photo window

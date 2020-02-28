@@ -4,7 +4,8 @@ Feature: Filter for events
   Background: Authorization
     Given I do authorization to email
 
-  @FilterEvents_positiveTest
+  @PositiveTest
+  @FilterEvents
   Scenario: Work with publication filter
 
     Given I open a photo window
@@ -23,8 +24,8 @@ Feature: Filter for events
     When I switch to publications for filter by records
     Then Page has only events with records
 
-
-  @CleanPage_positiveTest
+  @PositiveTest
+  @CleanPage
   Scenario: Remove all events from page
 
     Given I open a music window
