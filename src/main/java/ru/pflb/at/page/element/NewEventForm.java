@@ -5,6 +5,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import ru.pflb.at.techno.BaseElement;
 import ru.pflb.at.techno.SWDriver;
 
@@ -80,6 +81,7 @@ public class NewEventForm extends BaseElement {
         LOG.info("Жмем кнопку 'Добавить публекацию'");
         WebElement webElement = getRoot().findElement(By.cssSelector(".b-publisher__controls__submit"));
         webElement.click();
+        new WebDriverWait(getWebDriver(), 0, 800);
         screenshot();
         return this;
     }

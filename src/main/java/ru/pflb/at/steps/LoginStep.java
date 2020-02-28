@@ -30,7 +30,7 @@ public class LoginStep implements En {
             loginHomePage.assertThatCurrentUserMail(equalTo(userProperties.getMail()));
         });
 
-        And("Click button 'EXIT'", () -> {
+        And("Click button 'ВЫХОД'", () -> {
             loginHomePage.clickExit();
         });
 
@@ -38,16 +38,16 @@ public class LoginStep implements En {
             loginHomePage.checkCorrectExit();
         });
 
-        Given("Write correct login to account", () -> {
+        Given("Enter correct login to account", () -> {
             loginHomePage.goToWebPage(webConfig.getUrl())
                     .writeLogin(userProperties.getLogin());
         });
 
-        And("Write random characters to password: {string}", (String text) -> {
+        And("Enter wrong password: {string}", (String text) -> {
             loginHomePage.writePassword(text);
         });
 
-        And("Click button 'ENTER'", () -> {
+        And("Click button 'ВОЙТИ'", () -> {
             loginHomePage.clickEnter();
         });
 

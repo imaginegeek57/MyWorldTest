@@ -4,7 +4,7 @@ Feature: Add post to music
   Background: Authorization
     Given I do authorization to email
 
-  @PostMusic
+  @PostMusic_positiveTest
   Scenario: Add post to music positive test
 
     Given I open a music window
@@ -14,4 +14,3 @@ Feature: Add post to music
     Then The last publish has text: "#50forever!"
     And The last publish has time: "только что"
     And I remove a publish
-

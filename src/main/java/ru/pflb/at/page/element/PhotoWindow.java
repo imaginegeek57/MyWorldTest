@@ -5,6 +5,7 @@ import org.apache.logging.log4j.Logger;
 import org.hamcrest.Matcher;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import ru.pflb.at.techno.BaseElement;
 import ru.pflb.at.techno.SWDriver;
 
@@ -95,6 +96,8 @@ public class PhotoWindow extends BaseElement {
         LOG.info("Открываем фото в альбоме");
         WebElement webElement = getWebDriver().findElement(By.xpath("//a[@href='/mail/performance.test/photo/_mypagephoto']"));
         webElement.click();
+        new WebDriverWait(getWebDriver(), 0, 800);
+
         WebElement webElement1 = getWebDriver().findElement(By.xpath("//div[@class='b-catalog__photo-item can-edit']/a"));
         webElement1.click();
         return this;
@@ -102,8 +105,8 @@ public class PhotoWindow extends BaseElement {
 
     public PhotoWindow checkPhotoDescription(Matcher <String> matcher) {
         LOG.info("Проверяем описание фото в альбоме");
-        WebElement webElement = getWebDriver().findElement(By.xpath("//span[@class='b-photo__content-description-text']"));
-        String result = webElement.getText();
+        WebElement webElement1 = getWebDriver().findElement(By.cssSelector(".b-photo__content-description-text"));
+        String result = webElement1.getText();
         assertThat("не удовлетворяет условию", result, matcher);
         return this;
     }

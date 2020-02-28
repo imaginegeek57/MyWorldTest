@@ -30,7 +30,7 @@ public class AppTest extends BaseTest {
                 .clickSavePhoto();
         mainPage.getNewEventForm()
                 .setCheckboxStatus(true)
-                .writePublishName("Ура! #Кот!-!")
+                .writePublishName("Ура! #Кот!")
                 .clickPublish();
     }
 
@@ -75,9 +75,10 @@ public class AppTest extends BaseTest {
 
     @Test
     public void test_albumContainsPhoto() {
-        MainPage mainPage = new MainPage(SWDriver.getInstance());
+        test_photo();
         mainPage.getPhotoWindow()
+                .clickButtonPhotoLeftMenu()
                 .openPhotoInAlbum()
-                .checkPhotoDescription(equalTo("#Кот"));
+                .checkPhotoDescription(equalTo("Ура! #Кот!"));
     }
 }
