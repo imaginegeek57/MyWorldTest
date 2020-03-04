@@ -1,33 +1,29 @@
-2020-01-30 11:11:17.649 [main] INFO  techno.BasePage - Переход на веб-страницу: https://my.mail.ru/
-2020-01-30 11:11:19.535 [main] INFO  techno.BasePage - В поле 'Логин' записать: performance.test
-2020-01-30 11:11:19.797 [main] INFO  techno.BasePage - Пароль заполнен
-2020-01-30 11:11:21.820 [main] DEBUG techno.SWDriver - screenshot has done
-2020-01-30 11:11:21.821 [main] INFO  techno.BasePage - Реклама закрыта
-2020-01-30 11:11:23.119 [main] DEBUG techno.SWDriver - screenshot has done
-2020-01-30 11:11:23.122 [main] INFO  element.NewEventForm - Выбираем текстовое поле 'Расскажите о новом событии...'
-2020-01-30 11:11:24.229 [main] DEBUG techno.SWDriver - screenshot has done
-2020-01-30 11:11:24.229 [main] INFO  element.NewEventForm - Жмем кнопку 'Фото'
-2020-01-30 11:11:24.946 [main] DEBUG techno.SWDriver - screenshot has done
-2020-01-30 11:11:24.948 [main] INFO  element.PhotoWindow - Жмем кнопку 'Добавить фото по ссылке из интернета'
-2020-01-30 11:11:25.828 [main] DEBUG techno.SWDriver - screenshot has done
-2020-01-30 11:11:25.828 [main] INFO  element.PhotoWindow - В поле 'URL' записано: https://avatars.mds.yandex.net/get-pdb/1976538/7ea9875b-c3cb-49ff-9ab3-9dc436be6ab4/s1200
-2020-01-30 11:11:27.217 [main] DEBUG techno.SWDriver - screenshot has done
-2020-01-30 11:11:27.217 [main] INFO  element.PhotoWindow - Фотография загружена
-2020-01-30 11:11:27.902 [main] DEBUG techno.SWDriver - screenshot has done
-2020-01-30 11:11:27.903 [main] INFO  element.PhotoWindow - Добавлено описания фотографии: Мой кот
-2020-01-30 11:11:28.572 [main] DEBUG techno.SWDriver - screenshot has done
-2020-01-30 11:11:28.572 [main] INFO  element.PhotoWindow - Фотография сохранена
-2020-01-30 11:11:31.363 [main] DEBUG techno.SWDriver - screenshot has done
-2020-01-30 11:11:31.363 [main] INFO  element.NewEventForm - В поле 'Публикации' записано: #Кот
-2020-01-30 11:11:32.072 [main] DEBUG techno.SWDriver - screenshot has done
-2020-01-30 11:11:32.072 [main] INFO  element.NewEventForm - Жмем кнопку 'Добавить публекацию'
-2020-01-30 11:11:32.691 [main] DEBUG techno.SWDriver - screenshot has done
-2020-01-30 11:11:32.695 [main] INFO  element.HistoryEvents - Проверяем текст публикации: "#Кот"
-2020-01-30 11:11:32.695 [main] INFO  element.HistoryEvents - Получаем содержимое поста
-2020-01-30 11:11:32.741 [main] INFO  element.HistoryEvents - Проверяем время публикации: "только что"
-2020-01-30 11:11:32.742 [main] INFO  element.HistoryEvents - Получаем время публекации
-2020-01-30 11:11:32.779 [main] INFO  element.HistoryEvents - Жмем кнопку 'Удалить запись'
-2020-01-30 11:11:33.795 [main] DEBUG techno.SWDriver - screenshot has done
-2020-01-30 11:11:33.795 [main] INFO  element.HistoryEvents - Жмем кнопку 'ДА'
-2020-01-30 11:11:34.455 [main] DEBUG techno.SWDriver - screenshot has done
-2020-01-30 11:11:34.455 [main] DEBUG techno.SWDriver - Закрытие браузера
+2020-03-04 14:39:01.938 [main] INFO  techno.BasePage - Переход на веб-страницу: https://my.mail.ru/
+2020-03-04 14:39:03.837 [main] INFO  techno.BasePage - В поле 'Логин' записать: performance.test
+2020-03-04 14:39:04.539 [main] INFO  techno.BasePage - Пароль заполнен
+2020-03-04 14:39:06.949 [main] DEBUG techno.SWDriver - screenshot has done
+2020-03-04 14:39:06.950 [main] INFO  techno.BasePage - Реклама закрыта
+2020-03-04 14:39:08.256 [main] DEBUG techno.SWDriver - screenshot has done
+2020-03-04 14:39:08.258 [main] INFO  element.NewEventForm - Выбираем текстовое поле 'Расскажите о новом событии...'
+2020-03-04 14:39:09.267 [main] DEBUG techno.SWDriver - screenshot has done
+2020-03-04 14:39:09.267 [main] INFO  element.NewEventForm - Жмем кнопку 'Фото'
+2020-03-04 14:39:09.930 [main] DEBUG techno.SWDriver - screenshot has done
+2020-03-04 14:39:09.932 [main] INFO  element.PhotoWindow - Жмем кнопку 'Добавить фото по ссылке из интернета'
+2020-03-04 14:39:10.648 [main] DEBUG techno.SWDriver - screenshot has done
+2020-03-04 14:39:10.649 [main] INFO  element.PhotoWindow - В поле 'URL' записано: https://avatars.mds.yandex.net/get-pdb/1976538/7ea9875b-c3cb-49ff-9ab3-9dc436be6ab4/s1200
+2020-03-04 14:39:11.834 [main] DEBUG techno.SWDriver - screenshot has done
+2020-03-04 14:39:11.834 [main] INFO  element.PhotoWindow - Фотография загружена
+2020-03-04 14:39:12.336 [main] DEBUG techno.SWDriver - screenshot has done
+2020-03-04 14:39:12.337 [main] INFO  element.PhotoWindow - Добавлено описания фотографии: Мой кот
+2020-03-04 14:39:12.896 [main] DEBUG techno.SWDriver - screenshot has done
+2020-03-04 14:39:12.897 [main] INFO  element.PhotoWindow - Фотография сохранена
+2020-03-04 14:39:14.845 [main] DEBUG techno.SWDriver - screenshot has done
+2020-03-04 14:39:14.846 [main] INFO  element.NewEventForm - В поле 'Публикации' записано: #Кот
+2020-03-04 14:39:15.434 [main] DEBUG techno.SWDriver - screenshot has done
+2020-03-04 14:39:15.435 [main] INFO  element.NewEventForm - Жмем кнопку 'Добавить публекацию'
+2020-03-04 14:39:16.001 [main] DEBUG techno.SWDriver - screenshot has done
+2020-03-04 14:39:16.005 [main] INFO  element.HistoryEvent - Проверяем текст публикации: "#Кот"
+2020-03-04 14:39:16.051 [main] INFO  element.HistoryEvent - Проверяем время публикации: "только что"
+2020-03-04 14:39:16.089 [main] INFO  element.HistoryEvent - Удаляем последнюю запись'
+2020-03-04 14:39:16.984 [main] DEBUG techno.SWDriver - screenshot has done
+2020-03-04 14:39:16.984 [main] DEBUG techno.SWDriver - Закрытие браузера

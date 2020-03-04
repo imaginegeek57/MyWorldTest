@@ -5,6 +5,7 @@ import org.apache.logging.log4j.Logger;
 import org.hamcrest.Matcher;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import ru.pflb.at.techno.BaseElement;
 import ru.pflb.at.techno.SWDriver;
@@ -12,7 +13,6 @@ import ru.pflb.at.techno.SWDriver;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.openqa.selenium.By.cssSelector;
 import static org.openqa.selenium.By.xpath;
-import static org.openqa.selenium.support.ui.ExpectedConditions.invisibilityOfElementLocated;
 
 public class PhotoWindow extends BaseElement {
 
@@ -78,7 +78,8 @@ public class PhotoWindow extends BaseElement {
     public PhotoWindow clickSavePhoto() {
         LOG.info("Фотография сохранена");
         WebElement element = getRoot().findElement(xpath("//div[text()='Сохранить']"));
-        webWait(10).until(invisibilityOfElementLocated(xpath("//div[text()='Сохранить']")));
+        new WebDriverWait(getWebDriver(), 60)
+                .until(ExpectedConditions.invisibilityOf(element));
         element.click();
         screenshot();
         return this;
@@ -96,8 +97,9 @@ public class PhotoWindow extends BaseElement {
         LOG.info("Открываем фото в альбоме");
         WebElement webElement = getWebDriver().findElement(By.xpath("//a[@href='/mail/performance.test/photo/_mypagephoto']"));
         webElement.click();
-        new WebDriverWait(getWebDriver(), 0, 800);
         WebElement webElement1 = getWebDriver().findElement(By.xpath("//div[@class='b-catalog__photo-item can-edit']/a"));
+        new WebDriverWait(getWebDriver(), 20)
+                .until(ExpectedConditions.invisibilityOf(webElement1));
         webElement1.click();
         return this;
     }
